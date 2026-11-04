@@ -1,0 +1,23 @@
+name: Daily authorized employer job synchronization
+on:
+  schedule:
+    # 08:00 Asia/Kolkata (02:30 UTC); GitHub cron may start later than scheduled.
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sync authorized Greenhouse employer boards
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GREENHOUSE_BOARD_TOKENS: ${{ vars.GREENHOUSE_BOARD_TOKENS }}
+        run: node scripts/sync-greenhouse.mjs
