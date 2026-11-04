@@ -136,7 +136,9 @@ save('admin/index.html',page({title:'Administrator Console',description:'Restric
 const resourceBody=`<div class="page-hero"><div class="wrap"><h1>New verified resources</h1><p>Approved database entries appear here without GitHub commits.</p></div></div><section class="wrap section" data-platform="resources"><div id="live-resource-feed" class="guide-grid"></div></section>`;
 save('resources/index.html',page({title:'Recently Verified Resources',description:'Newly verified AI tools, APIs, learning platforms and development resources.',pathname:'/resources/',content:resourceBody}));
 
-save('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${canon('/sitemap.xml')}\nSitemap: ${canon('/live-sitemap.xml')}\n`);\n// Only dynamic SEO pages consume Pages Functions invocations.\nsave('_routes.json',JSON.stringify({version:1,include:['/catalog/*','/vacancies/*','/live-sitemap.xml'],exclude:[]}));
+save('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${canon('/sitemap.xml')}\nSitemap: ${canon('/live-sitemap.xml')}\n`);
+// Only dynamic SEO pages consume Pages Functions invocations.
+save('_routes.json',JSON.stringify({version:1,include:['/catalog/*','/vacancies/*','/live-sitemap.xml'],exclude:[]}));
 fs.cpSync(path.join(root,'public'),out,{recursive:true});
 fs.mkdirSync(path.join(out,'assets'),{recursive:true});
 fs.copyFileSync(path.join(root,'src','styles.css'),path.join(out,'assets','styles.css'));
