@@ -14,6 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm run check
+      - name: Validate syntax, data, build, and tests
+        run: npm run check
       - name: Verify no placeholder affiliate links
         run: node -e "const a=require('./data/affiliates.json'); if(!a.links) process.exit(1)"
