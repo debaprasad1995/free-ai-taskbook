@@ -1,4 +1,4 @@
-import {esc,safeHttps,origin,response,page,rows,errorPage} from '../_lib/shared.js';
+import {esc,safeHttps,origin,response,page,rows,errorPage} from '../../src/server/shared.js';
 export async function onRequestGet({request,env,params}) {
  const slug=String(params.slug||'');
  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))return response('Not found',404,'text/plain; charset=utf-8',0);

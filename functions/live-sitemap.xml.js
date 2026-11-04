@@ -1,4 +1,4 @@
-import {esc,origin,response,rows} from './_lib/shared.js';
+import {esc,origin,response,rows} from '../src/server/shared.js';
 export async function onRequestGet({request,env}) {
  try {
   const [resources,jobs]=await Promise.all([
