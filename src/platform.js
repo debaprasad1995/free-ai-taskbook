@@ -33,6 +33,28 @@
    }
    profile?.addEventListener('submit',async e=>{e.preventDefault();const clean=v=>v.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12);const d={user_id:user.id,display_name:formValue(profile,'display_name').slice(0,120)||null,preferred_roles:clean(formValue(profile,'preferred_roles')),preferred_locations:clean(formValue(profile,'preferred_locations'))};const {error}=await client.from('user_profiles').upsert(d,{onConflict:'user_id'});tell(error?'Profile could not be saved.':'Profile saved.');});
    document.querySelector('#saved-form')?.addEventListener('submit',async e=>{e.preventDefault();const f=e.currentTarget;const kind=formValue(f,'item_kind'),id=formValue(f,'item_id');if(!/^[a-z0-9-]{2,150}$/.test(id))return tell('Enter a valid tool or job identifier.');const {error}=await client.from('saved_items').upsert({user_id:user.id,item_kind:kind,item_id:id},{onConflict:'user_id,item_kind,item_id'});if(error)tell('Could not save item.');else{tell('Saved.');f.reset();load();}});
+   async function loadApplications(){
+    const holder=document.getElementById('application-list');if(!holder)return;
+    const {data,error}=await client.from('job_applications').select('id,job_title,organization,source_url,status,applied_on,next_action_on,notes,updated_at').eq('user_id',user.id).order('updated_at',{ascending:false}).limit(100);
+    holder.replaceChildren();if(error){text(holder,'p','Could not load applications.');return;}
+    if(!data.length)text(holder,'p','No applications tracked yet.');
+    for(const row of data){
+     const card=document.createElement('article');card.className='guide-card';text(card,'h3',row.job_title);text(card,'p',row.organization);link(card,row.source_url,'Original job posting');
+     const label=text(card,'label','Application status ');const select=document.createElement('select');
+     for(const v of ['saved','applied','assessment','interview','offer','rejected','withdrawn']){const op=document.createElement('option');op.value=v;op.textContent=v;op.selected=row.status===v;select.append(op);}label.append(select);
+     const update=text(card,'button','Update status');update.type='button';update.addEventListener('click',async()=>{const {error}=await client.from('job_applications').update({status:select.value,updated_at:new Date().toISOString()}).eq('id',row.id).eq('user_id',user.id);tell(error?'Could not update application.':'Application updated.');if(!error)loadApplications();});
+     text(card,'p',row.next_action_on?'Next action: '+row.next_action_on:'No next action date');
+     const remove=text(card,'button','Delete');remove.type='button';remove.addEventListener('click',async()=>{if(!confirm('Delete this tracked application?'))return;const {error}=await client.from('job_applications').delete().eq('id',row.id).eq('user_id',user.id);tell(error?'Could not delete application.':'Application deleted.');if(!error)loadApplications();});
+     holder.append(card);
+    }
+   }
+   document.getElementById('application-form')?.addEventListener('submit',async e=>{
+    e.preventDefault();const f=e.currentTarget,source_url=url(formValue(f,'source_url'));
+    if(!source_url)return tell('Enter a valid HTTPS job posting URL.');
+    const payload={user_id:user.id,job_title:formValue(f,'job_title').slice(0,180),organization:formValue(f,'organization').slice(0,180),source_url,status:formValue(f,'status'),applied_on:formValue(f,'applied_on')||null,next_action_on:formValue(f,'next_action_on')||null,notes:formValue(f,'notes').slice(0,1000)};
+    const {error}=await client.from('job_applications').insert(payload);tell(error?'Could not save application.':'Application saved privately.');if(!error){f.reset();loadApplications();}
+   });
+   await loadApplications();
    await load();
  }
  async function submission(){

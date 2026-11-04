@@ -55,3 +55,11 @@ test('universal search combines all resource types without inventing vacancies',
  assert.ok(d.some(x=>x.type==='Learning'));
  assert.ok(!d.some(x=>x.type==='Verified job'));
 });
+
+test('private job application tracker is generated and database migration uses owner RLS',()=>{
+ const html=fs.readFileSync(path.join(out,'dashboard','index.html'),'utf8');
+ assert.match(html,/id="application-form"/);assert.match(html,/id="application-list"/);
+ const js=fs.readFileSync(path.join(root,'src','platform.js'),'utf8');assert.match(js,/job_applications/);
+ const sql=fs.readFileSync(path.join(root,'supabase','migrations','20261105_002_job_applications.sql'),'utf8');
+ assert.match(sql,/enable row level security/);assert.match(sql,/auth.uid\(\)/);assert.match(sql,/job_apps_owner_update/);
+});
