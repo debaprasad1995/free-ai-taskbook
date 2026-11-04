@@ -29,3 +29,12 @@ for(const a of apis){
  if(a.verifiedOn)assert.match(a.verifiedOn,/^\d{4}-\d{2}-\d{2}$/);
 }
 console.log(`VALID: ${apis.length} API entries.`);
+
+const professions=JSON.parse(fs.readFileSync('data/professions.json','utf8'));
+for(const prof of professions){assert.match(prof.slug,/^[a-z0-9-]+$/);for(const w of prof.workflows){for(const slug of w.tools)assert.ok(slugs.has(slug),`Unknown tool in ${prof.name}: ${slug}`)}}
+const jobSources=JSON.parse(fs.readFileSync('data/job-sources.json','utf8'));
+assert.equal(new Set(jobSources.map(s=>s.slug)).size,jobSources.length);
+for(const source of jobSources){assert.equal(new URL(source.url).protocol,'https:');assert.equal(source.status,'source-link-only');}
+const learning=JSON.parse(fs.readFileSync('data/learning.json','utf8'));
+for(const item of learning){assert.equal(new URL(item.url).protocol,'https:');assert.ok(['free-learning','free-certificate-conditional','provider-review'].includes(item.access));}
+console.log(`VALID: ${professions.length} toolkits, ${jobSources.length} job portals, ${learning.length} learning resources.`);

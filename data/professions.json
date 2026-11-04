@@ -1,0 +1,116 @@
+[
+  {
+    "slug": "business-analyst",
+    "name": "Business Analyst AI Toolkit",
+    "description": "Map requirements, write acceptance criteria, explore processes and validate data using accessible tools.",
+    "workflows": [
+      {
+        "goal": "Draft and review a BRD or PRD",
+        "example": "Start from stakeholder notes, identify assumptions, then trace each acceptance criterion to a requirement.",
+        "tools": [
+          "chatgpt",
+          "claude",
+          "google-gemini"
+        ]
+      },
+      {
+        "goal": "Prepare meeting minutes and source-backed summaries",
+        "example": "Summarize approved meeting notes, separate decisions from open questions, and check every action against the transcript.",
+        "tools": [
+          "notebooklm",
+          "chatgpt"
+        ]
+      },
+      {
+        "goal": "Explore SQL, spreadsheets and KPI reports",
+        "example": "Run a sample SQL query in a notebook and verify row counts before using the result in a dashboard.",
+        "tools": [
+          "google-colab",
+          "chatgpt"
+        ]
+      },
+      {
+        "goal": "Outline stakeholder journeys and presentation decks",
+        "example": "Turn an agreed process into a visual explanation and check every step with the process owner.",
+        "tools": [
+          "napkin-ai",
+          "gamma",
+          "canva"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ui-ux-design",
+    "name": "UI/UX & Figma Designer Toolkit",
+    "description": "Research, sketch, prototype, evaluate accessibility and collaborate on product design.",
+    "workflows": [
+      {
+        "goal": "Draft interface ideas from requirements",
+        "example": "Sketch a task flow, build low-fidelity screens and review them with representative users.",
+        "tools": [
+          "canva",
+          "chatgpt"
+        ]
+      },
+      {
+        "goal": "Build visual assets and design critiques",
+        "example": "Try a proposed layout and check hierarchy, legibility, contrast and keyboard behavior.",
+        "tools": [
+          "photopea",
+          "canva",
+          "google-gemini"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "website-builder",
+    "name": "Website Builder Toolkit",
+    "description": "Plan, generate, test and publish web experiences with practical free-tier and open-source options.",
+    "workflows": [
+      {
+        "goal": "Prototype a simple public website",
+        "example": "Create a mobile-first landing page, confirm copy and publish a preview before production.",
+        "tools": [
+          "google-ai-studio",
+          "lovable",
+          "replit"
+        ]
+      },
+      {
+        "goal": "Review and refine a working website",
+        "example": "Inspect generated code, test key forms and verify external links before promoting to production.",
+        "tools": [
+          "github-copilot-free",
+          "chatgpt"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "application-builder",
+    "name": "Web & App Builder Toolkit",
+    "description": "Choose no-code, full-stack or local tools for building applications, integrations and prototypes.",
+    "workflows": [
+      {
+        "goal": "Build a small working application",
+        "example": "Start with roles, data ownership and key user journeys before choosing the build tool.",
+        "tools": [
+          "replit",
+          "lovable",
+          "google-ai-studio"
+        ]
+      },
+      {
+        "goal": "Prototype safe backend automation",
+        "example": "Separate public and private credentials, enforce access controls and test failure/retry cases.",
+        "tools": [
+          "n8n-self-hosted",
+          "google-colab",
+          "github-copilot-free"
+        ]
+      }
+    ]
+  }
+]

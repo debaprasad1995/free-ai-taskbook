@@ -130,3 +130,9 @@ Only a Supabase publishable client key is eligible for frontend use, protected b
 ### Publishing safeguards
 
 The approval label is restricted to authorized repository collaborators. Publication validates listing categories, allowed access types, URL schemes, field lengths and duplicate slugs; builds and tests run before pushing. Review the source links carefully before approving. Scheduled discovery creates **review issues only**. `GITHUB_TOKEN`-authored commits may not trigger the usual GitHub Actions push CI; the publication workflow runs `npm run check` itself. Check Cloudflare deployment after each approved issue.
+
+## FreeAITaskbook vNext roadmap
+
+The first extension adds [professional toolkits](/professions/), [job portal sources](/jobs/), and [learning resources](/learn/). Read [the implementation roadmap](docs/IMPLEMENTATION_ROADMAP.md) for precise completion status, authentication security and future integration plans.
+
+The database schema is tracked in `supabase/migrations/20261105_001_core_platform.sql`. No active vacancies or unverified provider data are inserted by default. Database-backed public job listings become available only after authoritative source review and publication.

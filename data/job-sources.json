@@ -1,0 +1,173 @@
+[
+  {
+    "slug": "national-career-service",
+    "name": "National Career Service",
+    "type": "government",
+    "region": "India",
+    "url": "https://www.ncs.gov.in/",
+    "description": "Official Indian government employment and career services portal.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "upsc",
+    "name": "Union Public Service Commission",
+    "type": "government",
+    "region": "India",
+    "url": "https://upsc.gov.in/",
+    "description": "Authoritative UPSC examination and recruitment notices.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "ssc",
+    "name": "Staff Selection Commission",
+    "type": "government",
+    "region": "India",
+    "url": "https://ssc.gov.in/",
+    "description": "Official SSC recruitment and examination information.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "wbpsc",
+    "name": "West Bengal Public Service Commission",
+    "type": "government",
+    "region": "West Bengal",
+    "url": "https://psc.wb.gov.in/",
+    "description": "Official West Bengal PSC recruitment notifications.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "ibps",
+    "name": "Institute of Banking Personnel Selection",
+    "type": "government",
+    "region": "India",
+    "url": "https://www.ibps.in/",
+    "description": "Official centralized banking recruitment notices.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "railway-recruitment",
+    "name": "Railway Recruitment Boards",
+    "type": "government",
+    "region": "India",
+    "url": "https://www.rrbapply.gov.in/",
+    "description": "Railway application portal; independently verify the relevant RRB notification and links.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "employment-news",
+    "name": "Employment News",
+    "type": "government",
+    "region": "India",
+    "url": "https://employmentnews.gov.in/",
+    "description": "Government employment publication and announcements.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "naukri",
+    "name": "Naukri",
+    "type": "private",
+    "region": "India",
+    "url": "https://www.naukri.com/",
+    "description": "Private and corporate job-search portal.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "linkedin-jobs",
+    "name": "LinkedIn Jobs",
+    "type": "private",
+    "region": "International",
+    "url": "https://www.linkedin.com/jobs/",
+    "description": "Company listings, professional networking and applications.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "indeed-india",
+    "name": "Indeed India",
+    "type": "private",
+    "region": "India",
+    "url": "https://in.indeed.com/",
+    "description": "Job search and employer career information.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "shine",
+    "name": "Shine",
+    "type": "private",
+    "region": "India",
+    "url": "https://www.shine.com/",
+    "description": "Private job discovery in India.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "foundit",
+    "name": "Foundit",
+    "type": "private",
+    "region": "India",
+    "url": "https://www.foundit.in/",
+    "description": "Job-search platform for India and other markets.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "internshala",
+    "name": "Internshala",
+    "type": "internship",
+    "region": "India",
+    "url": "https://internshala.com/",
+    "description": "Internships, fresher roles and learning opportunities.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "wellfound",
+    "name": "Wellfound",
+    "type": "startup",
+    "region": "International",
+    "url": "https://wellfound.com/jobs",
+    "description": "Startup and technology employment discovery.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "cutshort",
+    "name": "Cutshort",
+    "type": "technology",
+    "region": "India",
+    "url": "https://cutshort.io/",
+    "description": "Technology and product career opportunities.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "remote-ok",
+    "name": "Remote OK",
+    "type": "remote",
+    "region": "International",
+    "url": "https://remoteok.com/",
+    "description": "Remote job board; verify employer and conditions.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "we-work-remotely",
+    "name": "We Work Remotely",
+    "type": "remote",
+    "region": "International",
+    "url": "https://weworkremotely.com/",
+    "description": "Remote hiring portal.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "freejobalert",
+    "name": "FreeJobAlert",
+    "type": "aggregator",
+    "region": "India",
+    "url": "https://www.freejobalert.com/",
+    "description": "Third-party notice discovery; verify against official employer notices.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "sarkari-result",
+    "name": "Sarkari Result",
+    "type": "aggregator",
+    "region": "India",
+    "url": "https://www.sarkariresult.com/",
+    "description": "Third-party examination and vacancy discovery; cross-check official notices.",
+    "status": "source-link-only"
+  }
+]

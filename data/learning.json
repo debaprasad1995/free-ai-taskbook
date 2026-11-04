@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "sql",
+    "topic": "SQL",
+    "provider": "SQLBolt",
+    "url": "https://sqlbolt.com/",
+    "access": "free-learning",
+    "note": "Interactive SQL lessons; no free certificate promised."
+  },
+  {
+    "slug": "power-bi",
+    "topic": "Power BI",
+    "provider": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi",
+    "access": "free-learning",
+    "note": "Free self-paced modules; formal certification exams may have fees."
+  },
+  {
+    "slug": "business-analysis",
+    "topic": "Business Analysis",
+    "provider": "IIBA",
+    "url": "https://www.iiba.org/",
+    "access": "provider-review",
+    "note": "Explore business analysis standards and resources; individual learning products may be paid."
+  },
+  {
+    "slug": "excel",
+    "topic": "Excel",
+    "provider": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/training/",
+    "access": "free-learning",
+    "note": "Search free learning modules; certificates and exams vary."
+  },
+  {
+    "slug": "python",
+    "topic": "Python",
+    "provider": "Python Official Tutorial",
+    "url": "https://docs.python.org/3/tutorial/",
+    "access": "free-learning",
+    "note": "Free Python language reference/tutorial, no certificate."
+  },
+  {
+    "slug": "web-development",
+    "topic": "Web Development",
+    "provider": "MDN Learn",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+    "access": "free-learning",
+    "note": "Free web development learning content, no formal certificate."
+  },
+  {
+    "slug": "computer-science",
+    "topic": "Computer Science",
+    "provider": "Harvard CS50",
+    "url": "https://cs50.harvard.edu/x/",
+    "access": "free-certificate-conditional",
+    "note": "Free CS50 certificate after completing stated coursework; paid edX verified certificate is separate."
+  },
+  {
+    "slug": "figma",
+    "topic": "UI/UX Design",
+    "provider": "Figma Learn",
+    "url": "https://help.figma.com/",
+    "access": "free-learning",
+    "note": "Public guides; product usage and training options have different limits."
+  },
+  {
+    "slug": "git",
+    "topic": "Git & GitHub",
+    "provider": "GitHub Skills",
+    "url": "https://skills.github.com/",
+    "access": "free-learning",
+    "note": "Hands-on GitHub courses; no certification promise."
+  },
+  {
+    "slug": "cloudflare",
+    "topic": "Cloudflare",
+    "provider": "Cloudflare Learning Center",
+    "url": "https://www.cloudflare.com/learning/",
+    "access": "free-learning",
+    "note": "Public resources on networking, security and performance."
+  },
+  {
+    "slug": "supabase",
+    "topic": "Database & Auth",
+    "provider": "Supabase Docs",
+    "url": "https://supabase.com/docs",
+    "access": "free-learning",
+    "note": "Documentation with examples; infrastructure limits vary."
+  },
+  {
+    "slug": "agile",
+    "topic": "Agile & Scrum",
+    "provider": "Scrum Guide",
+    "url": "https://scrumguides.org/",
+    "access": "free-learning",
+    "note": "Official Scrum framework guide; certification is separate."
+  }
+]
