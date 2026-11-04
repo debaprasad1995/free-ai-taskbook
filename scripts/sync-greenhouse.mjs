@@ -30,18 +30,24 @@ async function syncBoard(token){
   if(!Array.isArray(payload.jobs))throw Error('Unexpected job board payload');
   if(payload.jobs.length>limit)throw Error('Job board exceeds configured safety limit; not applying partial sync');
   stats.fetched=payload.jobs.length;
+  const boardResponse=await fetch(`https://boards-api.greenhouse.io/v1/boards/${token}`,{headers:{Accept:'application/json'},signal:AbortSignal.timeout(15000)});
+  if(!boardResponse.ok)throw Error(`Employer board metadata returned HTTP ${boardResponse.status}`);
+  const board=await boardResponse.json();if(!String(board.name||'').trim())throw Error('Employer board name missing');
+  const employer=String(board.name).trim().slice(0,200);
   const valid=[],active=new Set();
   for(const j of payload.jobs){
    const official=safeBoardURL(j.absolute_url);
    if(!official||!Number.isSafeInteger(j.id)||!String(j.title||'').trim()){stats.rejected++;continue}
    active.add(String(j.id));
-   valid.push({source_key:sourceKey,external_id:String(j.id),title:String(j.title).slice(0,240),organization:token,location:String(j.location?.name||'Location not specified').slice(0,200),job_type:'private',official_notification_url:official,application_url:official,review_status:'verified',status:'open',verified_at:new Date().toISOString(),attributes:{board:token,source:'Greenhouse public Job Board API'}});
+   valid.push({source_key:sourceKey,external_id:String(j.id),title:String(j.title).slice(0,240),organization:employer,location:String(j.location?.name||'Location not specified').slice(0,200),job_type:'private',official_notification_url:official,application_url:official,review_status:'verified',status:'open',verified_at:new Date().toISOString(),attributes:{board:token,source:'Greenhouse public Job Board API'}});
   }
   // Upsert returned jobs; do not infer salary, age, dates or category vacancies.
   if(valid.length){for(let i=0;i<valid.length;i+=100){const r=await database('job_postings',{method:'POST',params:'?on_conflict=source_key,external_id',body:valid.slice(i,i+100)});stats.inserted+=r.length;}}
   // Reconcile removals ONLY after a successful, complete board response and successful upsert.
   const existing=await database('job_postings',{params:`?select=id,external_id&source_key=eq.${encodeURIComponent(sourceKey)}&status=eq.open&limit=1000`});
   const missing=existing.filter(x=>!active.has(x.external_id));
+  // Avoid mass-closure if an upstream feed suddenly empties or changes identifiers.
+  if(existing.length && (valid.length===0 || (existing.length>=10 && missing.length/existing.length>0.5)))throw Error('Unexpected loss of published employer jobs. Reconciliation paused for manual review.');
   for(const row of missing){await database('job_postings',{method:'PATCH',params:`?id=eq.${encodeURIComponent(row.id)}`,body:{status:'closed'}})}
   await database('sync_runs',{method:'PATCH',params:`?id=eq.${encodeURIComponent(run.id)}`,body:{status:stats.rejected?'partial':'success',completed_at:new Date().toISOString(),...stats,details:{closed:missing.length,board:token}}});
   console.log(`${sourceKey}: fetched ${stats.fetched}, upserted ${stats.inserted}, rejected ${stats.rejected}, closed ${missing.length}`);
