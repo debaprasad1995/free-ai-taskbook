@@ -1,0 +1,17 @@
+{
+  "name": "free-ai-taskbook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A free-first, task-focused AI tools directory with 100% static SEO pages and no paid dependencies.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run validate && npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

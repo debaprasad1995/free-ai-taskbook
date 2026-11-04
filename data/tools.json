@@ -1,0 +1,910 @@
+[
+  {
+    "slug": "chatgpt",
+    "name": "ChatGPT",
+    "category": "chat-research",
+    "summary": "An all-purpose AI assistant for everyday tasks.",
+    "description": "Ask questions, brainstorm, summarize text and work through ideas with a conversational AI assistant.",
+    "access": "free-tier",
+    "url": "https://chatgpt.com/",
+    "pricingUrl": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+    "freeNote": "Free usage is subject to changing message, feature and tool limits.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "chat",
+      "study",
+      "write",
+      "brainstorm",
+      "research"
+    ]
+  },
+  {
+    "slug": "claude",
+    "name": "Claude",
+    "category": "chat-research",
+    "summary": "Work through writing and analytical tasks.",
+    "description": "A general-purpose AI assistant for drafting, reasoning, planning and long-form document work.",
+    "access": "free-tier",
+    "url": "https://claude.ai/",
+    "pricingUrl": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+    "freeNote": "An ongoing $0 plan exists, with limited usage.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "writing",
+      "research",
+      "documents",
+      "analysis"
+    ]
+  },
+  {
+    "slug": "deepseek-chat",
+    "name": "DeepSeek Chat",
+    "category": "chat-research",
+    "summary": "Ask questions and explore reasoning for free.",
+    "description": "A web-based AI chatbot for research, writing and problem solving.",
+    "access": "free",
+    "url": "https://chat.deepseek.com/",
+    "pricingUrl": "https://www.deepseek.com/news/deepseek-app/",
+    "freeNote": "The provider describes its consumer app as free; availability and usage policies may change.",
+    "verifiedOn": "2026-11-04",
+    "featured": false,
+    "tasks": [
+      "chat",
+      "reasoning",
+      "study"
+    ]
+  },
+  {
+    "slug": "github-copilot-free",
+    "name": "GitHub Copilot Free",
+    "category": "coding",
+    "summary": "AI coding suggestions inside supported editors.",
+    "description": "Coding assistance for writing, completing and understanding software in a developer workflow.",
+    "access": "free-tier",
+    "url": "https://github.com/features/copilot",
+    "pricingUrl": "https://github.com/features/copilot/plans",
+    "freeNote": "Free plan includes 2,000 completions per month; other AI features have limits.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "code",
+      "debug",
+      "autocomplete"
+    ]
+  },
+  {
+    "slug": "canva",
+    "name": "Canva",
+    "category": "design",
+    "summary": "Create graphics, social posts and presentations.",
+    "description": "A visual-design editor with templates and limited AI-powered creation features on its free plan.",
+    "access": "free-tier",
+    "url": "https://www.canva.com/",
+    "pricingUrl": "https://www.canva.com/en_in/pricing/",
+    "freeNote": "The Free plan includes limited AI use; some assets and premium features are paid.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "design",
+      "presentation",
+      "social media"
+    ]
+  },
+  {
+    "slug": "elevenlabs",
+    "name": "ElevenLabs",
+    "category": "audio",
+    "summary": "Generate speech and experiment with voice tools.",
+    "description": "Text-to-speech, speech-to-text and related creative audio features available through a limited free plan.",
+    "access": "free-tier",
+    "url": "https://elevenlabs.io/",
+    "pricingUrl": "https://elevenlabs.io/pricing",
+    "freeNote": "Free plan includes 10,000 credits monthly; commercial rights vary by plan.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "voice",
+      "text to speech",
+      "audio"
+    ]
+  },
+  {
+    "slug": "gamma",
+    "name": "Gamma",
+    "category": "presentations",
+    "summary": "Make slide decks and visual documents with AI.",
+    "description": "Create quick presentations, documents and lightweight visual narratives from prompts.",
+    "access": "free-credits",
+    "url": "https://gamma.app/",
+    "pricingUrl": "https://gamma.app/pricing",
+    "freeNote": "Free plan offers signup credits; ongoing AI generation may require more credits.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "presentation",
+      "slides",
+      "pitch deck"
+    ]
+  },
+  {
+    "slug": "runway",
+    "name": "Runway",
+    "category": "video",
+    "summary": "Experiment with AI-assisted video creation.",
+    "description": "A creative environment for generative video and image workflows.",
+    "access": "free-credits",
+    "url": "https://runwayml.com/",
+    "pricingUrl": "https://help.runwayml.com/hc/en-us/articles/50404627334547-Free-plan-details",
+    "freeNote": "Free account includes one-time credits; the allowance does not replenish.",
+    "verifiedOn": "2026-11-04",
+    "featured": false,
+    "tasks": [
+      "video",
+      "animation"
+    ]
+  },
+  {
+    "slug": "suno",
+    "name": "Suno",
+    "category": "audio",
+    "summary": "Create AI-generated songs from ideas.",
+    "description": "Compose demo songs and explore music generation without an upfront subscription.",
+    "access": "free-tier",
+    "url": "https://suno.com/",
+    "pricingUrl": "https://suno.com/pricing",
+    "freeNote": "Free credits replenish daily, but free outputs do not include commercial-use rights.",
+    "verifiedOn": "2026-11-04",
+    "featured": false,
+    "tasks": [
+      "music",
+      "song",
+      "creative"
+    ]
+  },
+  {
+    "slug": "lovable",
+    "name": "Lovable",
+    "category": "website",
+    "summary": "Describe an app and start building it with AI.",
+    "description": "A prompt-based app builder for early web application prototypes and experiments.",
+    "access": "free-tier",
+    "url": "https://lovable.dev/",
+    "pricingUrl": "https://lovable.dev/pricing",
+    "freeNote": "Limited daily build credits and other free quotas; check current plan terms.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "website",
+      "app",
+      "no code"
+    ]
+  },
+  {
+    "slug": "ollama",
+    "name": "Ollama",
+    "category": "local",
+    "summary": "Run models directly on your computer.",
+    "description": "Download compatible language models and execute inference locally without paying a cloud inference provider.",
+    "access": "local-open-source",
+    "url": "https://ollama.com/",
+    "pricingUrl": "https://registry.ollama.com/pricing",
+    "freeNote": "Local model execution can be free; compute, storage and optional cloud features may cost extra.",
+    "verifiedOn": "2026-11-04",
+    "featured": true,
+    "tasks": [
+      "offline",
+      "privacy",
+      "local model"
+    ]
+  },
+  {
+    "slug": "jan",
+    "name": "Jan",
+    "category": "local",
+    "summary": "Desktop assistant for running local AI models.",
+    "description": "Use an offline-first chat application to run compatible local AI models on supported computers.",
+    "access": "local-open-source",
+    "url": "https://jan.ai/",
+    "pricingUrl": "https://www.jan.ai/post/run-ai-models-locally",
+    "freeNote": "Open source; local performance and model sizes depend on device hardware.",
+    "verifiedOn": "2026-11-04",
+    "featured": false,
+    "tasks": [
+      "offline",
+      "local",
+      "privacy"
+    ]
+  },
+  {
+    "slug": "google-gemini",
+    "name": "Google Gemini",
+    "category": "chat-research",
+    "summary": "Google’s assistant for questions and content.",
+    "description": "Explore search-oriented questions, planning and drafting with Google’s conversational assistant.",
+    "access": "free-tier",
+    "url": "https://gemini.google.com/",
+    "pricingUrl": "https://gemini.google.com/",
+    "freeNote": "Check current feature and usage limits in your location.",
+    "verifiedOn": null,
+    "featured": true,
+    "tasks": [
+      "chat",
+      "research",
+      "study"
+    ]
+  },
+  {
+    "slug": "perplexity",
+    "name": "Perplexity",
+    "category": "chat-research",
+    "summary": "Research questions with source-linked answers.",
+    "description": "Search and explore topics using answer-focused AI with citations and follow-up prompts.",
+    "access": "free-tier",
+    "url": "https://www.perplexity.ai/",
+    "pricingUrl": "https://www.perplexity.ai/",
+    "freeNote": "Advanced searches and features may be limited.",
+    "verifiedOn": null,
+    "featured": true,
+    "tasks": [
+      "research",
+      "search",
+      "find sources"
+    ]
+  },
+  {
+    "slug": "microsoft-copilot",
+    "name": "Microsoft Copilot",
+    "category": "chat-research",
+    "summary": "A general assistant integrated with Microsoft tools.",
+    "description": "Get conversational assistance with writing, search and everyday tasks.",
+    "access": "free-tier",
+    "url": "https://copilot.microsoft.com/",
+    "pricingUrl": "https://copilot.microsoft.com/",
+    "freeNote": "Check regional eligibility and feature limits.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "chat",
+      "write",
+      "research"
+    ]
+  },
+  {
+    "slug": "mistral-le-chat",
+    "name": "Mistral Le Chat",
+    "category": "chat-research",
+    "summary": "A versatile chat assistant from Mistral AI.",
+    "description": "Chat, write and explore ideas using models offered by Mistral.",
+    "access": "free-tier",
+    "url": "https://chat.mistral.ai/",
+    "pricingUrl": "https://mistral.ai/pricing",
+    "freeNote": "Check free-account feature limits and availability.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "chat",
+      "language"
+    ]
+  },
+  {
+    "slug": "hugging-face-spaces",
+    "name": "Hugging Face Spaces",
+    "category": "chat-research",
+    "summary": "Discover community AI demos and experiments.",
+    "description": "Try public demos for language, images, speech and other machine-learning tasks.",
+    "access": "free-tier",
+    "url": "https://huggingface.co/spaces",
+    "pricingUrl": "https://huggingface.co/pricing",
+    "freeNote": "Individual Spaces have different limits and may be unavailable.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "demos",
+      "models",
+      "explore"
+    ]
+  },
+  {
+    "slug": "google-ai-studio",
+    "name": "Google AI Studio",
+    "category": "coding",
+    "summary": "Prototype with Gemini models and prompts.",
+    "description": "Experiment with model prompts, outputs and basic application patterns in a developer interface.",
+    "access": "free-tier",
+    "url": "https://aistudio.google.com/",
+    "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+    "freeNote": "Free-tier quota and regional restrictions vary by model and usage.",
+    "verifiedOn": null,
+    "featured": true,
+    "tasks": [
+      "build",
+      "api",
+      "prompt",
+      "app"
+    ]
+  },
+  {
+    "slug": "cursor",
+    "name": "Cursor",
+    "category": "coding",
+    "summary": "Code editor with AI assistance.",
+    "description": "An AI-oriented development environment for editing, reading and debugging code.",
+    "access": "free-tier",
+    "url": "https://cursor.com/",
+    "pricingUrl": "https://cursor.com/pricing",
+    "freeNote": "Check current free-plan limits and model availability.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "coding",
+      "editor",
+      "debug"
+    ]
+  },
+  {
+    "slug": "windsurf",
+    "name": "Windsurf",
+    "category": "coding",
+    "summary": "AI-assisted developer workspace.",
+    "description": "An editor experience designed to help developers code and navigate projects.",
+    "access": "free-tier",
+    "url": "https://windsurf.com/",
+    "pricingUrl": "https://windsurf.com/pricing",
+    "freeNote": "Check account usage and advanced-feature caps.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "coding",
+      "editor"
+    ]
+  },
+  {
+    "slug": "replit",
+    "name": "Replit",
+    "category": "website",
+    "summary": "Create and host app prototypes in a browser.",
+    "description": "Build applications through a web development environment with AI-powered capabilities.",
+    "access": "free-tier",
+    "url": "https://replit.com/",
+    "pricingUrl": "https://replit.com/pricing",
+    "freeNote": "Cloud resources, publishing and agent usage can be limited or paid.",
+    "verifiedOn": null,
+    "featured": true,
+    "tasks": [
+      "app",
+      "website",
+      "code"
+    ]
+  },
+  {
+    "slug": "bolt",
+    "name": "Bolt",
+    "category": "website",
+    "summary": "Prompt-to-app web prototyping.",
+    "description": "Generate and refine website or app code from plain-language instructions.",
+    "access": "free-tier",
+    "url": "https://bolt.new/",
+    "pricingUrl": "https://bolt.new/",
+    "freeNote": "Free generation quotas and deployment options may change.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "app",
+      "website",
+      "no code"
+    ]
+  },
+  {
+    "slug": "v0",
+    "name": "v0",
+    "category": "website",
+    "summary": "Generate user interfaces with prompts.",
+    "description": "Quickly prototype UI layouts and components from natural-language requests.",
+    "access": "free-tier",
+    "url": "https://v0.app/",
+    "pricingUrl": "https://v0.app/pricing",
+    "freeNote": "Check free monthly credits and publishing limits.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "ui",
+      "code",
+      "website"
+    ]
+  },
+  {
+    "slug": "leonardo-ai",
+    "name": "Leonardo AI",
+    "category": "design",
+    "summary": "Create concept art and visual assets.",
+    "description": "Explore text-to-image creation, concept sketches and art workflows.",
+    "access": "free-tier",
+    "url": "https://leonardo.ai/",
+    "pricingUrl": "https://leonardo.ai/pricing/",
+    "freeNote": "Token quotas and output rights may differ by tier.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "image",
+      "illustration",
+      "art"
+    ]
+  },
+  {
+    "slug": "ideogram",
+    "name": "Ideogram",
+    "category": "design",
+    "summary": "Generate artwork and text-rich images.",
+    "description": "Generate illustrative graphics, lettering and creative visual concepts.",
+    "access": "free-tier",
+    "url": "https://ideogram.ai/",
+    "pricingUrl": "https://ideogram.ai/pricing",
+    "freeNote": "Free generations, image visibility and features may be limited.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "image",
+      "poster",
+      "text in image"
+    ]
+  },
+  {
+    "slug": "adobe-express",
+    "name": "Adobe Express",
+    "category": "design",
+    "summary": "Design quick visual content with templates.",
+    "description": "Create social posts and graphics with layout tools and some AI-assisted features.",
+    "access": "free-tier",
+    "url": "https://www.adobe.com/express/",
+    "pricingUrl": "https://www.adobe.com/express/pricing",
+    "freeNote": "Check current generative-credit allowance and premium asset restrictions.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "design",
+      "social media"
+    ]
+  },
+  {
+    "slug": "photopea",
+    "name": "Photopea",
+    "category": "design",
+    "summary": "Edit photos in a browser.",
+    "description": "A browser photo editor useful alongside AI generation tools; not every feature is AI-based.",
+    "access": "free-tier",
+    "url": "https://www.photopea.com/",
+    "pricingUrl": "https://www.photopea.com/",
+    "freeNote": "Ad-supported editing; confirm any AI-specific feature availability.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "edit",
+      "photo"
+    ]
+  },
+  {
+    "slug": "remove-bg",
+    "name": "remove.bg",
+    "category": "design",
+    "summary": "Remove image backgrounds.",
+    "description": "Background removal for photos and product images.",
+    "access": "free-tier",
+    "url": "https://www.remove.bg/",
+    "pricingUrl": "https://www.remove.bg/pricing",
+    "freeNote": "Free exports may have resolution or quantity limits.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "background",
+      "photo"
+    ]
+  },
+  {
+    "slug": "pika",
+    "name": "Pika",
+    "category": "video",
+    "summary": "Generate short creative video clips.",
+    "description": "Explore AI video and motion creation from visual or text prompts.",
+    "access": "free-tier",
+    "url": "https://pika.art/",
+    "pricingUrl": "https://pika.art/pricing",
+    "freeNote": "Generation credits and export conditions may be limited.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "video",
+      "animation"
+    ]
+  },
+  {
+    "slug": "capcut",
+    "name": "CapCut",
+    "category": "video",
+    "summary": "Edit videos and automate selected creator tasks.",
+    "description": "Video editing with captions, templates and selected AI-assisted creative features.",
+    "access": "free-tier",
+    "url": "https://www.capcut.com/",
+    "pricingUrl": "https://www.capcut.com/",
+    "freeNote": "Some AI effects and exports may require a paid plan.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "video",
+      "captions",
+      "social"
+    ]
+  },
+  {
+    "slug": "descript",
+    "name": "Descript",
+    "category": "audio",
+    "summary": "Edit recordings through transcripts.",
+    "description": "An audio and video workflow using transcription and text-based editing.",
+    "access": "free-tier",
+    "url": "https://www.descript.com/",
+    "pricingUrl": "https://www.descript.com/pricing",
+    "freeNote": "Free transcription and media processing limits apply.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "transcribe",
+      "podcast",
+      "edit"
+    ]
+  },
+  {
+    "slug": "adobe-podcast",
+    "name": "Adobe Podcast",
+    "category": "audio",
+    "summary": "Clean up and enhance speech recordings.",
+    "description": "Voice recording and sound enhancement workflows for spoken audio.",
+    "access": "free-tier",
+    "url": "https://podcast.adobe.com/",
+    "pricingUrl": "https://podcast.adobe.com/",
+    "freeNote": "Feature eligibility and processing limits may change.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "audio",
+      "clean voice",
+      "podcast"
+    ]
+  },
+  {
+    "slug": "openai-whisper",
+    "name": "OpenAI Whisper",
+    "category": "audio",
+    "summary": "Run speech recognition locally.",
+    "description": "An open-source automatic speech recognition model that developers can run with their own computing resources.",
+    "access": "local-open-source",
+    "url": "https://github.com/openai/whisper",
+    "pricingUrl": "https://github.com/openai/whisper",
+    "freeNote": "Model execution is open source; local compute or cloud infrastructure is your responsibility.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "transcription",
+      "speech"
+    ]
+  },
+  {
+    "slug": "grammarly",
+    "name": "Grammarly",
+    "category": "writing",
+    "summary": "Check and improve everyday writing.",
+    "description": "Writing assistance for grammar, tone, clarity and professional communication.",
+    "access": "free-tier",
+    "url": "https://www.grammarly.com/",
+    "pricingUrl": "https://www.grammarly.com/plans",
+    "freeNote": "Advanced rewriting and generative assistance may be limited.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "grammar",
+      "email",
+      "writing"
+    ]
+  },
+  {
+    "slug": "quillbot",
+    "name": "QuillBot",
+    "category": "writing",
+    "summary": "Rephrase and polish written material.",
+    "description": "Paraphrasing and editing assistance for drafts, study notes and communications.",
+    "access": "free-tier",
+    "url": "https://quillbot.com/",
+    "pricingUrl": "https://quillbot.com/premium",
+    "freeNote": "Free rewriting modes and usage are limited.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "paraphrase",
+      "rewrite"
+    ]
+  },
+  {
+    "slug": "deepl",
+    "name": "DeepL",
+    "category": "writing",
+    "summary": "Translate and refine multilingual text.",
+    "description": "Translation and writing assistance for documents and messages.",
+    "access": "free-tier",
+    "url": "https://www.deepl.com/",
+    "pricingUrl": "https://www.deepl.com/pro",
+    "freeNote": "Document size and advanced features may be limited.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "translate",
+      "language"
+    ]
+  },
+  {
+    "slug": "notebooklm",
+    "name": "NotebookLM",
+    "category": "productivity",
+    "summary": "Explore your own sources with AI.",
+    "description": "Create grounded summaries and notes from documents and sources you provide.",
+    "access": "free-tier",
+    "url": "https://notebooklm.google.com/",
+    "pricingUrl": "https://notebooklm.google.com/",
+    "freeNote": "Notebook and usage limits vary by account tier.",
+    "verifiedOn": null,
+    "featured": true,
+    "tasks": [
+      "research",
+      "summarize",
+      "documents"
+    ]
+  },
+  {
+    "slug": "napkin-ai",
+    "name": "Napkin AI",
+    "category": "presentations",
+    "summary": "Turn ideas into business visuals.",
+    "description": "Create diagrams and visual explainers from text for presentations and reports.",
+    "access": "free-tier",
+    "url": "https://www.napkin.ai/",
+    "pricingUrl": "https://www.napkin.ai/pricing",
+    "freeNote": "Check generation and export restrictions.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "diagram",
+      "slides",
+      "business"
+    ]
+  },
+  {
+    "slug": "google-colab",
+    "name": "Google Colab",
+    "category": "data",
+    "summary": "Run Python notebooks in the cloud.",
+    "description": "Analyze data and experiment with machine-learning workflows in hosted notebooks.",
+    "access": "free-tier",
+    "url": "https://colab.research.google.com/",
+    "pricingUrl": "https://colab.research.google.com/signup",
+    "freeNote": "Free compute resources and availability are limited; not itself an AI assistant.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "python",
+      "analysis",
+      "notebook"
+    ]
+  },
+  {
+    "slug": "kaggle-notebooks",
+    "name": "Kaggle Notebooks",
+    "category": "data",
+    "summary": "Practice data science with public datasets.",
+    "description": "Use datasets and hosted notebooks to learn and experiment with machine learning.",
+    "access": "free-tier",
+    "url": "https://www.kaggle.com/code",
+    "pricingUrl": "https://www.kaggle.com/code",
+    "freeNote": "Compute quotas, hardware access and notebook policies apply.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "data",
+      "machine learning",
+      "notebook"
+    ]
+  },
+  {
+    "slug": "orange-data-mining",
+    "name": "Orange Data Mining",
+    "category": "data",
+    "summary": "Explore data without extensive coding.",
+    "description": "A visual workflow tool for data mining and selected machine learning applications.",
+    "access": "local-open-source",
+    "url": "https://orangedatamining.com/",
+    "pricingUrl": "https://github.com/biolab/orange3",
+    "freeNote": "Open source desktop software; processing runs on your computer.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "data",
+      "visual analysis"
+    ]
+  },
+  {
+    "slug": "knime-analytics-platform",
+    "name": "KNIME Analytics Platform",
+    "category": "data",
+    "summary": "Build reproducible analytics workflows.",
+    "description": "A visual data-processing and machine-learning workspace for structured workflows.",
+    "access": "local-open-source",
+    "url": "https://www.knime.com/knime-analytics-platform",
+    "pricingUrl": "https://www.knime.com/knime-analytics-platform",
+    "freeNote": "Local analytics platform; enterprise features may be separate.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "data",
+      "automation",
+      "analysis"
+    ]
+  },
+  {
+    "slug": "n8n-self-hosted",
+    "name": "n8n Self Hosted",
+    "category": "automation",
+    "summary": "Automate tasks on your infrastructure.",
+    "description": "Connect services with a visual workflow tool that you can self-host where license terms permit.",
+    "access": "free-software",
+    "url": "https://n8n.io/",
+    "pricingUrl": "https://docs.n8n.io/hosting/",
+    "freeNote": "Self-hosting needs infrastructure; license has use restrictions and is not OSI open source.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "workflow",
+      "automation",
+      "integration"
+    ]
+  },
+  {
+    "slug": "activepieces",
+    "name": "Activepieces",
+    "category": "automation",
+    "summary": "Build no-code workflow automations.",
+    "description": "Connect tools and build event-triggered automations with cloud or self-hosted options.",
+    "access": "free-tier",
+    "url": "https://www.activepieces.com/",
+    "pricingUrl": "https://www.activepieces.com/pricing",
+    "freeNote": "Cloud usage and integration limits vary; self-hosting incurs infrastructure costs.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "workflow",
+      "automation"
+    ]
+  },
+  {
+    "slug": "make",
+    "name": "Make",
+    "category": "automation",
+    "summary": "Connect applications in a visual workflow.",
+    "description": "Create scenarios that pass data between services and reduce manual work.",
+    "access": "free-tier",
+    "url": "https://www.make.com/",
+    "pricingUrl": "https://www.make.com/en/pricing",
+    "freeNote": "The free plan limits operations and execution frequency.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "workflow",
+      "connect apps"
+    ]
+  },
+  {
+    "slug": "zapier",
+    "name": "Zapier",
+    "category": "automation",
+    "summary": "Automate tasks between online services.",
+    "description": "Connect business apps through triggers and actions.",
+    "access": "free-tier",
+    "url": "https://zapier.com/",
+    "pricingUrl": "https://zapier.com/pricing",
+    "freeNote": "Tasks, multi-step workflows and premium integrations have restrictions.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "workflow",
+      "connect apps"
+    ]
+  },
+  {
+    "slug": "lm-studio",
+    "name": "LM Studio",
+    "category": "local",
+    "summary": "Experiment with language models locally.",
+    "description": "Download and chat with compatible models from a desktop environment.",
+    "access": "free-software",
+    "url": "https://lmstudio.ai/",
+    "pricingUrl": "https://lmstudio.ai/",
+    "freeNote": "The application is free to use locally, but check its license; not all code is open source.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "local",
+      "offline",
+      "chat"
+    ]
+  },
+  {
+    "slug": "aider",
+    "name": "Aider",
+    "category": "coding",
+    "summary": "Edit code with an AI pair programmer in terminal.",
+    "description": "A terminal-based programming assistant that integrates with Git and model providers.",
+    "access": "local-open-source",
+    "url": "https://aider.chat/",
+    "pricingUrl": "https://github.com/Aider-AI/aider",
+    "freeNote": "Software is open source; hosted model APIs may still charge.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "coding",
+      "terminal",
+      "git"
+    ]
+  },
+  {
+    "slug": "open-webui",
+    "name": "Open WebUI",
+    "category": "local",
+    "summary": "Self-host a chat interface for AI models.",
+    "description": "A customizable interface for chatting with self-hosted and connected model backends.",
+    "access": "local-open-source",
+    "url": "https://openwebui.com/",
+    "pricingUrl": "https://github.com/open-webui/open-webui",
+    "freeNote": "Hosting and optional model APIs may involve costs.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "chat",
+      "local",
+      "privacy"
+    ]
+  },
+  {
+    "slug": "hugging-face-transformers",
+    "name": "Hugging Face Transformers",
+    "category": "local",
+    "summary": "Build and run open model workflows.",
+    "description": "A software library for working with a wide range of machine-learning models.",
+    "access": "local-open-source",
+    "url": "https://huggingface.co/docs/transformers/index",
+    "pricingUrl": "https://github.com/huggingface/transformers",
+    "freeNote": "Free library; model licences, hardware and hosted services vary.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "ml",
+      "models",
+      "developer"
+    ]
+  },
+  {
+    "slug": "gradio",
+    "name": "Gradio",
+    "category": "website",
+    "summary": "Turn Python model functions into web demos.",
+    "description": "A Python library for quickly making interfaces around AI and data applications.",
+    "access": "local-open-source",
+    "url": "https://www.gradio.app/",
+    "pricingUrl": "https://github.com/gradio-app/gradio",
+    "freeNote": "Open source; deployment or external inference can have separate costs.",
+    "verifiedOn": null,
+    "featured": false,
+    "tasks": [
+      "app",
+      "python",
+      "demo"
+    ]
+  }
+]

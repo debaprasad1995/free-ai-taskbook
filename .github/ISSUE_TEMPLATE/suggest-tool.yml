@@ -1,0 +1,50 @@
+name: Suggest an AI tool
+about: Propose a useful free AI tool for review
+labels: ["new tool"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please provide official sources. Don't submit secrets or private information."
+  - type: input
+    id: name
+    attributes:
+      label: Tool name
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Official website (HTTPS URL)
+    validations:
+      required: true
+  - type: input
+    id: pricing
+    attributes:
+      label: Official pricing, license or free-plan source (HTTPS URL)
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Free access classification
+      options:
+        - Free
+        - Ongoing free plan with usage limits
+        - One-time or limited free credits
+        - Local / open source
+        - Other free software (with restrictions)
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Real tasks the tool helps with
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Important free-plan limitations
+      description: Mention card requirements, quota resets, export limits, commercial rights, regional restrictions, or hardware needs.
+    validations:
+      required: true

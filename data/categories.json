@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "chat-research",
+    "name": "Chat & research",
+    "description": "Get answers, brainstorm ideas and research topics",
+    "symbol": "✦"
+  },
+  {
+    "slug": "coding",
+    "name": "Code & development",
+    "description": "Build, debug and understand software",
+    "symbol": "⌘"
+  },
+  {
+    "slug": "design",
+    "name": "Images & design",
+    "description": "Create visuals, edit pictures and produce graphics",
+    "symbol": "◈"
+  },
+  {
+    "slug": "video",
+    "name": "Video creation",
+    "description": "Generate and edit video for content and work",
+    "symbol": "▣"
+  },
+  {
+    "slug": "audio",
+    "name": "Audio & music",
+    "description": "Voice, transcription, sound and music",
+    "symbol": "♫"
+  },
+  {
+    "slug": "writing",
+    "name": "Writing & language",
+    "description": "Draft, improve, translate and communicate",
+    "symbol": "✎"
+  },
+  {
+    "slug": "presentations",
+    "name": "Presentations",
+    "description": "Generate slides, briefs and visual stories",
+    "symbol": "▤"
+  },
+  {
+    "slug": "productivity",
+    "name": "Work & productivity",
+    "description": "Organize knowledge, documents and meetings",
+    "symbol": "☷"
+  },
+  {
+    "slug": "automation",
+    "name": "Automation",
+    "description": "Connect apps and automate repetitive work",
+    "symbol": "⚡"
+  },
+  {
+    "slug": "data",
+    "name": "Data & analysis",
+    "description": "Explore datasets, notebooks and reports",
+    "symbol": "▥"
+  },
+  {
+    "slug": "local",
+    "name": "Local & open source",
+    "description": "Run models on your own computer",
+    "symbol": "⬡"
+  },
+  {
+    "slug": "website",
+    "name": "Websites & apps",
+    "description": "Create apps, prototypes and online experiences",
+    "symbol": "◉"
+  }
+]

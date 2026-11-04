@@ -1,0 +1,4 @@
+{
+  "_instructions": "Add only approved affiliate URLs here; keys are tool slugs. Affiliate links will be labeled and use rel=sponsored nofollow. Do not add referral URLs without program approval.",
+  "links": {}
+}
