@@ -107,7 +107,7 @@
     const title=document.createElement('h3');title.textContent=job.title;
     const org=document.createElement('p');org.textContent=job.organization;article.append(tag,title,org);
     if(job.application_deadline){const deadline=document.createElement('p');deadline.textContent='Apply by: '+job.application_deadline;article.append(deadline)}
-    const official=safeURL(job.official_notification_url);if(official)article.append(link(official,'Official notification'));
+    if(job.id)article.append(link(location.origin+'/vacancies/'+encodeURIComponent(job.id),'View verified job details'));\n    const official=safeURL(job.official_notification_url);if(official)article.append(link(official,'Official notification'));
     const apply=safeURL(job.application_url);if(apply)article.append(link(apply,'Apply through provider'));
     cards.append(article);
    }

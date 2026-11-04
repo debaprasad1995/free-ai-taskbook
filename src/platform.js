@@ -100,9 +100,9 @@
  async function resources(){
    const root=document.querySelector('#live-resource-feed');if(!root)return;
    if(!config.url||!config.key)return text(root,'p','Live database resources are not configured.');
-   try{const items=(await query('resource_catalog','kind,title,summary,category,official_url,pricing_class,last_verified_at')).slice(0,30);root.replaceChildren();
+   try{const items=(await query('resource_catalog','slug,kind,title,summary,category,official_url,pricing_class,last_verified_at')).slice(0,30);root.replaceChildren();
     if(!items.length)return text(root,'p','No additional database-verified resources have been published yet. Explore the existing curated directory above.');
-    for(const r of items){const card=document.createElement('article');card.className='guide-card';text(card,'span',r.category+' · '+r.pricing_class);text(card,'h3',r.title);text(card,'p',r.summary);link(card,r.official_url,'Visit official provider');text(card,'small',r.last_verified_at?'Last verified: '+new Date(r.last_verified_at).toLocaleDateString():'Verification not dated');root.append(card);}
+    for(const r of items){const card=document.createElement('article');card.className='guide-card';text(card,'span',r.category+' · '+r.pricing_class);text(card,'h3',r.title);text(card,'p',r.summary);if(r.slug)link(card,location.origin+'/catalog/'+encodeURIComponent(r.slug),'View details');link(card,r.official_url,'Visit official provider');text(card,'small',r.last_verified_at?'Last verified: '+new Date(r.last_verified_at).toLocaleDateString():'Verification not dated');root.append(card);}
    }catch{text(root,'p','The live resource feed could not be loaded.');}
  }
  if(panel.dataset.platform==='dashboard')dashboard();
