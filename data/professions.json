@@ -33,9 +33,11 @@
         "goal": "Outline stakeholder journeys and presentation decks",
         "example": "Turn an agreed process into a visual explanation and check every step with the process owner.",
         "tools": [
-          "napkin-ai",
-          "gamma",
-          "canva"
+          "diagrams-net",
+          "mermaid-live-editor",
+          "excalidraw",
+          "figma",
+          "gamma"
         ]
       }
     ]
@@ -49,6 +51,9 @@
         "goal": "Draft interface ideas from requirements",
         "example": "Sketch a task flow, build low-fidelity screens and review them with representative users.",
         "tools": [
+          "figma",
+          "penpot",
+          "excalidraw",
           "canva",
           "chatgpt"
         ]
@@ -57,6 +62,9 @@
         "goal": "Build visual assets and design critiques",
         "example": "Try a proposed layout and check hierarchy, legibility, contrast and keyboard behavior.",
         "tools": [
+          "figma",
+          "penpot",
+          "excalidraw",
           "photopea",
           "canva",
           "google-gemini"

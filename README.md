@@ -136,3 +136,7 @@ The approval label is restricted to authorized repository collaborators. Publica
 The first extension adds [professional toolkits](/professions/), [job portal sources](/jobs/), and [learning resources](/learn/). Read [the implementation roadmap](docs/IMPLEMENTATION_ROADMAP.md) for precise completion status, authentication security and future integration plans.
 
 The database schema is tracked in `supabase/migrations/20261105_001_core_platform.sql`. No active vacancies or unverified provider data are inserted by default. Database-backed public job listings become available only after authoritative source review and publication.
+
+### Profession/design catalog additions (2026-11-05)
+
+Five additional official-source-reviewed entries were added: Figma, Penpot, diagrams.net, Mermaid Live Editor, and Excalidraw. This brings the starter catalog to **56 tools** and the generated site to **105 indexable pages**. Pricing labels refer to the provider's publicly documented plans on the review date and must be rechecked periodically.

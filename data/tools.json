@@ -906,5 +906,106 @@
       "python",
       "demo"
     ]
+  },
+  {
+    "slug": "figma",
+    "name": "Figma",
+    "category": "design",
+    "summary": "Design, inspect and prototype user interfaces collaboratively.",
+    "description": "Use Figma Design and FigJam to turn requirements into wireframes, clickable prototypes and collaborative journey maps.",
+    "access": "free-tier",
+    "url": "https://www.figma.com/",
+    "pricingUrl": "https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview",
+    "freeNote": "Starter is free with product and team-file restrictions; some advanced publishing, Dev Mode and AI features require paid access.",
+    "verifiedOn": "2026-11-05",
+    "featured": true,
+    "tasks": [
+      "UI design",
+      "UX",
+      "wireframes",
+      "prototype",
+      "FigJam",
+      "design system"
+    ]
+  },
+  {
+    "slug": "penpot",
+    "name": "Penpot",
+    "category": "design",
+    "summary": "Open-source UI design and prototyping with a free cloud plan.",
+    "description": "Collaborate on product interface design, prototypes and design systems in a tool built for designers and developers.",
+    "access": "free-tier",
+    "url": "https://penpot.app/",
+    "pricingUrl": "https://penpot.app/pricing",
+    "freeNote": "Professional cloud plan listed at $0 with storage/team limitations; self-hosting is open source but requires infrastructure.",
+    "verifiedOn": "2026-11-05",
+    "featured": false,
+    "tasks": [
+      "wireframe",
+      "prototype",
+      "design system",
+      "open source",
+      "Figma alternative"
+    ]
+  },
+  {
+    "slug": "diagrams-net",
+    "name": "diagrams.net (draw.io)",
+    "category": "design",
+    "summary": "Create BPMN, flowcharts, UML and database diagrams for free.",
+    "description": "Build business-process diagrams, architecture maps, ER models and simple user journeys in an online diagram editor.",
+    "access": "free",
+    "url": "https://app.diagrams.net/",
+    "pricingUrl": "https://www.diagrams.net/",
+    "freeNote": "The browser diagram editor is free; connected third-party storage may have separate terms.",
+    "verifiedOn": "2026-11-05",
+    "featured": false,
+    "tasks": [
+      "BPMN",
+      "flowchart",
+      "ER diagram",
+      "business process",
+      "architecture"
+    ]
+  },
+  {
+    "slug": "mermaid-live-editor",
+    "name": "Mermaid Live Editor",
+    "category": "design",
+    "summary": "Generate process flows and charts from editable text diagrams.",
+    "description": "Describe a sequence, process or system architecture in Mermaid syntax, preview it and iterate in a browser.",
+    "access": "free",
+    "url": "https://mermaid.live/",
+    "pricingUrl": "https://mermaid.js.org/",
+    "freeNote": "The open-source syntax and live editor are available without an account. Paid hosted Mermaid services are separate.",
+    "verifiedOn": "2026-11-05",
+    "featured": false,
+    "tasks": [
+      "flowchart",
+      "sequence diagram",
+      "journey",
+      "system architecture",
+      "BPMN alternative"
+    ]
+  },
+  {
+    "slug": "excalidraw",
+    "name": "Excalidraw",
+    "category": "design",
+    "summary": "Sketch collaborative workflows and simple wireframes on a free canvas.",
+    "description": "Draw product ideas, explain processes and sketch rough interfaces with a minimalist browser whiteboard.",
+    "access": "free",
+    "url": "https://excalidraw.com/",
+    "pricingUrl": "https://plus.excalidraw.com/",
+    "freeNote": "The base open-source whiteboard is free and does not require an account; Excalidraw Plus has separate paid features.",
+    "verifiedOn": "2026-11-05",
+    "featured": false,
+    "tasks": [
+      "wireframe",
+      "whiteboard",
+      "brainstorm",
+      "flowchart",
+      "UX research"
+    ]
   }
 ]
