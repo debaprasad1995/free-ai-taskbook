@@ -31,7 +31,7 @@
      const rows=await query('community_submissions','id,title,kind,status,submitted_at');submissions.replaceChildren();if(!rows.length)text(submissions,'p','No private submissions yet.');for(const s of rows){const el=document.createElement('p');text(el,'strong',s.title);text(el,'span',' · '+s.status);submissions.append(el);}
     }catch(e){tell('Could not load your account data. Please check the connection and try again.');}
    }
-   profile?.addEventListener('submit',async e=>{e.preventDefault();const clean=v=>v.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12);const d={user_id:user.id,display_name:formValue(profile,'display_name').slice(0,120)||null,preferred_roles:clean(formValue(profile,'preferred_roles')),preferred_locations:clean(formValue(profile,'preferred_locations'))};const {error}=await client.from('user_profiles').upsert(d,{onConflict:'user_id'});tell(error?'Profile could not be saved.':'Profile saved.');});
+   profile?.addEventListener('submit',async e=>{e.preventDefault();const clean=v=>v.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12);const d={user_id:user.id,display_name:formValue(profile,'display_name').slice(0,120)||null,preferred_roles:clean(formValue(profile,'preferred_roles')),preferred_locations:clean(formValue(profile,'preferred_locations'))};const {error}=await client.from('user_profiles').upsert(d,{onConflict:'user_id'});tell(error?'Profile could not be saved.':'Profile saved.');if(!error)showMatchedJobs();});
    document.querySelector('#saved-form')?.addEventListener('submit',async e=>{e.preventDefault();const f=e.currentTarget;const kind=formValue(f,'item_kind'),id=formValue(f,'item_id');if(!/^[a-z0-9-]{2,150}$/.test(id))return tell('Enter a valid tool or job identifier.');const {error}=await client.from('saved_items').upsert({user_id:user.id,item_kind:kind,item_id:id},{onConflict:'user_id,item_kind,item_id'});if(error)tell('Could not save item.');else{tell('Saved.');f.reset();load();}});
    async function loadApplications(){
     const holder=document.getElementById('application-list');if(!holder)return;
@@ -55,6 +55,23 @@
     const {error}=await client.from('job_applications').insert(payload);tell(error?'Could not save application.':'Application saved privately.');if(!error){f.reset();loadApplications();}
    });
    await loadApplications();
+   // These suggestions are calculated locally from verified public vacancies.
+   // Do not infer formal eligibility, compensation, or application approval.
+   async function showMatchedJobs(){
+    const holder=document.getElementById('matched-jobs');if(!holder)return;
+    holder.replaceChildren();
+    const {data:profile,error:profileError}=await client.from('user_profiles').select('preferred_roles,preferred_locations').eq('user_id',user.id).maybeSingle();
+    if(profileError){text(holder,'p','Your preferences could not be loaded.');return;}
+    const roles=(profile?.preferred_roles||[]).map(x=>String(x).trim().toLowerCase()).filter(Boolean);
+    const places=(profile?.preferred_locations||[]).map(x=>String(x).trim().toLowerCase()).filter(Boolean);
+    if(!roles.length){text(holder,'p','Add your preferred roles above and save your profile to see job matches.');return;}
+    const {data,error}=await client.from('job_postings').select('id,title,organization,location,official_notification_url,application_deadline').eq('review_status','verified').eq('status','open').order('verified_at',{ascending:false}).limit(200);
+    if(error){text(holder,'p','Verified vacancies are unavailable right now.');return;}
+    const matched=(data||[]).filter(job=>roles.some(role=>String(job.title||'').toLowerCase().includes(role)) && (!places.length||places.some(place=>String(job.location||'').toLowerCase().includes(place)))).slice(0,12);
+    if(!matched.length){text(holder,'p','No verified jobs currently match these preferences. This is not an email alert service.');return;}
+    for(const job of matched){const card=document.createElement('article');card.className='guide-card';text(card,'h3',job.title);text(card,'p',[job.organization,job.location].filter(Boolean).join(' · '));link(card,location.origin+'/vacancies/'+encodeURIComponent(job.id),'View verified vacancy');if(job.application_deadline)text(card,'small','Deadline: '+job.application_deadline);holder.append(card);}
+   }
+   await showMatchedJobs();
    await load();
  }
  async function submission(){
@@ -95,6 +112,20 @@
     if(values.application_deadline&&values.application_deadline<new Date().toISOString().slice(0,10))return tell('This application deadline has already passed.');
     const {error}=await client.from('job_postings').upsert(values,{onConflict:'source_key,external_id'});tell(error?'Job publication failed. Verify permissions and fields.':'Verified job published to the live job feed.');if(!error)f.reset();
    });
+   async function loadSyncHealth(){
+    const holder=document.getElementById('sync-monitor');if(!holder)return;
+    const {data,error}=await client.from('sync_runs').select('integration,status,started_at,completed_at,fetched,inserted,rejected').order('started_at',{ascending:false}).limit(15);
+    holder.replaceChildren();
+    if(error){text(holder,'p','Sync monitoring data is unavailable.');return;}
+    if(!data?.length){text(holder,'p','No synchronization runs recorded yet. Automatic vacancy publication has not been verified.');return;}
+    for(const run of data){
+     const card=document.createElement('article');card.className='guide-card';text(card,'h3',run.integration);text(card,'p','Status: '+run.status);
+     text(card,'p','Fetched: '+run.fetched+' · Upserted: '+run.inserted+' · Rejected: '+run.rejected);
+     text(card,'small',run.completed_at?'Last completed: '+new Date(run.completed_at).toLocaleString():'Started: '+new Date(run.started_at).toLocaleString());
+     holder.append(card);
+    }
+   }
+   await loadSyncHealth();
    await load();
  }
  async function resources(){

@@ -18,7 +18,7 @@ test('Google Search Console verification preserved',()=>{const txt=fs.readFileSy
 
 test('professional, job and learning pages are generated without fake vacancies',()=>{
  for(const route of ['professions','professions/business-analyst','professions/ui-ux-design','professions/website-builder','professions/application-builder','jobs','jobs/sources','learn']) assert.ok(fs.existsSync(path.join(out,route,'index.html')),route);
- const j=fs.readFileSync(path.join(out,'jobs/index.html'),'utf8');assert.ok(j.includes('Individual vacancies and daily synchronization are not live yet'));assert.ok(j.includes('href="https://www.ncs.gov.in/"'));
+ const j=fs.readFileSync(path.join(out,'jobs/index.html'),'utf8');assert.ok(j.includes('Verified vacancies appear below when an authorized data source is configured'));assert.ok(j.includes('href="https://www.ncs.gov.in/"'));
  const p=fs.readFileSync(path.join(out,'professions/business-analyst/index.html'),'utf8');assert.ok(p.includes('BRD or PRD'));
  const l=fs.readFileSync(path.join(out,'learn/index.html'),'utf8');assert.ok(l.includes('Free certificate')) ;
  const map=fs.readFileSync(path.join(out,'sitemap.xml'),'utf8');assert.ok(map.includes('/jobs/'));assert.ok(map.includes('/learn/'));
@@ -41,7 +41,7 @@ test('scheduled job ingestion is gated until authorized boards and server-only c
  const workflow=fs.readFileSync(path.join(root,'.github','workflows','daily-authorized-jobs.yml'),'utf8');
  assert.ok(runner.includes('GREENHOUSE_BOARD_TOKENS'));
  assert.ok(runner.includes('Job sync skipped'));
- assert.ok(runner.includes("safeBoardURL"));
+ assert.ok(runner.includes("greenhouseJobUrl"));
  assert.ok(workflow.includes('secrets.SUPABASE_SERVICE_ROLE_KEY'));
  assert.ok(!workflow.includes('sb_publishable_'));
 });
@@ -62,4 +62,15 @@ test('private job application tracker is generated and database migration uses o
  const js=fs.readFileSync(path.join(root,'src','platform.js'),'utf8');assert.match(js,/job_applications/);
  const sql=fs.readFileSync(path.join(root,'supabase','migrations','20261105_002_job_applications.sql'),'utf8');
  assert.match(sql,/enable row level security/);assert.match(sql,/auth.uid\(\)/);assert.match(sql,/job_apps_owner_update/);
+});
+
+test('job recommendations and admin sync health panels are present and do not claim email delivery',()=>{
+ const dashboard=fs.readFileSync(path.join(out,'dashboard','index.html'),'utf8');
+ const admin=fs.readFileSync(path.join(out,'admin','index.html'),'utf8');
+ const src=fs.readFileSync(path.join(root,'src','platform.js'),'utf8');
+ assert.match(dashboard,/id="matched-jobs"/);
+ assert.match(admin,/id="sync-monitor"/);
+ assert.match(src,/showMatchedJobs/);
+ assert.match(src,/loadSyncHealth/);
+ assert.match(dashboard,/not eligibility checks or emailed alerts/);
 });
