@@ -97,5 +97,18 @@ fs.copyFileSync(path.join(root,'src','styles.css'),path.join(out,'assets','style
 fs.copyFileSync(path.join(root,'src','app.js'),path.join(out,'assets','app.js'));
 save('catalog.json',JSON.stringify(tools));
 save('api-catalog.json',JSON.stringify(apis));
-if(AUTH_ENABLED){fs.copyFileSync(path.join(root,'src','auth.js'),path.join(out,'assets','auth.js'));const file=path.join(out,'account','index.html');const html=fs.readFileSync(file,'utf8');fs.writeFileSync(file,html.replace('</head>',`<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script defer src="/assets/auth.js"></script></head>`));}
+if(AUTH_ENABLED){
+ fs.copyFileSync(path.join(root,'src','auth.js'),path.join(out,'assets','auth.js'));
+ const file=path.join(out,'account','index.html');
+ const html=fs.readFileSync(file,'utf8');
+ fs.writeFileSync(file,html.replace('</head>',`<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script defer src="/assets/auth.js"></script></head>`));
+ // Allow only the configured Supabase endpoint when account sign-in is enabled.
+ const headersFile=path.join(out,'_headers');
+ const headers=fs.readFileSync(headersFile,'utf8');
+ const authOrigin=new URL(AUTH_URL).origin;
+ const authSocket=authOrigin.replace(/^https:/,'wss:');
+ const scriptPolicy="script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;";
+ if(!headers.includes(scriptPolicy)) throw Error('Expected CSP directive for account integration');
+ fs.writeFileSync(headersFile,headers.replace(scriptPolicy,`${scriptPolicy} connect-src 'self' ${authOrigin} ${authSocket};`));
+}
 console.log(`Built ${pages.length} indexable pages + 404, across ${categories.length} categories and ${tools.length} tools. Canonical site: ${SITE}`);
