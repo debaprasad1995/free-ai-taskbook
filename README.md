@@ -46,7 +46,7 @@ git init
 git add .
 git commit -m "Launch FreeAITaskbook directory"
 git branch -M main
-git remote add origin https://github.com/debaprasad1995/free-ai-taskbook.git
+git remote add origin https://github.com/YOUR_USERNAME/free-ai-taskbook.git
 git push -u origin main
 ```
 
@@ -61,7 +61,7 @@ You can alternatively upload the extracted files through GitHub's web interface;
 3. Framework preset: **None**. Build command: `npm run build`. Output directory: `dist`. Root directory: `/`.
 4. Add environment variables **for Production and Preview**:
    - `SITE_URL` = **your actual site hostname** such as `https://free-ai-taskbook.pages.dev` *only if it was assigned to you*. If Cloudflare gives another hostname, use that one instead.
-   - `GITHUB_REPO_URL` = `https://github.com/debaprasad1995/free-ai-taskbook` (your actual published repository).
+   - `GITHUB_REPO_URL` = `https://github.com/YOUR_USERNAME/free-ai-taskbook` (your actual published repository).
 5. Deploy. Open the issued site URL and verify search, navigation and tool detail pages.
 6. In Google Search Console, verify your site and submit `https://YOUR-REAL-HOSTNAME/sitemap.xml`.
 
@@ -106,3 +106,27 @@ It does **not** auto-scrape the entire AI market, guarantee 100% free products, 
 ## License
 
 MIT for original project source and data descriptions. Names and brands of listed AI services belong to their owners.
+
+## Community submissions, API catalog and user accounts (v1.1)
+
+- `/submit/` prepares a public GitHub issue. The visitor must submit it on GitHub (GitHub login is required). The acknowledgement bot posts a reply.
+- The owner must verify official documentation and apply **`approved-for-publication`** to a valid submission. The `publish-approved` workflow then validates the JSON, checks the build, commits to `main`, and lets Cloudflare deploy. Approval is not automatic.
+- `/apis/` provides a curated free-tier / paid API reference, including Shopify, WordPress and custom integrations. **There are no reusable private API keys**; each visitor gets their own credentials at the vendor.
+- Weekly GitHub Actions audit runs Mondays and opens a review issue containing signals and unverified leads; no unattended scraping or automatic publication of unverified providers.
+- `/account/` is disabled until a secure authentication provider is configured. All browsing works without an account.
+
+### Optional Supabase Auth activation (account email-link login)
+
+Create a Supabase project in your own account and review [Supabase security](https://supabase.com/docs/guides/getting-started/api-keys) first. Configure email Auth, redirect allowlist `https://free-ai-taskbook.pages.dev/account/`, branded sending limits and an account deletion/privacy support process. Add the following **build-time Cloudflare Pages variables** for production (do not commit secrets):
+
+```env
+SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+SUPABASE_PUBLISHABLE_KEY=sb_publishable_YOUR_PUBLIC_KEY
+PRIVACY_CONTACT_EMAIL=privacy@YOUR_DOMAIN
+```
+
+Only a Supabase publishable client key is eligible for frontend use, protected by Supabase's access rules. **Never** put a `service_role`, `sb_secret_...`, or other private credential in Cloudflare's public static build. User emails are managed in the Supabase Auth dashboard; this version does not create a marketing database or track browsing activity. The `/account/` page is intentionally inert without all three settings.
+
+### Publishing safeguards
+
+The approval label is restricted to authorized repository collaborators. Publication validates listing categories, allowed access types, URL schemes, field lengths and duplicate slugs; builds and tests run before pushing. Review the source links carefully before approving. Scheduled discovery creates **review issues only**. `GITHUB_TOKEN`-authored commits may not trigger the usual GitHub Actions push CI; the publication workflow runs `npm run check` itself. Check Cloudflare deployment after each approved issue.

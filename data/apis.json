@@ -1,0 +1,322 @@
+[
+  {
+    "slug": "google-gemini-api",
+    "name": "Google Gemini API",
+    "category": "AI",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Build AI chat, multimodal generation, and other model-backed features.",
+    "docsUrl": "https://ai.google.dev/gemini-api/docs",
+    "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+    "keyInstructions": "Create your own Google AI Studio API key.",
+    "limitations": "Free-model limits depend on model, project and region; paid usage is separate.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://aistudio.google.com/api-keys"
+  },
+  {
+    "slug": "groqcloud-api",
+    "name": "GroqCloud API",
+    "category": "AI",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Low-latency hosted inference through a developer API.",
+    "docsUrl": "https://console.groq.com/docs/overview",
+    "pricingUrl": "https://console.groq.com/docs/rate-limits",
+    "keyInstructions": "Create an individual Groq API key in your console.",
+    "limitations": "Free usage is rate-limited at the organization/model level.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://console.groq.com/keys"
+  },
+  {
+    "slug": "hugging-face-inference",
+    "name": "Hugging Face Inference Providers",
+    "category": "AI",
+    "access": "free-credits",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Access hosted AI inference models through provider-backed APIs.",
+    "docsUrl": "https://huggingface.co/docs/inference-providers/index",
+    "pricingUrl": "https://huggingface.co/docs/inference-providers/pricing",
+    "keyInstructions": "Create a personal Hugging Face access token.",
+    "limitations": "Free users receive a small monthly credit allocation; additional inference can be billed.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://huggingface.co/settings/tokens"
+  },
+  {
+    "slug": "openrouter-free-api",
+    "name": "OpenRouter Free Models API",
+    "category": "AI",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Use selected free-rate-limited language models through a common API.",
+    "docsUrl": "https://openrouter.ai/docs/quickstart",
+    "pricingUrl": "https://openrouter.ai/collections/free-models",
+    "keyInstructions": "Create your own OpenRouter key.",
+    "limitations": "Free models may have rate, daily usage, uptime or availability limits.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://openrouter.ai/settings/keys"
+  },
+  {
+    "slug": "cloudflare-workers-ai",
+    "name": "Cloudflare Workers AI",
+    "category": "AI",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Run supported AI models on Cloudflare infrastructure.",
+    "docsUrl": "https://developers.cloudflare.com/workers-ai/",
+    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "keyInstructions": "Create a Cloudflare account and use project-scoped credentials or bindings.",
+    "limitations": "Free neuron allocation exists, but not every model is eligible for free usage.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://dash.cloudflare.com/"
+  },
+  {
+    "slug": "openai-api",
+    "name": "OpenAI API",
+    "category": "AI",
+    "access": "paid",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Integrate hosted AI text, multimodal, and other model capabilities.",
+    "docsUrl": "https://developers.openai.com/api/reference/overview",
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "keyInstructions": "Generate your own private project API key.",
+    "limitations": "Usage is billed under the provider terms; do not assume ChatGPT Free includes API credits.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://platform.openai.com/api-keys"
+  },
+  {
+    "slug": "anthropic-api",
+    "name": "Anthropic Claude API",
+    "category": "AI",
+    "access": "paid",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Build applications using Claude models via API.",
+    "docsUrl": "https://platform.claude.com/docs/en/home",
+    "pricingUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "keyInstructions": "Create a private API key through your Anthropic Console.",
+    "limitations": "API usage pricing and account eligibility depend on model and platform.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://console.anthropic.com/settings/keys"
+  },
+  {
+    "slug": "shopify-storefront-api",
+    "name": "Shopify Storefront API",
+    "category": "Commerce",
+    "access": "platform-included",
+    "platforms": [
+      "shopify",
+      "custom"
+    ],
+    "description": "Build storefronts that retrieve products and collections and manage carts.",
+    "docsUrl": "https://shopify.dev/docs/api/storefront/latest",
+    "pricingUrl": "https://shopify.dev/docs/api/storefront/latest",
+    "keyInstructions": "Some storefront operations are tokenless; other operations use a store-scoped public or private token.",
+    "limitations": "Requires access to a Shopify store. Some tokenless features are available; merchant plan costs may apply.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://shopify.dev/docs/api/storefront/latest"
+  },
+  {
+    "slug": "shopify-admin-graphql",
+    "name": "Shopify Admin GraphQL API",
+    "category": "Commerce",
+    "access": "platform-included",
+    "platforms": [
+      "shopify",
+      "custom"
+    ],
+    "description": "Manage authorized merchant data such as inventory, orders and products.",
+    "docsUrl": "https://shopify.dev/docs/api/admin-graphql",
+    "pricingUrl": "https://shopify.dev/docs/apps/build/authentication-authorization",
+    "keyInstructions": "Authorize a Shopify app with merchant-approved scopes and obtain its access token.",
+    "limitations": "Not a public reusable key; store/app permissions, platform plans and API limits apply.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://shopify.dev/docs/api/admin-graphql"
+  },
+  {
+    "slug": "wordpress-rest-api",
+    "name": "WordPress REST API",
+    "category": "Websites",
+    "access": "self-hosted",
+    "platforms": [
+      "wordpress",
+      "custom"
+    ],
+    "description": "Read public WordPress content and perform authenticated site management actions.",
+    "docsUrl": "https://developer.wordpress.org/rest-api/",
+    "pricingUrl": "https://developer.wordpress.org/rest-api/",
+    "keyInstructions": "Public endpoints can be called without keys; writes require user authentication, e.g. Application Passwords.",
+    "limitations": "WordPress software is open source; hosting, plugins and some services can cost money.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://developer.wordpress.org/rest-api/"
+  },
+  {
+    "slug": "woocommerce-rest-api",
+    "name": "WooCommerce REST API",
+    "category": "Commerce",
+    "access": "platform-included",
+    "platforms": [
+      "wordpress",
+      "custom"
+    ],
+    "description": "Connect a WooCommerce store to order, product and inventory integrations.",
+    "docsUrl": "https://developer.woocommerce.com/docs/apis/rest-api/",
+    "pricingUrl": "https://woocommerce.com/document/woocommerce-rest-api/",
+    "keyInstructions": "Generate per-store read or write API credentials in WooCommerce settings.",
+    "limitations": "Requires permission on a WooCommerce installation; never publish the Consumer Secret.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://developer.woocommerce.com/docs/apis/rest-api/"
+  },
+  {
+    "slug": "resend-api",
+    "name": "Resend Email API",
+    "category": "Email",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Send transactional email from apps and approved domains.",
+    "docsUrl": "https://resend.com/docs/introduction",
+    "pricingUrl": "https://resend.com/pricing",
+    "keyInstructions": "Generate a Resend API key in your account.",
+    "limitations": "Free plan has sending limits and domain requirements. Never expose a server send key in the browser.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://resend.com/api-keys"
+  },
+  {
+    "slug": "google-maps-platform",
+    "name": "Google Maps Platform APIs",
+    "category": "Maps",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Add maps, geocoding, places, or routing features to apps.",
+    "docsUrl": "https://developers.google.com/maps/documentation",
+    "pricingUrl": "https://developers.google.com/maps/billing-and-pricing/overview",
+    "keyInstructions": "Create a restricted API key in Google Cloud and configure billing as required.",
+    "limitations": "Per-SKU monthly free-use caps vary; paid usage and billing settings can apply.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://developers.google.com/maps/documentation"
+  },
+  {
+    "slug": "supabase-api",
+    "name": "Supabase Database & Auth APIs",
+    "category": "Database",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Add Postgres-backed data, authentication, and REST APIs to a project.",
+    "docsUrl": "https://supabase.com/docs/guides/api",
+    "pricingUrl": "https://supabase.com/pricing",
+    "keyInstructions": "Use a publishable key in public clients with RLS; keep secret keys on your backend.",
+    "limitations": "Free tier has quotas; secure Row Level Security is required for user-owned data.",
+    "verifiedOn": "2026-11-04",
+    "keyUrl": "https://supabase.com/docs/guides/api"
+  },
+  {
+    "slug": "stripe-api",
+    "name": "Stripe Payments API",
+    "category": "Payments",
+    "access": "paid",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Integrate payments and billing through provider-approved accounts.",
+    "docsUrl": "https://docs.stripe.com/api",
+    "pricingUrl": "https://stripe.com/pricing",
+    "keyInstructions": "Create Stripe test/live keys in your dashboard; keep secret keys on the server.",
+    "limitations": "Typically transaction fees apply; payment availability depends on country and account.",
+    "verifiedOn": null,
+    "keyUrl": "https://docs.stripe.com/api"
+  },
+  {
+    "slug": "cloudinary-api",
+    "name": "Cloudinary Media API",
+    "category": "Media",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Manage images, transformations and media assets through an API.",
+    "docsUrl": "https://cloudinary.com/documentation/image_upload_api_reference",
+    "pricingUrl": "https://cloudinary.com/pricing",
+    "keyInstructions": "Create an account; private API secrets belong on the backend.",
+    "limitations": "Free plan usage is subject to provider quotas and account terms.",
+    "verifiedOn": null,
+    "keyUrl": "https://cloudinary.com/documentation/image_upload_api_reference"
+  },
+  {
+    "slug": "github-rest-api",
+    "name": "GitHub REST API",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Query repository metadata, issues, pull requests, or authorized accounts.",
+    "docsUrl": "https://docs.github.com/en/rest",
+    "pricingUrl": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+    "keyInstructions": "Public endpoints may work without authentication; higher limits or private data need a token.",
+    "limitations": "Never embed a privileged GitHub token in frontend JavaScript.",
+    "verifiedOn": null,
+    "keyUrl": "https://docs.github.com/en/rest"
+  },
+  {
+    "slug": "firecrawl-api",
+    "name": "Firecrawl API",
+    "category": "Developer",
+    "access": "free-credits",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Convert public pages into structured information for permitted research and indexing.",
+    "docsUrl": "https://docs.firecrawl.dev/",
+    "pricingUrl": "https://www.firecrawl.dev/pricing",
+    "keyInstructions": "Create an account and generate your own API key.",
+    "limitations": "Free trial credits and scraping permissions are subject to change; respect site terms.",
+    "verifiedOn": null,
+    "keyUrl": "https://docs.firecrawl.dev/"
+  }
+]

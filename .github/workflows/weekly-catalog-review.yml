@@ -1,0 +1,31 @@
+name: Weekly API and AI discovery review
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit official sources and find candidate repositories
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/audit-providers.mjs
+      - name: Open review issue (no automatic publication)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="Weekly catalog review $(date -u +%G-W%V)"
+          EXISTING=$(gh issue list --state all --search 'Weekly catalog review in:title' --json title --limit 30 --jq ".[] | select(.title == \"$TITLE\") | .title")
+          if [ -z "$EXISTING" ]; then
+            gh issue create --title "$TITLE" --body-file /tmp/freeaitaskbook/catalog-audit.md
+          else
+            echo 'Weekly review issue already exists.'
+          fi

@@ -1,50 +1,66 @@
 name: Suggest an AI tool
-about: Propose a useful free AI tool for review
-labels: ["new tool"]
+description: Suggest a free or free-to-start AI tool for human review
+title: 'Tool suggestion: '
 body:
   - type: markdown
     attributes:
-      value: "Please provide official sources. Don't submit secrets or private information."
-  - type: input
-    id: name
+      value: 'All issues are public. Never include API keys, passwords, customer details, or confidential information.'
+  - type: dropdown
+    id: kind
     attributes:
-      label: Tool name
+      label: Listing type
+      options: [Tool]
+    validations:
+      required: true
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool / API name
     validations:
       required: true
   - type: input
     id: website
     attributes:
-      label: Official website (HTTPS URL)
+      label: Official website
     validations:
       required: true
   - type: input
     id: pricing
     attributes:
-      label: Official pricing, license or free-plan source (HTTPS URL)
+      label: Official pricing, license or free-plan source
     validations:
       required: true
   - type: dropdown
-    id: classification
+    id: category
     attributes:
-      label: Free access classification
-      options:
-        - Free
-        - Ongoing free plan with usage limits
-        - One-time or limited free credits
-        - Local / open source
-        - Other free software (with restrictions)
+      label: Category
+      options: [chat-research, coding, design, video, audio, writing, presentations, productivity, automation, data, local, website]
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: Access
+      options: [free-tier, free, free-credits, local-open-source, free-software]
     validations:
       required: true
   - type: textarea
-    id: tasks
+    id: description
     attributes:
-      label: Real tasks the tool helps with
+      label: Description / tasks
+      description: Give at least 12 characters describing a real use case.
     validations:
       required: true
   - type: textarea
     id: limitations
     attributes:
-      label: Important free-plan limitations
-      description: Mention card requirements, quota resets, export limits, commercial rights, regional restrictions, or hardware needs.
+      label: Free plan / pricing limitations
+      description: Give at least 12 characters describing the real restrictions.
     validations:
       required: true
+  - type: input
+    id: platforms
+    attributes:
+      label: API Platforms
+      description: For tools, write custom (publisher ignores this value).
+      value: custom

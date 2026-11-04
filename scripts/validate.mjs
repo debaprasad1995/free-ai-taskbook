@@ -16,3 +16,16 @@ for(const x of t){
 }
 for(const [slug,url] of Object.entries(a.links||{})){assert.ok(slugs.has(slug),`unknown affiliate slug ${slug}`);assert.ok(url.startsWith('https://'))}
 console.log(`VALID: ${t.length} unique tool entries, ${c.length} categories, ${Object.keys(a.links||{}).length} affiliate links.`);
+
+const apis=JSON.parse(fs.readFileSync('data/apis.json','utf8'));
+const apiNames=new Set();
+for(const a of apis){
+ assert.match(a.slug,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);assert.ok(!apiNames.has(a.slug),'duplicate API slug');apiNames.add(a.slug);
+ assert.ok(['free-tier','free-credits','paid','platform-included','self-hosted'].includes(a.access),'API access invalid');
+ assert.ok(['AI','Commerce','Websites','Email','Maps','Database','Payments','Media','Developer'].includes(a.category),'API category invalid');
+ assert.ok(a.name&&a.description&&a.keyInstructions&&a.limitations);
+ assert.ok(Array.isArray(a.platforms)&&a.platforms.length>0&&a.platforms.every(v=>['shopify','wordpress','custom'].includes(v)));
+ for(const field of ['docsUrl','pricingUrl','keyUrl']){assert.equal(new URL(a[field]).protocol,'https:');}
+ if(a.verifiedOn)assert.match(a.verifiedOn,/^\d{4}-\d{2}-\d{2}$/);
+}
+console.log(`VALID: ${apis.length} API entries.`);

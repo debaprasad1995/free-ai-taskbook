@@ -1,5 +1,5 @@
 name: Report inaccurate or outdated listing
-about: Report a broken link or changed free-plan terms
+description: Report a broken link or changed free-plan terms
 labels: ["needs verification"]
 body:
   - type: input

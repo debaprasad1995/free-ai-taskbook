@@ -1,0 +1,66 @@
+name: Suggest an API or integration
+description: Suggest an AI, Shopify, WordPress or custom-site API, whether free or paid
+title: 'API suggestion: '
+body:
+  - type: markdown
+    attributes:
+      value: 'No API keys, passwords, account credentials or personal data should appear in a public issue.'
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Listing type
+      options: [API]
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Tool / API name
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Official website
+    validations:
+      required: true
+  - type: input
+    id: pricing
+    attributes:
+      label: Official pricing, license or free-plan source
+    validations:
+      required: true
+  - type: dropdown
+    id: cat
+    attributes:
+      label: Category
+      options: [AI, Commerce, Websites, Email, Maps, Database, Payments, Media, Developer]
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: Access
+      options: [free-tier, free-credits, paid, platform-included, self-hosted]
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description / tasks
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Free plan / pricing limitations
+    validations:
+      required: true
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: API Platforms
+      description: Specify possible integration channels (not necessarily native plugins).
+      options: ['custom,wordpress,shopify', 'custom', 'wordpress,custom', 'shopify,custom']
+    validations:
+      required: true

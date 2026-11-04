@@ -1,0 +1,51 @@
+name: Publish maintainer-approved listing
+on:
+  issues:
+    types: [labeled]
+permissions:
+  contents: write
+  issues: write
+jobs:
+  publish:
+    if: github.event.label.name == 'approved-for-publication' && (startsWith(github.event.issue.title, 'Tool suggestion:') || startsWith(github.event.issue.title, 'API suggestion:'))
+    runs-on: ubuntu-latest
+    concurrency:
+      group: directory-publisher
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate and add approved listing
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+        run: node scripts/publish-approved-issue.mjs
+      - name: Run full build and tests
+        run: npm run check
+      - name: Push reviewed listing to main if new
+        id: publish
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/tools.json data/apis.json
+          if git diff --cached --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "catalog: publish approved issue #${{ github.event.issue.number }}"
+            git pull --rebase origin main
+            npm run check
+            git push origin HEAD:main
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Notify contributor
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const changed='${{ steps.publish.outputs.changed }}'==='true';
+            const body=changed?'Approved and added to the directory data. The connected Cloudflare deployment should publish the updated listing shortly. Thanks for contributing!':'This suggestion has already been cataloged (or produced no new data). Thanks for contributing!';
+            await github.rest.issues.createComment({...context.repo,issue_number:context.issue.number,body});
+            await github.rest.issues.update({...context.repo,issue_number:context.issue.number,state:'closed'});
