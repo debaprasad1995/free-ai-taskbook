@@ -45,3 +45,13 @@ test('scheduled job ingestion is gated until authorized boards and server-only c
  assert.ok(workflow.includes('secrets.SUPABASE_SERVICE_ROLE_KEY'));
  assert.ok(!workflow.includes('sb_publishable_'));
 });
+test('universal search combines all resource types without inventing vacancies',()=>{
+ const h=fs.readFileSync(path.join(out,'search','index.html'),'utf8');
+ assert.ok(h.includes('id="universal-query"'));
+ const d=JSON.parse(fs.readFileSync(path.join(out,'search-index.json'),'utf8'));
+ assert.ok(d.some(x=>x.type==='AI tool'));
+ assert.ok(d.some(x=>x.type==='API'));
+ assert.ok(d.some(x=>x.type==='Job portal'));
+ assert.ok(d.some(x=>x.type==='Learning'));
+ assert.ok(!d.some(x=>x.type==='Verified job'));
+});
