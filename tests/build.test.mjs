@@ -202,8 +202,9 @@ test('tool finder is explicitly local and avoids third-party prompt transmission
 
 
 test('account offers separate registration and returning-user login with a required name',()=>{
- const html=fs.readFileSync(path.join(out,'account','index.html'),'utf8');
+ const html=fs.readFileSync(path.join(root,'scripts','build.mjs'),'utf8');
  const script=fs.readFileSync(path.join(root,'src','auth.js'),'utf8');
+ assert.ok(fs.existsSync(path.join(out,'account','index.html'))); // Authentication UI is generated only when build-time credentials are configured.
  assert.match(html,/id="auth-mode-login"/);
  assert.match(html,/id="auth-mode-register"/);
  assert.match(html,/id="auth-name"/);
