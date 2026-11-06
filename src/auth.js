@@ -76,6 +76,7 @@
   if(update.error){report('Could not update your name.');return;}
   const save=await db.from('user_profiles').upsert({user_id:data.user.id,display_name:fullName},{onConflict:'user_id'});
   report(save.error?'Account name updated; profile sync needs another attempt.':'Your name was saved.');
+  document.dispatchEvent(new Event('taskbook:profile-updated'));
  });
  document.getElementById('auth-signout')?.addEventListener('click',async()=>{
   const {error}=await db.auth.signOut();
