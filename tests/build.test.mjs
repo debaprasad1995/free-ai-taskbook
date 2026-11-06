@@ -466,3 +466,44 @@ test('account menu exposes admin entry only for authenticated admin role and sup
  assert.match(css,/\.main-nav \.account-dropdown\[hidden\]/);
  assert.match(css,/@media\(max-width:600px\)/);
 });
+
+
+test('signed-in tool bookmarks persist through owner-scoped Supabase rows, guests remain local',()=>{
+ const app=fs.readFileSync(path.join(root,'src','app.js'),'utf8');
+ const styles=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ assert.match(app,/auth\.getUser\(\)/);
+ assert.match(app,/\.from\('saved_items'\)/);
+ assert.match(app,/\.eq\('user_id',userId\)\.eq\('item_kind','ai_tool'\)/);
+ assert.match(app,/\.eq\('user_id',favoriteUser\)\.eq\('item_kind','ai_tool'\)/);
+ assert.match(app,/onConflict:'user_id,item_kind,item_id'/);
+ assert.match(app,/localStorage\.setItem\('freeaitaskbook-favorites'/);
+ assert.match(app,/if\(response\.error\)/);
+ assert.match(app,/favoriteFeedback/);
+ assert.match(styles,/favorite-sync-status/);
+});
+test('course completion is protected from playback and update/removal stays account-owned',()=>{
+ const course=fs.readFileSync(path.join(root,'src','learning-account.js'),'utf8');
+ const dashboard=fs.readFileSync(path.join(root,'src','learning-dashboard.js'),'utf8');
+ assert.match(course,/ignoreDuplicates:true/);
+ assert.match(course,/\.eq\('status','saved'\)/);
+ assert.match(course,/\.eq\('user_id',user\.id\)/);
+ assert.match(dashboard,/status==='completed'/);
+ assert.match(dashboard,/\.eq\('user_id',user\.id\)/);
+});
+test('admin publishing retains verified role check, source validation and unique vacancy IDs',()=>{
+ const platform=fs.readFileSync(path.join(root,'src','platform.js'),'utf8');
+ const admin=fs.readFileSync(path.join(out,'admin','index.html'),'utf8');
+ assert.match(platform,/user\.app_metadata\?\.role!=='admin'/);
+ assert.match(platform,/review_status:'published'/);
+ assert.match(platform,/review_status:'verified',status:'open'/);
+ assert.match(platform,/onConflict:'source_key,external_id'/);
+ for(const id of ['admin-resource-form','admin-job-form','moderation-queue','sync-monitor'])assert.match(admin,new RegExp('id="'+id+'"'));
+});
+test('mobile breakpoints cover both account and admin controls',()=>{
+ const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ assert.match(css,/@media\(max-width:600px\)/);
+ assert.match(css,/\.admin-workspace-grid/);
+ assert.match(css,/\.admin-panel>\.suggest-form/);
+ assert.match(css,/\.main-nav \.account-dropdown/);
+ assert.match(css,/\.mobile-menu/);
+});
