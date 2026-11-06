@@ -161,3 +161,41 @@ test('every generated HTML page has valid local navigation destinations',()=>{
  }
  assert.deepEqual([...missing],[],[...missing].join('\n'));
 });
+
+
+test('account-enabled learning scripts, private course dashboard and task finder are generated',()=>{
+ const build=fs.readFileSync(path.join(root,'scripts','build.mjs'),'utf8');
+ const course=fs.readFileSync(path.join(out,'learn','index.html'),'utf8');
+ const dashboard=fs.readFileSync(path.join(out,'dashboard','index.html'),'utf8');
+ const admin=fs.readFileSync(path.join(out,'admin','index.html'),'utf8');
+ const search=fs.readFileSync(path.join(out,'search','index.html'),'utf8');
+ for(const id of ['learning-account-banner'])assert.match(course,new RegExp('id="'+id+'"'));
+ for(const id of ['dashboard-course-progress','learning-analytics-consent','learning-analytics-save','learning-analytics-delete'])assert.match(dashboard,new RegExp('id="'+id+'"'));
+ assert.match(admin,/id="admin-learning-insights"/);
+ assert.match(search,/id="tool-finder-form"/);
+ assert.match(search,/id="tool-finder-results"/);
+ for(const asset of ['learning-account','learning-dashboard','tool-finder'])assert.ok(fs.existsSync(path.join(out,'assets',asset+'.js')),'missing '+asset);
+ assert.match(build,/platform-config\.js/);
+});
+test('course analytics are opt-in, never measure watch duration, and keep admin data aggregate-only',()=>{
+ const course=fs.readFileSync(path.join(root,'src','learning-account.js'),'utf8');
+ const dashboard=fs.readFileSync(path.join(root,'src','learning-dashboard.js'),'utf8');
+ const sql=fs.readFileSync(path.join(root,'supabase','migrations','20261106_001_course_progress_and_analytics.sql'),'utf8');
+ assert.match(course,/share_learning_activity===true/);
+ assert.match(course,/taskbook:course-started/);
+ assert.match(dashboard,/course_progress/);
+ assert.match(dashboard,/admin_learning_interest_report/);
+ assert.match(dashboard,/course_activity_events/);
+ assert.match(sql,/enable row level security/g);
+ assert.match(sql,/security definer/);
+ assert.match(sql,/revoke all on function public\.admin_learning_interest_report/);
+ assert.match(sql,/preferences->>'share_learning_activity'='true'/);
+ const privacy=fs.readFileSync(path.join(out,'privacy','index.html'),'utf8');
+ assert.match(privacy,/opt in/);
+});
+test('tool finder is explicitly local and avoids third-party prompt transmission',()=>{
+ const src=fs.readFileSync(path.join(root,'src','tool-finder.js'),'utf8');
+ assert.match(src,/search-index\.json/);
+ assert.match(src,/keyword/);
+ assert.ok(!/api\.openai\.com|generativelanguage\.googleapis\.com|https:\/\/[a-z]+\.supabase\.co/.test(src));
+});
