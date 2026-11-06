@@ -41,6 +41,7 @@
   frame.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
   frame.allowFullscreen=true;frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';
   slot.replaceChildren(frame);title.textContent=frame.title;player.hidden=false;
+  document.dispatchEvent(new CustomEvent('taskbook:course-started',{detail:{card:button.closest('[data-video-course]')}}));
   player.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
  });
  document.getElementById('video-player-close')?.addEventListener('click',()=>{slot.replaceChildren();player.hidden=true;});
