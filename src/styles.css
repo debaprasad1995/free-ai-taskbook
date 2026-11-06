@@ -258,3 +258,36 @@ footer.site-footer{background:linear-gradient(125deg,#0b2131,#0e383a)}
 
 /* Explicit visibility wins over layout display rules on account forms and filters. */
 [hidden]{display:none!important}
+
+
+/* Emerald Motion — consistent, high-contrast inner-page presentation. */
+:root{--navy:#102d22;--navy2:#174b35;--ink:#173b2a;--brand:#256d43;--acid:#c5f76a;--paper:#f6faee;--mint:#e5f6d8;--line:#cde2c7;--prism-shadow:0 9px 26px rgba(20,67,39,.10),0 3px 0 rgba(23,112,54,.08);--prism-lift:0 23px 39px rgba(21,64,39,.17),0 5px 0 rgba(23,112,54,.10)}
+body{color:#173b2a;background:radial-gradient(circle at 15% 12%,#e7f8d4 0,transparent 35%),radial-gradient(circle at 90% 55%,#f5f3d9 0,transparent 31%),#f6faf0}
+.site-header{background:linear-gradient(106deg,#0b271d,#154b35 66%,#1c603e)}
+.main-nav a{color:#e8f7e8}
+.main-nav a[data-account-link]{color:#e8ffba;display:inline-block;max-width:145px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
+.main-nav a.signed-in-account{font-weight:850;border:1px solid #b7f17780;background:#c5f76a20;padding:7px 10px;border-radius:999px}
+.page-hero{isolation:isolate;position:relative;overflow:hidden;background:linear-gradient(115deg,#e0f6d1,#fff9e9 55%,#d5f0d7)!important;border-bottom:1px solid #bee0b7}
+.page-hero:before{content:"";position:absolute;right:8%;top:5%;height:145px;width:145px;border-radius:33%;background:linear-gradient(130deg,#bdf08066,#47ad6826);border:1px solid #438c4f30;box-shadow:17px 22px 0 #54a65013;animation:innerOrbit 22s linear infinite;pointer-events:none}
+.page-hero:after{content:"✳";display:grid;place-items:center;position:absolute;right:13%;top:16%;height:105px;width:105px;border-radius:50%;border:1px solid #45985b66;background:radial-gradient(circle,#b6ed8866,transparent 71%);color:#308955aa;font-size:53px;box-shadow:0 0 0 22px #61c46e12,0 0 0 44px #61c46e0e;animation:innerFloat 7s ease-in-out infinite;pointer-events:none}
+.page-hero>.wrap{position:relative;z-index:1}
+.page-hero h1{color:#17452f;max-width:890px;text-shadow:0 1px 0 #fff8}
+.page-hero h1 em{color:#28864d}
+.page-hero p{color:#375e47!important}
+.page-hero .eyebrow{color:#2b7044!important}
+.founder-page-hero,.account-hero{background:linear-gradient(113deg,#e3f7d3,#fff9e5 60%,#d7f4db)!important}
+.guide-card,.api-card,.tool-card,.category-card,.video-course-card,.search-result-card,.info-panel{background:linear-gradient(146deg,#fff 0%,#f0f9e9 81%,#e5f5d9)!important;border:1px solid #c5e4bf!important;box-shadow:var(--prism-shadow);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.guide-card:hover,.api-card:hover,.tool-card:hover,.category-card:hover,.video-course-card:hover,.search-result-card:hover,.info-panel:hover{border-color:#71b77e!important;box-shadow:var(--prism-lift);transform:perspective(900px) translate3d(0,-5px,9px)}
+.guide-card h2,.guide-card h3,.api-card h2,.section-head h2{color:#163f2b}
+.guide-card p,.api-card p,.tool-card p{color:#45664c}
+.card-topic-icon{display:grid;place-items:center;width:44px;height:44px;font-size:22px;line-height:1;border-radius:15px;margin:0 0 12px;background:linear-gradient(135deg,#d9f6a7,#b9e9c0);border:1px solid #8bca83;box-shadow:5px 6px 0 #3e995a20;transform:rotate(-5deg);transition:transform .3s}
+.guide-card:hover .card-topic-icon,.api-card:hover .card-topic-icon{transform:rotate(4deg) translateY(-3px)}
+.article,.detail-main,.detail-sidebar,.auth-panel{background:linear-gradient(137deg,#fffdf3,#e9f8de)!important;border-color:#c7e4c0!important}
+.learning-paths a,.path-links a,.smart-finder,.privacy-preferences,.learning-account-banner,.founder-principles{background:linear-gradient(125deg,#e1f6d5,#fff8e9 65%,#d8f3df)!important;border-color:#c0dfba!important}
+.video-cover{background:linear-gradient(125deg,#123f2a,#278554 59%,#d2ed78)}
+footer.site-footer{background:linear-gradient(120deg,#0d2b20,#175139)}
+@keyframes innerOrbit{from{transform:rotate(-18deg)}to{transform:rotate(342deg)}}
+@keyframes innerFloat{0%,100%{transform:translate3d(0,0,0) rotate(-7deg) scale(1)}50%{transform:translate3d(0,-16px,0) rotate(8deg) scale(1.07)}}
+@media(max-width:850px){.main-nav a[data-account-link]{max-width:none}.page-hero:after{right:-35px;top:22px;opacity:.36}.page-hero:before{right:-24px;opacity:.46}}
+@media(max-width:600px){.page-hero:after{height:78px;width:78px;font-size:40px;right:-23px;top:33px}.page-hero>.wrap{padding-right:14px}.card-topic-icon{height:40px;width:40px;font-size:20px}}
+@media(prefers-reduced-motion:reduce){.page-hero:after,.page-hero:before{animation:none!important}.guide-card:hover,.api-card:hover,.tool-card:hover,.category-card:hover,.video-course-card:hover,.search-result-card:hover,.info-panel:hover{transform:none!important}.card-topic-icon{transition:none!important}}
