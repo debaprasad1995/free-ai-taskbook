@@ -14,6 +14,8 @@
  document.addEventListener('click',(e)=>{const btn=e.target.closest('[data-favorite]');if(!btn)return;const slug=btn.dataset.favorite;if(saved.has(slug))saved.delete(slug);else saved.add(slug);try{localStorage.setItem('freeaitaskbook-favorites',JSON.stringify([...saved]));}catch{}renderFavorites();applyFilters();});
  renderFavorites();
  let favoriteOnly=false;
+ let visibleLimit=6;
+ document.getElementById('show-more-tools')?.addEventListener('click',()=>{visibleLimit+=6;applyFilters();});
  const params=new URLSearchParams(location.search);
  if(search)search.value=params.get('q')||'';
  if(category)category.value=params.get('category')||'';
@@ -21,17 +23,18 @@
  function applyFilters(){
   if(!search||!category||!access)return;
   const q=search.value.trim().toLowerCase();const words=q.split(/\s+/).filter(Boolean);
-  let shown=0;
-  for(const card of cards){const visible=words.every(w=>card.dataset.search.includes(w))&&(!category.value||card.dataset.category===category.value)&&(!access.value||card.dataset.access===access.value)&&(!favoriteOnly||saved.has(card.dataset.slug));card.hidden=!visible;if(visible)shown++;}
-  if(count)count.textContent=`Showing ${shown} of ${cards.length} tools`;
-  if(empty)empty.hidden=shown!==0;
+  let matched=0,shown=0;
+  for(const card of cards){const match=words.every(w=>card.dataset.search.includes(w))&&(!category.value||card.dataset.category===category.value)&&(!access.value||card.dataset.access===access.value)&&(!favoriteOnly||saved.has(card.dataset.slug));if(match)matched++;const visible=match&&shown<visibleLimit;card.hidden=!visible;if(visible)shown++;}
+  if(count)count.textContent=`Showing ${shown} of ${matched} matching tools`;
+  const more=document.getElementById('show-more-tools');if(more){more.hidden=shown>=matched;more.textContent=`Show ${Math.min(6,matched-shown)} more tools ↓`;}
+  if(empty)empty.hidden=matched!==0;
   const next=new URLSearchParams();if(q)next.set('q',search.value.trim());if(category.value)next.set('category',category.value);if(access.value)next.set('access',access.value);
   const newUrl=`${location.pathname}${next.toString()?'?'+next:''}${location.hash}`;
   if(location.pathname==='/'&&location.pathname+location.search+location.hash!==newUrl)history.replaceState(null,'',newUrl);
  }
- [search,category,access].forEach(el=>el?.addEventListener(el===search?'input':'change',applyFilters));
- showFavorites?.addEventListener('click',()=>{favoriteOnly=!favoriteOnly;showFavorites.setAttribute('aria-pressed',String(favoriteOnly));showFavorites.textContent=favoriteOnly?'★ Saved only':'☆ Saved tools';applyFilters();});
- const reset=()=>{if(search)search.value='';if(category)category.value='';if(access)access.value='';favoriteOnly=false;if(showFavorites){showFavorites.setAttribute('aria-pressed','false');showFavorites.textContent='☆ Saved tools';}applyFilters();};
+ [search,category,access].forEach(el=>el?.addEventListener(el===search?'input':'change',()=>{visibleLimit=6;applyFilters();}));
+ showFavorites?.addEventListener('click',()=>{favoriteOnly=!favoriteOnly;visibleLimit=6;showFavorites.setAttribute('aria-pressed',String(favoriteOnly));showFavorites.textContent=favoriteOnly?'★ Saved only':'☆ Saved tools';applyFilters();});
+ const reset=()=>{visibleLimit=6;if(search)search.value='';if(category)category.value='';if(access)access.value='';favoriteOnly=false;if(showFavorites){showFavorites.setAttribute('aria-pressed','false');showFavorites.textContent='☆ Saved tools';}applyFilters();};
  document.querySelector('#clear-filters')?.addEventListener('click',reset);
  document.querySelector('#empty-reset')?.addEventListener('click',reset);
  applyFilters();
