@@ -16,5 +16,17 @@ jobs:
           node-version: '22'
       - name: Validate syntax, data, build, and tests
         run: npm run check
+      - name: Smoke-test production auth-enabled build
+        env:
+          SUPABASE_URL: https://example-project.supabase.co
+          SUPABASE_PUBLISHABLE_KEY: sb_publishable_testfakecredential123
+          PRIVACY_CONTACT_EMAIL: website@example.com
+        run: |
+          npm run build
+          test -s dist/assets/guest-gate.js
+          grep -q 'guest-gate.js' dist/index.html
+          grep -q 'guest-gate.js' dist/search/index.html
+          grep -q 'guest-gate.js' dist/learn/index.html
+          node --check dist/assets/guest-gate.js
       - name: Verify no placeholder affiliate links
         run: node -e "const a=require('./data/affiliates.json'); if(!a.links) process.exit(1)"
