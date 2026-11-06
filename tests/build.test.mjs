@@ -449,3 +449,20 @@ test('signed-in account includes a visibly styled keyboard-accessible sign-out a
  assert.match(css,/color:#18442d/);
  assert.match(auth,/db\.auth\.signOut\(\)/);
 });
+
+
+test('account menu exposes admin entry only for authenticated admin role and supports sign out',()=>{
+ const html=fs.readFileSync(path.join(out,'index.html'),'utf8');
+ const script=fs.readFileSync(path.join(root,'src','header-auth.js'),'utf8');
+ const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ for(const fragment of ['data-account-link','id="account-menu"','data-admin-menu-link hidden','data-header-signout','aria-expanded="false"'])assert.ok(html.includes(fragment),fragment);
+ assert.match(script,/user\?\.app_metadata\?\.role==='admin'/);
+ assert.match(script,/adminLink\.hidden=/);
+ assert.match(script,/auth\.getUser\(\)/);
+ assert.match(script,/auth\.signOut\(\)/);
+ assert.match(script,/event\.key==='Escape'/);
+ assert.match(script,/event\.preventDefault\(\)/);
+ assert.doesNotMatch(script,/innerHTML/);
+ assert.match(css,/\.main-nav \.account-dropdown\[hidden\]/);
+ assert.match(css,/@media\(max-width:600px\)/);
+});
