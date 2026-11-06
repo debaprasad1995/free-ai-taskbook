@@ -10,6 +10,8 @@
  const slot=document.getElementById('video-frame-slot');
  const title=document.getElementById('video-player-title');
  if(!topic||!player||!slot||!level||!search)return;
+ const initialCourse=new URLSearchParams(location.search).get('course');
+ if(initialCourse)search.value=initialCourse.slice(0,100);
  let limit=6;
  function render(){
   const term=search.value.trim().toLowerCase();
@@ -22,6 +24,7 @@
    if(show)visible++;
   }
   count.textContent='Showing '+visible+' of '+matches+' matching video courses';
+  const link=document.getElementById('youtube-more-sources');if(link){const phrase=[topic.value,level.value,search.value,'full course tutorial'].filter(Boolean).join(' ');link.href='https://www.youtube.com/results?search_query='+encodeURIComponent(phrase);}
   if(more){more.hidden=visible>=matches;more.textContent='Show '+Math.min(6,matches-visible)+' more courses ↓';}
  }
  for(const control of [topic,level,search])control.addEventListener(control===search?'input':'change',()=>{limit=6;render();});
