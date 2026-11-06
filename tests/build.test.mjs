@@ -361,3 +361,41 @@ test('official IBPS and cooperative bank postings have accurate links and deadli
  assert.match(script,/Asia\/Kolkata/);
  assert.match(script,/job-recruitment-expired/);
 });
+
+
+test('government exam learning has RRB, JE and WBPSC topic filters and real video identifiers',()=>{
+ const list=JSON.parse(fs.readFileSync(path.join(root,'data/youtube-courses.json'),'utf8'));
+ for(const topic of ['RRB JE','RRB NTPC','WBPSC Clerkship','WBPSC / PSC'])assert.ok(list.some(x=>x.topic===topic),'missing '+topic);
+ assert.equal(new Set(list.map(x=>x.id)).size,list.length);
+ const page=fs.readFileSync(path.join(out,'learn','index.html'),'utf8');
+ assert.match(page,/data-exam-topic="RRB JE"/);
+ assert.match(page,/data-exam-topic="WBPSC Clerkship"/);
+ assert.match(page,/data-exam-topic="WBPSC \/ PSC"/);
+ const js=fs.readFileSync(path.join(out,'assets','learning.js'),'utf8');
+ assert.match(js,/dataset\.examTopic/);
+});
+test('expired featured jobs hide automatically and verified job feed filters deadlines',()=>{
+ const app=fs.readFileSync(path.join(out,'assets','app.js'),'utf8');
+ assert.match(app,/card\.hidden=expired/);
+ assert.match(app,/Asia\/Kolkata/);
+ assert.match(app,/application_deadline/);
+ const jobs=fs.readFileSync(path.join(out,'jobs','index.html'),'utf8');
+ assert.match(jobs,/data-job-deadline="2026-11-12"/);
+});
+test('daily resource audit and approved employer synchronization are scheduled',()=>{
+ const review=fs.readFileSync(path.join(root,'.github','workflows','daily-resource-review.yml'),'utf8');
+ const jobs=fs.readFileSync(path.join(root,'.github','workflows','daily-authorized-jobs.yml'),'utf8');
+ assert.match(review,/50 2 \* \* \*/);
+ assert.match(review,/scripts\/daily-review\.mjs/);
+ assert.match(review,/issues: write/);
+ assert.match(jobs,/30 2 \* \* \*/);
+ assert.match(jobs,/scripts\/expire-jobs\.mjs/);
+ assert.match(jobs,/scripts\/sync-greenhouse\.mjs/);
+ const expiry=fs.readFileSync(path.join(root,'scripts','expire-jobs.mjs'),'utf8');
+ assert.match(expiry,/application_deadline/);
+ assert.match(expiry,/Asia\/Kolkata/);
+ const audit=fs.readFileSync(path.join(root,'scripts','daily-review.mjs'),'utf8');
+ assert.match(audit,/freejobalert\.com\/RAILWAY-JOBS/);
+ assert.match(audit,/rrb\.indianrailways\.gov\.in/);
+ assert.match(audit,/Do not treat aggregator snippets as official vacancies/);
+});
