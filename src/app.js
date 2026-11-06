@@ -38,7 +38,7 @@
  document.querySelector('#clear-filters')?.addEventListener('click',reset);
  document.querySelector('#empty-reset')?.addEventListener('click',reset);
  applyFilters();
- document.querySelector('.hero-search')?.addEventListener('submit',e=>{if(location.pathname==='/'){e.preventDefault();const val=document.querySelector('#hero-query')?.value||'';if(search){search.value=val;reset?applyFilters():null;search.scrollIntoView({behavior:'smooth',block:'center'});search.focus();}}});
+ document.querySelector('.hero-search')?.addEventListener('submit',e=>{if(location.pathname==='/'){e.preventDefault();const val=document.querySelector('#hero-query')?.value||'';if(search){search.value=val;visibleLimit=6;applyFilters();search.scrollIntoView({behavior:'smooth',block:'center'});search.focus();}}});
  if(params.has('q')&&search){setTimeout(()=>{document.querySelector('#explore')?.scrollIntoView({block:'start'});},120);}
  document.addEventListener('keydown',e=>{const tag=document.activeElement?.tagName||'';if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(tag)){if(search){e.preventDefault();search.focus();}}});
 
