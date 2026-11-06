@@ -440,10 +440,10 @@ test('admin workspace is responsive, private, navigable and retains publication 
 });
 
 test('signed-in account includes a visibly styled keyboard-accessible sign-out action',()=>{
- const html=fs.readFileSync(path.join(out,'account','index.html'),'utf8');
+ const buildSource=fs.readFileSync(path.join(root,'scripts','build.mjs'),'utf8');
  const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
  const auth=fs.readFileSync(path.join(root,'src','auth.js'),'utf8');
- assert.match(html,/id="auth-signout"/);
+ assert.match(buildSource,/id="auth-signout"/);
  assert.match(css,/\.auth-profile-actions #auth-signout\{/);
  assert.match(css,/\.auth-profile-actions #auth-signout:focus-visible/);
  assert.match(css,/color:#18442d/);
