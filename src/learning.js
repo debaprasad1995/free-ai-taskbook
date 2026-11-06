@@ -29,6 +29,7 @@
   level.value=button.dataset.levelShortcut;topic.value='';search.value='';limit=6;render();
  }));
  more?.addEventListener('click',()=>{limit+=6;render();});
+ document.querySelector('a[href="#learning-resources"]')?.addEventListener('click',()=>{const details=document.getElementById('learning-resources');if(details)details.open=true;});
  document.addEventListener('click',event=>{
   const button=event.target.closest('[data-video-id]');if(!button)return;
   const id=button.dataset.videoId||'';if(!/^[A-Za-z0-9_-]{11}$/.test(id))return;
