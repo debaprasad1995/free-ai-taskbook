@@ -284,3 +284,32 @@ test('login clearly explains email provider rate limiting without exposing inter
  assert.match(script,/errorDetails\(error\)/);
  assert.doesNotMatch(script,/report\(error\.message\)/);
 });
+
+
+test('universal search has one aligned labeled responsive filter grid',()=>{
+ const html=fs.readFileSync(path.join(out,'search','index.html'),'utf8');
+ const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ assert.match(html,/class="universal-filter-grid"/);
+ assert.match(html,/class="universal-filter-field universal-query-field"/);
+ for(const id of ['universal-query','universal-type','universal-price'])assert.ok(html.includes('for="'+id+'"'),'missing label '+id);
+ assert.match(css,/\.universal-filter-grid\{display:grid/);
+ assert.match(css,/\.universal-filter-field input,\.universal-filter-field select/);
+ assert.match(css,/@media\(max-width:650px\)/);
+});
+test('header removes redundant links and introduces Our Approach',()=>{
+ const html=fs.readFileSync(path.join(out,'index.html'),'utf8');
+ const nav=html.match(/<nav class="main-nav"[\s\S]*?<\/nav>/)?.[0]||'';
+ assert.ok(nav,'navigation missing');
+ assert.doesNotMatch(nav,/Explore tools/);
+ assert.doesNotMatch(nav,/>Guides<\/a>/);
+ assert.match(nav,/<a href="\/about\/">Our Approach<\/a>/);
+ assert.match(html,/href="\/guides\/">Guides<\/a>/); // Guides remain in footer.
+});
+test('homepage contains a concise Our Approach section and founder link',()=>{
+ const html=fs.readFileSync(path.join(out,'index.html'),'utf8');
+ assert.match(html,/id="home-approach-heading"/);
+ assert.match(html,/Free-first discovery/);
+ assert.match(html,/Clarity over hype/);
+ assert.match(html,/Community-powered/);
+ assert.match(html,/Meet the founder and read Our Approach/);
+});
