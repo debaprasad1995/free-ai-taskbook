@@ -103,8 +103,60 @@
  });
 })();
 
-// Job source directory: local filtering, no personal tracking or unverified vacancy claims.
-(()=>{const q=document.querySelector('#source-search'),cards=[...document.querySelectorAll('[data-job-source]')],count=document.querySelector('#source-results');if(!q||!cards.length)return;const run=()=>{const term=q.value.trim().toLowerCase();let shown=0;for(const card of cards){const match=card.dataset.search.includes(term);card.hidden=!match;if(match)shown++;}if(count)count.textContent=`${shown} job source${shown===1?'':'s'}`;};q.addEventListener('input',run);})();
+// Job-source category cards and keyword filtering. No user tracking.
+(()=>{
+ const q=document.getElementById('source-search');
+ const cards=[...document.querySelectorAll('[data-job-source]')];
+ const count=document.getElementById('source-results');
+ const reset=document.getElementById('source-reset');
+ const tiles=[...document.querySelectorAll('[data-source-filter]')];
+ if(!q||!cards.length)return;
+ let category='';
+ function group(type){
+  if(type==='government')return 'government';
+  if(['private','technology','startup'].includes(type))return 'private';
+  if(type==='remote')return 'remote';
+  if(type==='internship')return 'internship';
+  return 'other';
+ }
+ function run(){
+  const term=q.value.trim().toLowerCase();
+  let shown=0;
+  for(const card of cards){
+   const sourceType=card.dataset.sourceType||'';
+   const groupName=group(sourceType);
+   const fitsCategory=!category||(category==='remote'?groupName==='remote'||sourceType==='technology':groupName===category);
+   const match=fitsCategory&&card.dataset.search.includes(term);
+   card.hidden=!match;
+   if(match)shown++;
+  }
+  for(const tile of tiles)tile.setAttribute('aria-pressed',String(tile.dataset.sourceFilter===category));
+  if(reset)reset.hidden=!category&&!term;
+  if(count)count.textContent=shown+' portal'+(shown===1?'':'s')+' found'+(category?' · '+category:'');
+ }
+ for(const tile of tiles)tile.addEventListener('click',()=>{
+  category=category===tile.dataset.sourceFilter?'':tile.dataset.sourceFilter;
+  run();
+  document.getElementById('source-grid')?.scrollIntoView({behavior:'smooth',block:'nearest'});
+ });
+ q.addEventListener('input',run);
+ reset?.addEventListener('click',()=>{category='';q.value='';run();q.focus();});
+ run();
+})();
+
+// Hide expired recruitment highlights while preserving their official reference links.
+(()=>{
+ const cards=[...document.querySelectorAll('.official-recruitment-card[data-job-deadline]')];
+ if(!cards.length)return;
+ const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ for(const card of cards){
+  const deadline=card.dataset.jobDeadline;
+  const expired=!!deadline&&date>deadline;
+  card.classList.toggle('job-recruitment-expired',expired);
+  const notice=card.querySelector('.job-deadline-state');
+  if(notice)notice.textContent=expired?'Registration deadline has passed — check the official website for any extension.':'Registration window is currently within the advertised dates.';
+ }
+})();
 
 // Public jobs are queried from Supabase with an anonymous publishable key.
 // Public row-level security exposes ONLY verified, currently open vacancies.
