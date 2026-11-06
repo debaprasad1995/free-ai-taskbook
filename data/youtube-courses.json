@@ -115,5 +115,23 @@
     "id": "a_iQb1lnAEQ",
     "level": "Beginner",
     "description": "Learn HTML and CSS through coding challenges and practical builds."
+  },
+  {
+    "slug": "business-analysis-2026",
+    "title": "Business Analyst Full Course 2026",
+    "topic": "Business Analysis",
+    "channel": "Simplilearn",
+    "id": "r63uHa6K5GI",
+    "level": "Beginner",
+    "description": "Requirements, stakeholder management, Agile, BABOK foundations, Excel and SQL."
+  },
+  {
+    "slug": "docker-kubernetes",
+    "title": "Docker and Kubernetes — Hands-on Course",
+    "topic": "DevOps",
+    "channel": "freeCodeCamp.org",
+    "id": "Wf2eSG3owoA",
+    "level": "Intermediate",
+    "description": "Images, containers, orchestration, deployments and Kubernetes concepts."
   }
 ]
