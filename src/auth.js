@@ -35,7 +35,7 @@
   const user=data?.user;
   if(form)form.hidden=!!user;
   if(profile)profile.hidden=!user;
-  document.getElementById('auth-choice')?.setAttribute('hidden',String(!!user));
+  const authChoice=document.getElementById('auth-choice');if(authChoice)authChoice.hidden=!!user;
   // The choice uses a class, not a hidden attribute on an adjacent container.
   for(const b of [registerBtn,loginBtn])if(b)b.hidden=!!user;
   if(heading)heading.hidden=!!user;
