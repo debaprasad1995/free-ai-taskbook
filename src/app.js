@@ -1,5 +1,28 @@
 /* Entirely client-side search and bookmarks. No third-party JavaScript or tracking. */
 (()=>{
+
+ /* Decorative icons are selected from each card's topic; no external icon downloads. */
+ const iconRules=[
+  [/\b(api|integration|backend|developer)\b/i,'🔌'],
+  [/\b(job|career|recruit|vacanc|internship|employment)\b/i,'💼'],
+  [/\b(course|learn|training|certificate|education)\b/i,'🎓'],
+  [/\b(design|figma|ux|ui|wireframe|prototype)\b/i,'🎨'],
+  [/\b(data|sql|analytics|excel|dashboard|power bi)\b/i,'📊'],
+  [/\b(video|youtube|animation|film)\b/i,'🎬'],
+  [/\b(audio|speech|voice|podcast)\b/i,'🎧'],
+  [/\b(code|website|react|github|programming|mobile)\b/i,'💻'],
+  [/\b(security|privacy|cyber|testing)\b/i,'🛡️'],
+  [/\b(business|requirement|product|agile|process)\b/i,'📋'],
+  [/\b(guide|article|read)\b/i,'📖']
+ ];
+ for(const card of document.querySelectorAll('.guide-card,.api-card')){
+  if(card.querySelector('.card-topic-icon'))continue;
+  const words=[card.querySelector('h2,h3')?.textContent||'',card.querySelector('.eyebrow')?.textContent||'',card.getAttribute('href')||''].join(' ');
+  const icon=iconRules.find(([pattern])=>pattern.test(words))?.[1]||'✦';
+  const symbol=document.createElement('span');
+  symbol.className='card-topic-icon';symbol.setAttribute('aria-hidden','true');symbol.textContent=icon;
+  card.prepend(symbol);
+ }
  const navButton=document.querySelector('.mobile-menu');
  navButton?.addEventListener('click',()=>{const open=navButton.getAttribute('aria-expanded')==='true';navButton.setAttribute('aria-expanded',String(!open));document.querySelector('.main-nav')?.classList.toggle('nav-open',!open)});
  const cards=[...document.querySelectorAll('[data-tool]')];
