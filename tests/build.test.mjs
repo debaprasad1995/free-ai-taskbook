@@ -146,6 +146,8 @@ test('every generated HTML page has valid local navigation destinations',()=>{
  assert.ok(htmlFiles.length>=100,'unexpected page count');
  const missing=new Set();
  for(const file of htmlFiles){
+  // Google Search Console ownership token is intentionally a plain text HTML-named file.
+  if(/^google[a-z0-9]+\.html$/.test(path.basename(file)))continue;
   const html=fs.readFileSync(file,'utf8');
   assert.match(html,/<html\b/i,'missing document root in '+file);
   assert.match(html,/<title>[^<]+<\/title>/i,'missing page title in '+file);
