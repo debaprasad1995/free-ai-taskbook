@@ -420,3 +420,21 @@ test('public pages support two minutes of guest browsing and authentication exem
  assert.match(styles,/guest-limit-panel/);
  assert.match(styles,/prefers-reduced-motion:reduce/);
 });
+
+
+test('admin workspace is responsive, private, navigable and retains publication controls',()=>{
+ const html=fs.readFileSync(path.join(out,'admin','index.html'),'utf8');
+ const styles=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ const platform=fs.readFileSync(path.join(root,'src','platform.js'),'utf8');
+ assert.match(html,/Administrator workspace/);
+ assert.doesNotMatch(html,/Restricted access\. Supabase app_metadata administrator role required/);
+ assert.match(html,/id="admin-private" hidden/);
+ for(const id of ['admin-moderation','admin-sync','admin-analytics','admin-resources','admin-jobs','admin-pending-count','admin-sync-summary','moderation-queue','admin-learning-insights','sync-monitor','admin-resource-form','admin-job-form'])assert.ok(html.includes('id="'+id+'"'),id);
+ assert.match(html,/aria-label="Admin sections"/);
+ assert.match(html,/Admin verified/);
+ assert.match(styles,/\.admin-workspace-grid/);
+ assert.match(styles,/@media\(max-width:600px\)/);
+ assert.match(platform,/user\.app_metadata\?\.role!=='admin'/);
+ assert.match(platform,/admin-pending-count/);
+ assert.match(platform,/admin-sync-summary/);
+});
