@@ -10,6 +10,7 @@ const apis=JSON.parse(fs.readFileSync(path.join(root,'data/apis.json'),'utf8'));
 const professions=JSON.parse(fs.readFileSync(path.join(root,'data/professions.json'),'utf8'));
 const jobSources=JSON.parse(fs.readFileSync(path.join(root,'data/job-sources.json'),'utf8'));
 const learning=JSON.parse(fs.readFileSync(path.join(root,'data/learning.json'),'utf8'));
+const youtubeCourses=JSON.parse(fs.readFileSync(path.join(root,'data/youtube-courses.json'),'utf8'));
 const AUTH_URL=process.env.SUPABASE_URL||'';
 const AUTH_PUBLISHABLE_KEY=process.env.SUPABASE_PUBLISHABLE_KEY||'';
 const PRIVACY_CONTACT_EMAIL=process.env.PRIVACY_CONTACT_EMAIL||'';
@@ -107,8 +108,14 @@ save('jobs/index.html',page({title:'Government, Private & Remote Job Source Dire
 save('jobs/sources/index.html',page({title:'Job Source Websites',description:'Official government portals, private job boards and remote/internship recruitment websites in one directory.',pathname:'/jobs/sources/',content:jobLanding}));
 const accessNames={'free-learning':'Free learning · certificate not assured','free-certificate-conditional':'Free certificate · subject to completion rules','provider-review':'Provider resources · check access and fees'};
 const courseCards=learning.map(l=>`<article class="guide-card"><span class="eyebrow">${esc(l.topic.toUpperCase())}</span><h2>${esc(l.provider)}</h2><p>${esc(accessNames[l.access])}</p><p>${esc(l.note)}</p><a href="${attr(l.url)}" target="_blank" rel="noopener noreferrer">Visit course provider ↗</a></article>`).join('');
+
+const videoTopics=[...new Set(youtubeCourses.map(c=>c.topic))];
+const topicOptions=videoTopics.map(t=>'<option value="'+attr(t)+'">'+esc(t)+'</option>').join('');
+const videoCards=youtubeCourses.map(c=>'<article class="video-course-card" data-video-course data-topic="'+attr(c.topic)+'"><div class="video-cover"><span aria-hidden="true">▶</span><small>FREE ON YOUTUBE</small></div><div class="video-info"><p class="video-kicker">'+esc(c.topic)+' · '+esc(c.level)+'</p><h3>'+esc(c.title)+'</h3><p class="video-channel">'+esc(c.channel)+'</p><p class="video-description">'+esc(c.description)+'</p><button type="button" class="video-watch" data-video-id="'+attr(c.id)+'" data-video-title="'+attr(c.title)+'">Watch here ↗</button><a href="https://www.youtube.com/watch?v='+attr(c.id)+'" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a></div></article>').join('');
+const videoSection='<section class="wrap section learning-section"><div class="section-head split"><div><p class="eyebrow">CURATED YOUTUBE COURSES</p><h2>Watch, practice, <em>grow.</em></h2><p>Free videos for practical skills, chosen from identifiable publishers.</p></div></div><label class="video-filter-label" for="video-topic">Topic <select id="video-topic"><option value="">All topics</option>'+topicOptions+'</select></label><div class="video-course-grid" id="video-course-grid">'+videoCards+'</div><div id="video-player" class="video-player" hidden><div class="video-player-head"><strong id="video-player-title">Video lesson</strong><button type="button" id="video-player-close">Close video ×</button></div><div id="video-frame-slot"></div></div><p class="editor-note">These courses are independently published. YouTube loads only after clicking Watch. Free viewing does not guarantee a certificate.</p></section>';
+
 const learnBody=`<div class="page-hero"><div class="wrap">${breadcrumb([{name:'Home',url:'/'},{name:'Learn'}])}<p class="eyebrow">LEARN AND PRACTICE</p><h1>Free learning, <em>clearly labeled.</em></h1><p>Find useful training for Business Analysis, SQL, data, programming, website building and more. Certification terms vary by provider.</p></div></div><section class="wrap section"><div class="guide-grid">${courseCards}</div><p class="editor-note">Course and certificate eligibility can change. Read current provider requirements before enrollment.</p></section>`;
-save('learn/index.html',page({title:'Free Learning and Certifications Directory',description:'Free learning resources for SQL, Power BI, Business Analysis, Python, GitHub, Cloudflare, Agile and web development.',pathname:'/learn/',content:learnBody}));
+save('learn/index.html',page({title:'Free Learning and Certifications Directory',description:'Free learning resources for SQL, Power BI, Business Analysis, Python, GitHub, Cloudflare, Agile and web development.',pathname:'/learn/',content:learnBody.replace('<div class="guide-grid">',videoSection+'<details class="progressive-panel" open><summary>Other learning resources ↓</summary><div class="guide-grid learning-resource-grid">').replace('</div><p class="editor-note">Course and certificate eligibility','</div></details><p class="editor-note">Course and certificate eligibility')} ).replace('</head>','<script defer src="/assets/learning.js"></script></head>'));
 
 const pages=['/','/search/','/resources/','/professions/',...professions.map(x=>`/professions/${x.slug}/`),'/jobs/','/jobs/sources/','/learn/','/categories/','/guides/','/about/','/submit/','/apis/','/disclosure/','/privacy/','/terms/',...categories.map(c=>`/categories/${c.slug}/`),...tools.map(t=>`/tools/${t.slug}/`),...apis.map(a=>`/apis/${a.slug}/`),...guideData.map(g=>`/guides/${g.slug}/`)];
 save('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(p=>`<url><loc>${esc(canon(p))}</loc></url>`).join('')}</urlset>`);
@@ -143,6 +150,7 @@ fs.cpSync(path.join(root,'public'),out,{recursive:true});
 fs.mkdirSync(path.join(out,'assets'),{recursive:true});
 fs.copyFileSync(path.join(root,'src','styles.css'),path.join(out,'assets','styles.css'));
 fs.copyFileSync(path.join(root,'src','app.js'),path.join(out,'assets','app.js'));
+fs.copyFileSync(path.join(root,'src','learning.js'),path.join(out,'assets','learning.js'));
 save('catalog.json',JSON.stringify(tools));
 save('api-catalog.json',JSON.stringify(apis));
 if(AUTH_ENABLED){
