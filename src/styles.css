@@ -255,3 +255,6 @@ footer.site-footer{background:linear-gradient(125deg,#0b2131,#0e383a)}
 @media(max-width:800px){.founder-layout{grid-template-columns:1fr}.founder-portrait{max-width:390px;aspect-ratio:5/4}.founder-principles{grid-template-columns:1fr}.founder-intro h2{font-size:46px}}
 @media(max-width:500px){.auth-profile-actions{flex-direction:column;align-items:stretch}.auth-profile-actions>*{justify-content:center}.founder-layout{padding-block:26px}.founder-values{grid-template-columns:1fr}.founder-portrait{max-width:none}.founder-principles{padding:20px}}
 @media(prefers-reduced-motion:reduce){.hero-art .orbit,.hero-art .art-center,.hero-art .floating-token,.hero-art:after,.founder-portrait:before{animation:none!important;will-change:auto}.hero-art .art-center{transform:none}}
+
+/* Explicit visibility wins over layout display rules on account forms and filters. */
+[hidden]{display:none!important}
