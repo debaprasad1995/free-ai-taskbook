@@ -291,3 +291,29 @@ footer.site-footer{background:linear-gradient(120deg,#0d2b20,#175139)}
 @media(max-width:850px){.main-nav a[data-account-link]{max-width:none}.page-hero:after{right:-35px;top:22px;opacity:.36}.page-hero:before{right:-24px;opacity:.46}}
 @media(max-width:600px){.page-hero:after{height:78px;width:78px;font-size:40px;right:-23px;top:33px}.page-hero>.wrap{padding-right:14px}.card-topic-icon{height:40px;width:40px;font-size:20px}}
 @media(prefers-reduced-motion:reduce){.page-hero:after,.page-hero:before{animation:none!important}.guide-card:hover,.api-card:hover,.tool-card:hover,.category-card:hover,.video-course-card:hover,.search-result-card:hover,.info-panel:hover{transform:none!important}.card-topic-icon{transition:none!important}}
+
+
+/* Unified resource search filters: prevent inline labels and uneven native inputs. */
+.universal-search-section{padding-top:38px!important}
+.universal-filter-panel{background:linear-gradient(130deg,#f4fbed,#eaf7e6);border:1px solid #c8e1bd;border-radius:20px;padding:clamp(16px,2.3vw,28px);box-shadow:0 12px 30px #173e2514;margin-bottom:23px}
+.universal-filter-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(165px,.85fr) minmax(165px,.85fr);gap:16px;align-items:end}
+.universal-filter-field{display:flex;flex-direction:column;gap:9px;min-width:0}
+.universal-filter-field label{display:block;font-size:12px;font-weight:800;letter-spacing:.01em;color:#234d36;line-height:1.35}
+.universal-filter-field input,.universal-filter-field select{display:block;width:100%;min-width:0;height:50px;box-sizing:border-box;border-radius:11px;border:1px solid #a9cdb1;background:#fff;padding:0 14px;color:#183e2c;font-size:14px;line-height:1.3;font-family:inherit;box-shadow:0 2px 4px #183d2110}
+.universal-filter-field input:focus-visible,.universal-filter-field select:focus-visible{border-color:#2e8457;outline:3px solid #8bd79c66;outline-offset:1px}
+.universal-filter-field input::placeholder{color:#718779;opacity:1}
+.universal-result-count{display:inline-flex;align-items:center;min-height:30px;margin:17px 0 0;padding:6px 12px;border-radius:999px;background:#deefd4;border:1px solid #c6e1b8;color:#28543b;font-weight:750;font-size:12px}
+.home-approach{background:linear-gradient(125deg,#e8f8df,#fff8e5 65%,#e2f5e6);border:1px solid #c7e1bb;border-radius:24px;padding:clamp(20px,3.2vw,35px)!important;margin:36px 0 28px;box-shadow:var(--prism-shadow)}
+.approach-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:center;margin-bottom:22px}
+.approach-intro h2{font-size:clamp(29px,3.3vw,42px);letter-spacing:-.045em;line-height:1.12;margin:7px 0}
+.approach-intro>p{font-size:14px;line-height:1.65;color:#3e5c46;margin:0}
+.approach-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.approach-values>div{background:#fffdf6;border:1px solid #cce3c4;border-radius:16px;padding:17px;box-shadow:0 8px 18px #183f2510;display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:transform .22s,box-shadow .22s}
+.approach-values>div:hover{transform:translateY(-4px);box-shadow:var(--prism-lift)}
+.approach-values strong{color:#1b5638;font-size:15px}
+.approach-values p{font-size:12px;line-height:1.5;color:#4b6751;margin:0}
+.approach-value-icon{display:grid;place-items:center;background:linear-gradient(130deg,#c9f486,#9fd6aa);border:1px solid #85bf83;color:#1d5837;width:38px;height:38px;border-radius:12px;font-weight:900;font-size:20px}
+.approach-link{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-weight:800;font-size:13px;text-decoration:underline;text-underline-offset:4px;color:#155e3f}
+@media(max-width:900px){.universal-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.universal-query-field{grid-column:1/-1}}
+@media(max-width:650px){.universal-search-section{padding-top:24px!important}.universal-filter-grid{grid-template-columns:1fr;gap:13px}.universal-query-field{grid-column:auto}.universal-filter-panel{padding:16px}.universal-filter-field input,.universal-filter-field select{height:48px}.approach-intro{grid-template-columns:1fr;gap:8px}.approach-values{grid-template-columns:1fr}.home-approach{margin:25px 0 20px}}
+@media(prefers-reduced-motion:reduce){.approach-values>div{transition:none}.approach-values>div:hover{transform:none}}
