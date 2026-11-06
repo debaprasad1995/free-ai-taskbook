@@ -32,10 +32,57 @@
  const showFavorites=document.querySelector('#favorites-toggle');
  const count=document.querySelector('#results-count');
  const empty=document.querySelector('#no-results');
+ // Guests retain device-local stars; signed-in accounts use owner-protected Supabase saves.
+ // Do not silently transfer guest/local favorites between user accounts.
  let saved=new Set();try{saved=new Set(JSON.parse(localStorage.getItem('freeaitaskbook-favorites')||'[]'));}catch{}
- const renderFavorites=()=>{document.querySelectorAll('[data-favorite]').forEach(btn=>{const isSaved=saved.has(btn.dataset.favorite);btn.setAttribute('aria-pressed',String(isSaved));btn.textContent=isSaved?'★':'☆';btn.title=isSaved?'Remove saved tool':'Save tool';});};
- document.addEventListener('click',(e)=>{const btn=e.target.closest('[data-favorite]');if(!btn)return;const slug=btn.dataset.favorite;if(saved.has(slug))saved.delete(slug);else saved.add(slug);try{localStorage.setItem('freeaitaskbook-favorites',JSON.stringify([...saved]));}catch{}renderFavorites();applyFilters();});
+ let favoriteDb=null,favoriteUser=null,favoriteReady=false;
+ const renderFavorites=()=>{document.querySelectorAll('[data-favorite]').forEach(btn=>{const isSaved=saved.has(btn.dataset.favorite);btn.setAttribute('aria-pressed',String(isSaved));btn.setAttribute('aria-label',(isSaved?'Remove saved ':'Save ')+(btn.dataset.favorite||'tool'));btn.textContent=isSaved?'★':'☆';btn.title=isSaved?'Remove saved tool':'Save tool';});};
+ const favoriteFeedback=message=>{
+  if(!showFavorites)return;
+  let node=document.getElementById('favorite-sync-status');
+  if(!node){node=document.createElement('span');node.id='favorite-sync-status';node.setAttribute('role','status');node.className='favorite-sync-status';showFavorites.insertAdjacentElement('afterend',node);}
+  node.textContent=message;
+ };
+ document.addEventListener('click',async e=>{
+  const btn=e.target.closest('[data-favorite]');if(!btn)return;
+  if(!favoriteReady){favoriteFeedback('Loading saved tools. Please try again.');return;}
+  const slug=btn.dataset.favorite;if(!/^[a-z0-9-]{2,150}$/.test(slug||''))return;
+  const alreadySaved=saved.has(slug);
+  btn.disabled=true;
+  try{
+   if(favoriteDb&&favoriteUser){
+    const response=alreadySaved
+     ?await favoriteDb.from('saved_items').delete().eq('user_id',favoriteUser).eq('item_kind','ai_tool').eq('item_id',slug)
+     :await favoriteDb.from('saved_items').upsert({user_id:favoriteUser,item_kind:'ai_tool',item_id:slug},{onConflict:'user_id,item_kind,item_id'});
+    if(response.error){favoriteFeedback('Could not update your account saves. Please retry.');return;}
+   }else{
+    const next=new Set(saved);alreadySaved?next.delete(slug):next.add(slug);
+    try{localStorage.setItem('freeaitaskbook-favorites',JSON.stringify([...next]));}
+    catch{favoriteFeedback('Local saving is unavailable in this browser.');return;}
+   }
+   alreadySaved?saved.delete(slug):saved.add(slug);
+   favoriteFeedback(favoriteUser?'Saved tools updated in your account.':'Saved on this device. Sign in to save across devices.');
+   renderFavorites();applyFilters();
+  }finally{btn.disabled=false;}
+ });
  renderFavorites();
+ document.addEventListener('DOMContentLoaded',async()=>{
+  const config=window.TASKBOOK_CONFIG;
+  if(config?.url&&config?.key&&window.supabase?.createClient){
+   try{
+    favoriteDb=window.supabase.createClient(config.url,config.key,{auth:{flowType:'pkce',detectSessionInUrl:false}});
+    const {data,error}=await favoriteDb.auth.getUser();
+    if(!error&&data?.user){
+     const userId=data.user.id;
+     const {data:rows,error:readError}=await favoriteDb.from('saved_items').select('item_id').eq('user_id',userId).eq('item_kind','ai_tool').limit(1000);
+     if(readError){favoriteFeedback('Your account saves could not be loaded. Refresh to retry.');return;}
+     favoriteUser=userId;
+     saved=new Set((rows||[]).map(x=>x.item_id));renderFavorites();applyFilters();
+    }
+   }catch{favoriteFeedback('Unable to load saved tools. Refresh to retry.');return;}
+  }
+  favoriteReady=true;
+ });
  let favoriteOnly=false;
  let visibleLimit=6;
  document.getElementById('show-more-tools')?.addEventListener('click',()=>{visibleLimit+=6;applyFilters();});
