@@ -369,3 +369,5 @@ footer.site-footer{background:linear-gradient(120deg,#0d2b20,#175139)}
 .exam-prep-actions button:hover,.exam-prep-actions button:focus-visible{background:#c6f2a7}
 .official-recruitment-card[hidden]{display:none!important}
 @media(max-width:800px){.exam-prep-strip{display:block}.exam-prep-actions{justify-content:flex-start;margin-top:14px}}
+
+.gov-prep-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px!important;background:linear-gradient(120deg,#e0f7d5,#fff8e7);border:1px solid #bcdcab;border-radius:20px}.gov-prep-cta h2{color:#21472f;font-size:clamp(21px,2.5vw,30px)}.gov-prep-cta p{font-size:13px;color:#496552}.gov-prep-cta .btn-dark{display:inline-flex;padding:11px 15px;white-space:nowrap;text-decoration:none}@media(max-width:750px){.gov-prep-cta{display:block}.gov-prep-cta .btn-dark{margin-top:15px;white-space:normal}}
