@@ -134,3 +134,28 @@ test('core page navigation, metadata and internal page generation remain intact'
   assert.match(html,/href="\/search\/"/,'missing search navigation in '+page);
  }
 });
+
+
+test('every generated HTML page has valid local navigation destinations',()=>{
+ const htmlFiles=[];
+ const walk=dir=>{for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
+  const full=path.join(dir,entry.name);
+  if(entry.isDirectory())walk(full);else if(entry.name.endsWith('.html'))htmlFiles.push(full);
+ }};
+ walk(out);
+ assert.ok(htmlFiles.length>=100,'unexpected page count');
+ const missing=new Set();
+ for(const file of htmlFiles){
+  const html=fs.readFileSync(file,'utf8');
+  assert.match(html,/<html\b/i,'missing document root in '+file);
+  assert.match(html,/<title>[^<]+<\/title>/i,'missing page title in '+file);
+  for(const match of html.matchAll(/\bhref="(\/[^"]*)"/g)){
+   const href=match[1].split(/[?#]/)[0];
+   if(!href||href==='/')continue;
+   const candidate=path.join(out,href.replace(/^\/+/,'')); 
+   const target=href.endsWith('/')?path.join(candidate,'index.html'):candidate;
+   if(!fs.existsSync(target))missing.add(path.relative(out,file)+' → '+href);
+  }
+ }
+ assert.deepEqual([...missing],[],[...missing].join('\n'));
+});
