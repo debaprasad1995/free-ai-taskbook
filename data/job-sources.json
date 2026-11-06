@@ -205,5 +205,50 @@
     "url": "https://job-boards.greenhouse.io/twilio",
     "description": "Official employer hiring board for software, engineering and other vacancies.",
     "status": "source-link-only"
+  },
+  {
+    "slug": "freejobalert-railway-updates",
+    "name": "FreeJobAlert Railway Updates",
+    "type": "aggregator",
+    "region": "India",
+    "url": "https://www.freejobalert.com/RAILWAY-JOBS/",
+    "description": "Discover railway recruitment notices, then verify each CEN and deadline from the official RRB website.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "freejobalert-latest-notifications",
+    "name": "FreeJobAlert Latest Notifications",
+    "type": "aggregator",
+    "region": "India",
+    "url": "https://www.freejobalert.com/latest-notifications/",
+    "description": "Independent discovery of central, state and railway recruitment updates; official notices take precedence.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "rrb-indian-railways",
+    "name": "Railway Recruitment Boards — Official",
+    "type": "government",
+    "region": "India",
+    "url": "https://rrb.indianrailways.gov.in/",
+    "description": "Official Indian Railways recruitment notifications and RRB information.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "rrb-central-employment-notices",
+    "name": "RRB Central Employment Notices",
+    "type": "government",
+    "region": "India",
+    "url": "https://www.rrbcdg.gov.in/employment-notices.php",
+    "description": "Official index of RRB Centralised Employment Notices and amendments.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "wbpsc-announcements",
+    "name": "WBPSC Official Announcements",
+    "type": "government",
+    "region": "West Bengal",
+    "url": "https://psc.wb.gov.in/notification_announcement.jsp",
+    "description": "Official West Bengal Public Service Commission recruitment notices and announcements.",
+    "status": "source-link-only"
   }
 ]
