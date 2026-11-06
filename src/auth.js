@@ -13,6 +13,44 @@
  const submit=document.getElementById('auth-submit'),heading=document.getElementById('auth-form-heading'),desc=document.getElementById('auth-form-description');
  const displayName=document.getElementById('auth-display-name');
  let mode='login';
+ let pending=false;
+ let cooldownUntil=0;
+ let cooldownTimer=null;
+ const loginLabel='Send login link ↗';
+ const registerLabel='Create account with email ↗';
+ const errorDetails=error=>{
+  const code=String(error?.code||'').toLowerCase();
+  const status=Number(error?.status||0);
+  if(code==='over_email_send_rate_limit'||status===429){
+   return {message:'Email delivery is temporarily rate-limited by our authentication provider. No link was sent. Please try again later. Site administrators need to configure production SMTP for reliable login.',cooldown:300000};
+  }
+  if(code==='email_address_not_authorized'){
+   return {message:'Our email provider is not yet configured to send to this address. Please contact the site administrator to enable production email delivery.',cooldown:0};
+  }
+  if(code==='otp_disabled'){
+   return {message:'This email login or registration request is blocked by the current authentication settings. Please contact the site administrator.',cooldown:0};
+  }
+  if(code==='over_request_rate_limit'){
+   return {message:'Too many requests. Please try again later.',cooldown:60000};
+  }
+  if(status>=500)return {message:'The authentication service is temporarily unavailable. Please try again later.',cooldown:0};
+  return {message:'Unable to request an email link. Check your connection and email address, or try again later.',cooldown:0};
+ };
+ const buttonText=()=>mode==='register'?registerLabel:loginLabel;
+ function syncButton(){
+  if(!submit)return;
+  const remaining=Math.max(0,Math.ceil((cooldownUntil-Date.now())/1000));
+  submit.disabled=pending||remaining>0;
+  submit.textContent=pending?'Sending…':remaining>0?'Try again later ('+remaining+'s)':buttonText();
+  if(!remaining&&cooldownTimer){clearInterval(cooldownTimer);cooldownTimer=null;}
+ }
+ function cooldown(ms){
+  cooldownUntil=Date.now()+ms;
+  if(cooldownTimer)clearInterval(cooldownTimer);
+  cooldownTimer=setInterval(syncButton,1000);
+  syncButton();
+ }
+
  function switchMode(next){
   mode=next;
   const creating=mode==='register';
@@ -24,7 +62,7 @@
   if(registerBtn)registerBtn.setAttribute('aria-pressed',String(creating));
   if(heading)heading.textContent=creating?'Create your free account':'Log in to your account';
   if(desc)desc.textContent=creating?'Enter your name and email. We will send a secure verification link.':'Already registered? Enter your email to receive a sign-in link.';
-  if(submit)submit.textContent=creating?'Create account with email ↗':'Send login link ↗';
+  syncButton();
   report('');
  }
  loginBtn?.addEventListener('click',()=>switchMode('login'));
@@ -49,6 +87,11 @@
  }
  form?.addEventListener('submit',async event=>{
   event.preventDefault();
+  if(pending)return;
+  if(Date.now()<cooldownUntil){
+   report('Please avoid repeated requests. The email provider may still be rate-limited.');
+   syncButton();return;
+  }
   const email=document.getElementById('auth-email')?.value?.trim().toLowerCase();
   if(!email)return;
   const creating=mode==='register';
@@ -56,16 +99,22 @@
   if(creating&&(fullName.length<2||fullName.length>100||!consent?.checked)){
    report('Enter your name and accept the privacy notice to register.');return;
   }
-  if(submit)submit.disabled=true;
-  report('Preparing your secure email link…');
+  pending=true;syncButton();
+  report('Requesting a secure sign-in email…');
   try{
    const options={emailRedirectTo:location.origin+'/account/',shouldCreateUser:creating};
    if(creating)options.data={full_name:fullName};
    const {error}=await db.auth.signInWithOtp({email,options});
    if(error)throw error;
-   report('Check your inbox for the secure link. If the address is eligible, an email will arrive shortly.');
-  }catch{report('Could not request your link. Check your email or try again later.');}
-  finally{if(submit)submit.disabled=false;}
+   report('If this email can receive sign-in links, please check your inbox and spam folder. Avoid requesting another link immediately.');
+   cooldown(60000);
+  }catch(error){
+   const detail=errorDetails(error);
+   report(detail.message);
+   if(detail.cooldown)cooldown(detail.cooldown);
+  }finally{
+   pending=false;syncButton();
+  }
  });
  document.getElementById('auth-save-name')?.addEventListener('click',async()=>{
   const fullName=displayName?.value?.trim().replace(/\s+/g,' ')||'';
