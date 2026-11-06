@@ -238,3 +238,33 @@ test('homepage immersive art has CSS-only motion with reduced-motion fallback an
  assert.match(css,/prefers-reduced-motion:reduce/);
  assert.match(app,/visibleLimit=6;applyFilters\(\);search\.scrollIntoView/);
 });
+
+
+test('About keeps independent EduLocate description but no outbound redirection',()=>{
+ const html=fs.readFileSync(path.join(out,'about','index.html'),'utf8');
+ assert.match(html,/EduLocate/);
+ assert.doesNotMatch(html,/edulocate\.netlify\.app/);
+});
+test('signed-in name header uses Supabase safely without exposing user profiles publicly',()=>{
+ const build=fs.readFileSync(path.join(root,'scripts','build.mjs'),'utf8');
+ const script=fs.readFileSync(path.join(root,'src','header-auth.js'),'utf8');
+ assert.match(build,/data-account-link/);
+ assert.match(build,/if\(AUTH_ENABLED\)fs\.copyFileSync/);
+ assert.match(build,/header-auth\.js/);
+ assert.match(script,/auth\.getUser\(\)/);
+ assert.match(script,/onAuthStateChange/);
+ assert.match(script,/user_profiles/);
+ assert.match(script,/full_name/);
+ assert.match(script,/textContent/);
+ assert.doesNotMatch(script,/innerHTML/);
+});
+test('inner pages provide topic-aware icons and motion with accessibility fallback',()=>{
+ const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ const app=fs.readFileSync(path.join(out,'assets','app.js'),'utf8');
+ assert.match(css,/@keyframes innerFloat/);
+ assert.match(css,/@keyframes innerOrbit/);
+ assert.match(css,/prefers-reduced-motion:reduce/);
+ assert.match(css,/card-topic-icon/);
+ assert.match(app,/iconRules/);
+ assert.match(app,/aria-hidden/);
+});
