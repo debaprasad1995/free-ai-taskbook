@@ -61,5 +61,59 @@
     "id": "bMknfKXIFA8",
     "level": "Beginner",
     "description": "Learn React components and practical application projects."
+  },
+  {
+    "slug": "python-intermediate",
+    "title": "Intermediate Python Programming Course",
+    "topic": "Python",
+    "channel": "freeCodeCamp.org",
+    "id": "HGOBQPFzWKo",
+    "level": "Intermediate",
+    "description": "Decorators, generators, threading, multiprocessing and context managers."
+  },
+  {
+    "slug": "python-data-analysis",
+    "title": "Data Analysis with Python — Practical Course",
+    "topic": "Data Analytics",
+    "channel": "freeCodeCamp.org",
+    "id": "r-uOLxNrNk8",
+    "level": "Intermediate",
+    "description": "NumPy, Pandas, data cleaning, notebook workflows and reporting."
+  },
+  {
+    "slug": "sql-interview-practice",
+    "title": "SQL Technical Interview Questions and Advanced Joins",
+    "topic": "SQL & Databases",
+    "channel": "freeCodeCamp.org",
+    "id": "-fW2X7fh7Yg",
+    "level": "Advanced",
+    "description": "Joins, SQLAlchemy, analytical queries and technical interview practice."
+  },
+  {
+    "slug": "web-project-deployment",
+    "title": "Web Development Projects and Cloud Deployment",
+    "topic": "Web Development",
+    "channel": "freeCodeCamp.org",
+    "id": "dX8396ZmSPk",
+    "level": "Intermediate",
+    "description": "Mobile-first websites, responsive layouts, Bootstrap, Git and deployment."
+  },
+  {
+    "slug": "machine-learning-intro",
+    "title": "Machine Learning for Everybody — Full Course",
+    "topic": "AI & Machine Learning",
+    "channel": "freeCodeCamp.org",
+    "id": "i_LwzRVP7bg",
+    "level": "Beginner",
+    "description": "Regression, classification, TensorFlow, neural networks and clustering."
+  },
+  {
+    "slug": "html-css-projects",
+    "title": "Learn HTML and CSS — Guided Projects",
+    "topic": "Web Development",
+    "channel": "freeCodeCamp.org",
+    "id": "a_iQb1lnAEQ",
+    "level": "Beginner",
+    "description": "Learn HTML and CSS through coding challenges and practical builds."
   }
 ]
