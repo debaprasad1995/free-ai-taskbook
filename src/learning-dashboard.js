@@ -20,8 +20,10 @@
     const {error}=await client.from('user_profiles').upsert({user_id:user.id,preferences:{...preferences,share_learning_activity:enabled}},{onConflict:'user_id'});
     if(error){message(note,'Could not update your preference.');return;}
     preferences={...preferences,share_learning_activity:enabled};
-    if(!enabled){await client.from('course_activity_events').delete().eq('user_id',user.id);}
-    message(note,enabled?'You opted in to aggregate learning analytics.':'Sharing is disabled. Your recorded course-start events were deleted.');
+    if(!enabled){
+      const {error:deleteError}=await client.from('course_activity_events').delete().eq('user_id',user.id);
+      message(note,deleteError?'Sharing is disabled, but history deletion failed. Please retry deletion.':'Sharing is disabled. Your recorded course-start events were deleted.');
+    }else message(note,'You opted in to aggregate learning analytics.');
   };
   document.getElementById('learning-analytics-save')?.addEventListener('click',()=>setPref(!!checkbox?.checked));
   document.getElementById('learning-analytics-delete')?.addEventListener('click',async()=>{
