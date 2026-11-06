@@ -437,3 +437,8 @@ body.guest-limit-locked{overflow:hidden!important}
 .admin-shell :is(button,input,select,textarea,a):focus-visible{outline:3px solid #98b85e;outline-offset:3px}
 @media(max-width:860px){.admin-workspace-grid{grid-template-columns:1fr}.admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-panel-wide{grid-column:auto}.admin-hero-mark{width:88px;height:88px;font-size:55px}}
 @media(max-width:600px){.admin-hero-inner{padding-top:40px;padding-bottom:40px}.admin-hero h1{font-size:clamp(34px,9vw,44px)}.admin-hero p:not(.admin-eyebrow){font-size:13px}.admin-hero-mark{display:none}.admin-shell{padding-top:17px;padding-bottom:65px}.admin-metrics{grid-template-columns:1fr;gap:10px}.admin-metric{min-height:118px;padding:16px}.admin-access-bar>a{margin-left:0}.admin-jump-links{flex-wrap:nowrap;overflow-x:auto;padding-bottom:12px;margin:19px 0;scrollbar-width:thin}.admin-jump-links a{white-space:nowrap}.admin-panel{padding:19px;border-radius:12px}.admin-panel-heading{flex-direction:column}.admin-panel>.suggest-form{grid-template-columns:1fr}.admin-panel>.suggest-form label:has(textarea){grid-column:auto}}
+
+/* Signed-in account: keep Sign out readable on pale surfaces rather than inheriting tray-white styling. */
+.auth-profile-actions #auth-signout{display:inline-flex;align-items:center;justify-content:center;min-height:44px;background:#f4f8f0;color:#18442d;border:1px solid #8ba991;border-radius:9px;padding:11px 18px;font-weight:800;cursor:pointer}
+.auth-profile-actions #auth-signout:hover{background:#e0efdc;border-color:#4f875b;color:#103923}
+.auth-profile-actions #auth-signout:focus-visible{outline:3px solid #327a48;outline-offset:3px}
