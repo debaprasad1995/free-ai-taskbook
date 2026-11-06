@@ -399,3 +399,24 @@ test('daily resource audit and approved employer synchronization are scheduled',
  assert.match(audit,/rrb\.indianrailways\.gov\.in/);
  assert.match(audit,/Do not treat aggregator snippets as official vacancies/);
 });
+
+
+test('public pages support two minutes of guest browsing and authentication exempts signed-in users',()=>{
+ const build=fs.readFileSync(path.join(root,'scripts','build.mjs'),'utf8');
+ const gate=fs.readFileSync(path.join(root,'src','guest-gate.js'),'utf8');
+ const styles=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ assert.match(build,/guest-gate\.js/);
+ assert.match(build,/if\(AUTH_ENABLED\)fs\.copyFileSync\(path\.join\(root,'src','guest-gate\.js'\)/);
+ assert.match(gate,/LIMIT_MS=120000/);
+ assert.match(gate,/sessionStorage\.setItem\(KEY/);
+ assert.match(gate,/document\.visibilityState/);
+ assert.match(gate,/db\.auth\.getUser\(\)/);
+ assert.match(gate,/if\(signedIn\)\{unlock\(\)/);
+ assert.match(gate,/auth\.onAuthStateChange/);
+ assert.match(gate,/aria-modal/);
+ assert.match(gate,/privacy/);
+ assert.match(gate,/\/account\//);
+ assert.match(styles,/guest-limit-overlay/);
+ assert.match(styles,/guest-limit-panel/);
+ assert.match(styles,/prefers-reduced-motion:reduce/);
+});
