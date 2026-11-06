@@ -8,7 +8,7 @@ const project=process.env.SUPABASE_URL;
 const secret=process.env.SUPABASE_SECRET_KEY||process.env.SUPABASE_SERVICE_ROLE_KEY;
 const tokens=(process.env.GREENHOUSE_BOARD_TOKENS||'').split(',').map(x=>x.trim()).filter(Boolean);
 const limit=Number(process.env.JOB_SYNC_MAX_ITEMS||400);
-if(!tokens.length){console.log('Job sync skipped: no approved Greenhouse board tokens configured.');process.exit(0)}
+if(!tokens.length)throw Error('Daily job sync is not configured: set approved GREENHOUSE_BOARD_TOKENS in GitHub Actions repository variables.');
 if(!project||!secret)throw Error('Missing SUPABASE_URL or server-only SUPABASE_SECRET_KEY (or legacy SERVICE_ROLE_KEY) in GitHub Actions secrets.');
 if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(project))throw Error('Invalid Supabase endpoint');
 if(!Number.isSafeInteger(limit)||limit<1||limit>1000)throw Error('JOB_SYNC_MAX_ITEMS must be 1..1000');
