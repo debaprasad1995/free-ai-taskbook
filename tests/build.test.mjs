@@ -40,7 +40,7 @@ test('scheduled job ingestion is gated until authorized boards and server-only c
  const runner=fs.readFileSync(path.join(root,'scripts','sync-greenhouse.mjs'),'utf8');
  const workflow=fs.readFileSync(path.join(root,'.github','workflows','daily-authorized-jobs.yml'),'utf8');
  assert.ok(runner.includes('GREENHOUSE_BOARD_TOKENS'));
- assert.ok(runner.includes('Job sync skipped'));
+ assert.ok(runner.includes('Daily job sync is not configured'));
  assert.ok(runner.includes("greenhouseJobUrl"));
  assert.ok(workflow.includes('secrets.SUPABASE_SERVICE_ROLE_KEY'));
  assert.ok(!workflow.includes('sb_publishable_'));
