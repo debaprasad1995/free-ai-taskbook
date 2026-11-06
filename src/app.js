@@ -171,7 +171,7 @@
  const link=(href,title)=>{const a=document.createElement('a');a.href=href;a.textContent=title+' ↗';a.target='_blank';a.rel='noopener noreferrer';return a};
  async function load(){
   try{
-   const today=new Date().toISOString().slice(0,10);
+   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
    const endpoint=new URL('/rest/v1/job_postings',base);
    endpoint.searchParams.set('select','id,title,organization,location,job_type,application_deadline,official_notification_url,application_url,verified_at');
    endpoint.searchParams.set('order','verified_at.desc');endpoint.searchParams.set('limit','30');
