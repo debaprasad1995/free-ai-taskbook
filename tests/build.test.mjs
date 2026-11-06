@@ -96,3 +96,41 @@ test('learning includes verified video IDs, a topic filter and click-to-play beh
  assert.match(script,/youtube-nocookie.com/);
  assert.ok(fs.existsSync(path.join(out,'assets','learning.js')));
 });
+
+
+test('universal comparison has an explicit action, accessible panel and three-tool cap',()=>{
+ const html=fs.readFileSync(path.join(out,'search','index.html'),'utf8');
+ const script=fs.readFileSync(path.join(out,'assets','search.js'),'utf8');
+ for(const id of ['compare-tray','compare-run','compare-clear','compare-names','tool-compare','search-more'])assert.ok(html.includes('id="'+id+'"'),id);
+ assert.match(html,/aria-label="Selected AI tools"/);
+ assert.match(script,/selection\.size<2/);
+ assert.match(script,/selection\.size<3/);
+ assert.match(script,/openCompare/);
+ assert.match(script,/compare-table/);
+ assert.match(script,/selection\.clear\(\)/);
+});
+test('beginner through advanced videos have real IDs and skill pathways',()=>{
+ const courses=JSON.parse(fs.readFileSync(path.join(root,'data/youtube-courses.json'),'utf8'));
+ const levels=new Set(courses.map(x=>x.level));
+ for(const level of ['Beginner','Intermediate','Advanced'])assert.ok(levels.has(level),'missing '+level);
+ assert.ok(courses.length>=15);
+ assert.equal(new Set(courses.map(x=>x.id)).size,courses.length);
+ const html=fs.readFileSync(path.join(out,'learn','index.html'),'utf8');
+ for(const id of ['video-search','video-topic','video-level','video-more','video-count','learning-resources'])assert.ok(html.includes('id="'+id+'"'),id);
+ const script=fs.readFileSync(path.join(out,'assets','learning.js'),'utf8');
+ assert.match(script,/limit=6/);
+ assert.match(script,/youtube-nocookie/);
+ assert.match(script,/frame\.src=/);
+});
+test('core page navigation, metadata and internal page generation remain intact',()=>{
+ const paths=['/','search','categories','professions','apis','learn','jobs','submit','resources','dashboard','admin','account','guides','privacy','terms','about','disclosure'];
+ for(const page of paths){
+  const file=path.join(out,page==='/'?'index.html':page+'/index.html');
+  assert.ok(fs.existsSync(file),'missing '+page);
+  const html=fs.readFileSync(file,'utf8');
+  assert.match(html,/<main\b/,'missing main in '+page);
+  assert.match(html,/<link rel="canonical"/,'missing canonical in '+page);
+  assert.match(html,/<meta name="viewport"/,'missing viewport in '+page);
+  assert.match(html,/href="\/search\/"/,'missing search navigation in '+page);
+ }
+});
