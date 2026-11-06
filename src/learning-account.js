@@ -49,8 +49,25 @@
  document.addEventListener('taskbook:course-started',async event=>{
   const card=event.detail?.card;if(!card||!card.dataset.courseSlug)return;
   const course=info(card);
-  const {error:upsertError}=await db.from('course_progress').upsert({...course,status:'learning',updated_at:new Date().toISOString()},{onConflict:'user_id,course_id'});
-  if(!upsertError)saved.set(course.course_id,'learning');
+  // Insert a new learning record only when absent. Never overwrite an existing
+  // record (especially "completed") when a video is played again.
+  const {error:insertError}=await db.from('course_progress').upsert(
+   {...course,status:'learning',updated_at:new Date().toISOString()},
+   {onConflict:'user_id,course_id',ignoreDuplicates:true}
+  );
+  if(!insertError){
+   // Only advance "saved" to "learning". A completed course stays completed
+   // even when another browser tab starts playback concurrently.
+   const {data:advanced,error:updateError}=await db.from('course_progress')
+    .update({status:'learning',updated_at:new Date().toISOString()})
+    .eq('user_id',user.id).eq('course_id',course.course_id).eq('status','saved')
+    .select('course_id');
+   if(!updateError){
+    const {data:current}=await db.from('course_progress').select('status')
+     .eq('user_id',user.id).eq('course_id',course.course_id).maybeSingle();
+    if(current)saved.set(course.course_id,current.status);
+   }
+  }
   if(!sharing)return;
   // Counting a user-initiated play, not YouTube viewing duration.
   await db.from('course_activity_events').insert({user_id:user.id,course_id:course.course_id,topic:course.topic,action:'video_started'});
