@@ -442,3 +442,19 @@ body.guest-limit-locked{overflow:hidden!important}
 .auth-profile-actions #auth-signout{display:inline-flex;align-items:center;justify-content:center;min-height:44px;background:#f4f8f0;color:#18442d;border:1px solid #8ba991;border-radius:9px;padding:11px 18px;font-weight:800;cursor:pointer}
 .auth-profile-actions #auth-signout:hover{background:#e0efdc;border-color:#4f875b;color:#103923}
 .auth-profile-actions #auth-signout:focus-visible{outline:3px solid #327a48;outline-offset:3px}
+
+/* Authenticated account dropdown. Admin destination is hidden until a trusted role is confirmed. */
+.main-nav .account-nav{position:relative;display:inline-flex;align-items:center;min-width:0}
+.main-nav .account-dropdown{position:absolute;right:0;top:calc(100% + 13px);z-index:50;width:220px;display:flex;flex-direction:column;gap:3px;padding:9px;background:#fff;border:1px solid #d3e4ce;border-radius:13px;box-shadow:0 18px 40px #0b261c35;color:#163c2b}
+.main-nav .account-dropdown[hidden]{display:none!important}
+.main-nav .account-dropdown a,.main-nav .account-dropdown button{display:block;box-sizing:border-box;width:100%;max-width:none;text-align:left;font:inherit;font-size:13px;font-weight:730;padding:11px 13px;background:transparent;color:#19432f;border:0;border-radius:8px;text-decoration:none;cursor:pointer;white-space:normal}
+.main-nav .account-dropdown :is(a,button):hover{background:#ebf6e3;color:#21572c}
+.main-nav .account-dropdown :is(a,button):focus-visible{outline:3px solid #74a94f;outline-offset:1px}
+.main-nav .account-dropdown button{border-top:1px solid #e4eddf;border-radius:0 0 8px 8px}
+.main-nav .account-dropdown button:disabled{opacity:.6;cursor:wait}
+.main-nav .account-nav>[data-account-link][aria-expanded="true"]{background:#d0fba532}
+@media(max-width:600px){
+ .main-nav .account-nav{display:block;width:100%}
+ .main-nav .account-dropdown{position:static;width:100%;margin-top:9px;box-shadow:none}
+ .main-nav .account-nav>[data-account-link]{max-width:none}
+}
