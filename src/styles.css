@@ -458,3 +458,6 @@ body.guest-limit-locked{overflow:hidden!important}
  .main-nav .account-dropdown{position:static;width:100%;margin-top:9px;box-shadow:none}
  .main-nav .account-nav>[data-account-link]{max-width:none}
 }
+
+/* Bookmark persistence status, announced without covering search controls. */
+.favorite-sync-status{font-size:11px;color:#355b3f;line-height:1.5;max-width:260px;display:inline-block;vertical-align:middle}
