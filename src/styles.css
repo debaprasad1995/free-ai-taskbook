@@ -130,3 +130,68 @@ form input,form select,form textarea,.filter-top select{max-width:100%}
 @media(max-width:900px){.learning-paths{grid-template-columns:repeat(2,minmax(0,1fr))}.learning-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.learning-toolbar label:first-child{grid-column:1/-1}}
 @media(max-width:600px){.learning-paths{gap:8px}.learning-paths a{padding:12px}.learning-paths strong{font-size:12px}.learning-toolbar{grid-template-columns:1fr}.learning-toolbar label:first-child{grid-column:auto}.compare-tray{bottom:6px;padding:12px;display:block;margin:12px 0}.compare-tray-actions{justify-content:space-between;margin-top:10px}.compare-title{align-items:start}.compare-title h2{font-size:22px}.compare-section{padding:12px}.search-result-card{padding:15px}.guide-grid>.guide-card{min-height:0}}
 @media(prefers-reduced-motion:reduce){.learning-paths a,.guide-grid>.guide-card,.api-grid>.api-card{transition:none;transform:none!important}}
+
+
+/* FreeAITaskbook Prism: original, lightweight 3D-inspired visual system. */
+:root{--ink:#132b33;--navy:#091a2c;--navy2:#102b3e;--brand:#276c54;--sub:#4a6170;--line:#d7e6e2;--paper:#eaf4ee;--acid:#bdf85f;--mint:#dff8e4;--white:#fff;--prism-shadow:0 10px 25px rgba(10,40,50,.08),0 3px 0 rgba(34,103,77,.08);--prism-lift:0 22px 38px rgba(7,37,52,.15),0 5px 0 rgba(34,103,77,.1)}
+body{background:radial-gradient(ellipse at 9% 5%,#dbf6dc 0,transparent 40%),radial-gradient(ellipse at 90% 50%,#d7eaf8 0,transparent 36%),#f2f9f5;color:var(--ink)}
+.site-header{background:linear-gradient(115deg,#0b2131,#112e3b 68%,#143d3f);box-shadow:0 4px 20px #092c2c18}
+.site-header .header-inner{max-width:1250px}
+.site-header .main-nav a:hover,.site-header .main-nav a:focus-visible{color:var(--acid)}
+main{isolation:isolate}
+main>.wrap,.wrap.section,main .page-hero>.wrap{max-width:1200px}
+.page-hero{background:linear-gradient(112deg,#e0f5ec,#e8f4ff 53%,#eef9dc);border-bottom:1px solid #d0e4d6;position:relative;overflow:hidden}
+.page-hero:before{content:"";position:absolute;right:5%;top:9%;width:125px;height:125px;border-radius:28px;transform:rotate(-21deg);background:linear-gradient(145deg,#bdf85f77,#67dac433);box-shadow:18px 20px 0 #16715916;pointer-events:none}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero p:not(.eyebrow){color:#3e6264;max-width:740px}
+.dark-hero{background:radial-gradient(circle at 77% 18%,#226350 0,transparent 32%),linear-gradient(130deg,#091e30,#133449);color:#fff}
+.main-content,.section.wrap{position:relative}
+.section{scroll-margin-top:20px}
+.section-head h2,.article h2{color:#122b38}
+.guide-card,.api-card,.tool-card,.category-card,.video-course-card,.search-result-card{background:linear-gradient(160deg,#ffffff,#f5fbf7 83%,#eff7fc);border:1px solid #cfe3d9;box-shadow:var(--prism-shadow);border-radius:16px}
+.guide-card:hover,.api-card:hover,.category-card:hover,.tool-card:hover,.video-course-card:hover{border-color:#84cba5;box-shadow:var(--prism-lift)}
+.guide-card h2,.guide-card h3,.api-card h2{color:#183344}
+.guide-card a,.api-card a{color:#246347}
+.guide-card a:hover,.api-card a:hover{text-decoration:underline}
+.article{background:linear-gradient(160deg,#fafffd,#eaf6f0);border:1px solid #d2e9de;border-radius:20px;padding:clamp(20px,3.2vw,40px);box-shadow:var(--prism-shadow);margin-top:28px;margin-bottom:34px}
+.detail-main,.detail-sidebar,.auth-panel{background:linear-gradient(155deg,#f9fefb,#e8f5ee);border:1px solid #d1e5d9;border-radius:16px}
+.guide-grid,.api-grid,.tools-grid,.category-grid{gap:clamp(10px,1.5vw,18px);align-items:stretch}
+input,select,textarea{color:#142d37}
+input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #4d9b7b;outline-offset:3px}
+.btn-dark,.show-more-button,.video-watch,.smart-finder-input button{background:linear-gradient(120deg,#123c43,#1a634f);color:#f7fff6;border:1px solid #27755a;box-shadow:0 4px 0 #0d4335;transition:transform .18s ease,box-shadow .18s ease}
+.btn-dark:hover,.show-more-button:hover,.video-watch:hover,.smart-finder-input button:hover{transform:translateY(-2px);box-shadow:0 7px 0 #0d4335}
+.learning-account-banner,.privacy-preferences{padding:16px 20px;border-radius:17px;border:1px solid #bddbcb;background:linear-gradient(120deg,#dcf7d3,#e0f4ff);margin:0 0 24px;box-shadow:var(--prism-shadow)}
+.learning-account-banner{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.learning-account-banner strong{font-size:16px}
+.learning-account-banner span{font-size:12px;color:#48626c;flex:1;min-width:200px}
+.learning-account-banner a{font-weight:750;text-decoration:underline;color:#236444}
+.privacy-preferences{margin:24px 0}
+.privacy-preferences p{max-width:760px;font-size:13px;color:#536871}
+.privacy-preferences .consent-toggle{display:flex;gap:10px;align-items:flex-start;margin:13px 0 17px;font-size:13px;font-weight:700}
+.privacy-preferences input{width:18px;height:18px}
+.privacy-preferences button{margin:5px 12px 5px 0;padding:10px 15px}
+.course-save-button{background:#d6f5cc;border:1px solid #78bd85;color:#174832;padding:8px 12px;border-radius:9px;font-size:12px;font-weight:750;cursor:pointer}
+.course-save-status{color:#1f7251;font-size:11px}
+.course-progress-card{min-height:0;display:flex;flex-direction:column;gap:8px}
+.course-progress-card label{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:750}
+.course-progress-card select{padding:8px;border-radius:8px;border:1px solid #cde3d2}
+.course-progress-card button,.course-progress-card a{align-self:flex-start}
+.analytics-card strong{font-size:22px;color:#145e4c}
+.smart-finder{margin:20px 0 27px;padding:clamp(18px,3vw,28px);border-radius:22px;border:1px solid #a7dfc3;background:radial-gradient(circle at 93% 12%,#abf3b9 0,transparent 25%),linear-gradient(125deg,#e4f9ee,#e3f4ff);box-shadow:var(--prism-shadow)}
+.smart-finder h2{font-size:clamp(25px,3.2vw,37px);margin:5px 0 8px}
+.smart-finder>p,.smart-finder>div>p{font-size:13px;color:#42616e}
+.smart-finder-form label{font-weight:750;font-size:12px}
+.smart-finder-input{display:flex;gap:9px;margin-top:7px}
+.smart-finder-input input{flex:1;min-width:0;border:1px solid #90bea9;padding:11px 15px;border-radius:11px}
+.smart-finder-input button{padding:9px 16px;border-radius:10px;white-space:nowrap;font-weight:750}
+.smart-finder-matches{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
+.smart-match{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #cbe1d3;border-radius:12px;padding:13px}
+.smart-match strong{color:#153b4a}
+.smart-match span{font-size:10px;color:#4a8758}
+.smart-match p{font-size:12px;line-height:1.45;margin:0}
+.smart-match a{margin-top:auto;font-size:12px;text-decoration:underline}
+.smart-finder-note{font-size:11px;margin:12px 0 0}
+footer.site-footer{background:linear-gradient(125deg,#0b2131,#0e383a)}
+@media(min-width:901px){.guide-grid:not(.learning-resource-grid){grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.page-hero:before{opacity:.35;right:-35px}.article{padding:18px;margin-top:14px}.learning-account-banner{align-items:flex-start;flex-direction:column}.smart-finder-input{flex-direction:column}.smart-finder-input button{align-self:stretch}.guide-grid{grid-template-columns:1fr}.privacy-preferences button{display:block;margin:8px 0}}
+@media(prefers-reduced-motion:reduce){.btn-dark,.show-more-button,.video-watch,.smart-finder-input button{transition:none;transform:none!important}}
