@@ -336,3 +336,28 @@ test('November 2026 research adds deduplicated official-source tools, APIs and c
  assert.ok(fs.existsSync(path.join(out,'tools','docling','index.html')));
  assert.ok(fs.existsSync(path.join(out,'apis','open-meteo-api','index.html')));
 });
+
+
+test('recruitment portal page exposes government, private, remote and internship filter cards',()=>{
+ const html=fs.readFileSync(path.join(out,'jobs','index.html'),'utf8');
+ const script=fs.readFileSync(path.join(out,'assets','app.js'),'utf8');
+ for(const label of ['Government','Private &amp; Corporate','Remote &amp; Technology','Internships'])assert.ok(html.includes(label),'missing category '+label);
+ for(const type of ['government','private','remote','internship'])assert.ok(html.includes('data-source-filter="'+type+'"'),'missing '+type);
+ assert.match(html,/id="source-reset"/);
+ assert.match(html,/data-source-type="government"/);
+ assert.match(html,/data-source-type="private"/);
+ assert.match(script,/job-source-type-card|sourceFilter/);
+ assert.match(script,/aria-pressed/);
+});
+test('official IBPS and cooperative bank postings have accurate links and deadlines',()=>{
+ const html=fs.readFileSync(path.join(out,'jobs','index.html'),'utf8');
+ for(const url of ['https://ibpsreg.ibps.in/ibpsafeb26/','https://ibpsreg.ibps.in/rsblrsep26/'])assert.ok(html.includes(url),url);
+ assert.match(html,/data-job-deadline="2026-11-12"/);
+ assert.match(html,/data-job-deadline="2026-11-15"/);
+ assert.match(html,/Server Administrator, Assistant &amp; Programming Assistant/);
+ assert.match(html,/Rajgurunagar Sahakari Bank Ltd/);
+ assert.match(html,/job-deadline-state/);
+ const script=fs.readFileSync(path.join(out,'assets','app.js'),'utf8');
+ assert.match(script,/Asia\/Kolkata/);
+ assert.match(script,/job-recruitment-expired/);
+});
