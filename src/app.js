@@ -68,6 +68,7 @@
  });
  renderFavorites();
  document.addEventListener('DOMContentLoaded',async()=>{
+  if(!cards.length){favoriteReady=true;return;}
   const config=window.TASKBOOK_CONFIG;
   if(config?.url&&config?.key&&window.supabase?.createClient){
    try{
