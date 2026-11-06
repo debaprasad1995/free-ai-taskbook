@@ -74,3 +74,25 @@ test('job recommendations and admin sync health panels are present and do not cl
  assert.match(src,/loadSyncHealth/);
  assert.match(dashboard,/not eligibility checks or emailed alerts/);
 });
+
+
+test('homepage is compact while retaining the entire searchable catalog',()=>{
+ const html=fs.readFileSync(path.join(out,'index.html'),'utf8');
+ const script=fs.readFileSync(path.join(root,'src','app.js'),'utf8');
+ assert.match(html,/id="show-more-tools"/);
+ assert.match(html,/See more categories/);
+ assert.equal((html.match(/data-tool /g)||[]).length,tools.length);
+ assert.match(script,/visibleLimit=6/);
+ assert.match(script,/visibleLimit\+=6/);
+});
+test('learning includes verified video IDs, a topic filter and click-to-play behavior',()=>{
+ const courses=JSON.parse(fs.readFileSync(path.join(root,'data/youtube-courses.json'),'utf8'));
+ const html=fs.readFileSync(path.join(out,'learn','index.html'),'utf8');
+ const script=fs.readFileSync(path.join(root,'src','learning.js'),'utf8');
+ assert.ok(courses.length>=6);
+ assert.ok(courses.every(c=>/^[A-Za-z0-9_-]{11}$/.test(c.id)));
+ assert.ok(courses.every(c=>html.includes('data-video-id="'+c.id+'"')));
+ assert.match(html,/id="video-topic"/);assert.match(html,/id="video-player"/);
+ assert.match(script,/youtube-nocookie.com/);
+ assert.ok(fs.existsSync(path.join(out,'assets','learning.js')));
+});
