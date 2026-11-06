@@ -318,5 +318,77 @@
     "limitations": "Free trial credits and scraping permissions are subject to change; respect site terms.",
     "verifiedOn": null,
     "keyUrl": "https://docs.firecrawl.dev/"
+  },
+  {
+    "slug": "open-meteo-api",
+    "name": "Open-Meteo Weather API",
+    "category": "Maps",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Forecast, historical, air-quality and geocoding data for weather applications.",
+    "docsUrl": "https://open-meteo.com/en/docs",
+    "pricingUrl": "https://open-meteo.com/en/pricing",
+    "keyInstructions": "No API key needed for eligible non-commercial use; use your own paid key for commercial services.",
+    "limitations": "Free access is non-commercial, limited to 10,000 calls/day and has no uptime SLA. Attribution and licensing obligations apply.",
+    "verifiedOn": "2026-11-06",
+    "keyUrl": "https://open-meteo.com/en/docs"
+  },
+  {
+    "slug": "open-library-api",
+    "name": "Open Library API",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Look up book, author, cover and reading metadata through public human-oriented APIs.",
+    "docsUrl": "https://openlibrary.org/developers/api",
+    "pricingUrl": "https://openlibrary.org/developers/api",
+    "keyInstructions": "Public book search endpoints do not normally require a key. Identify your application using User-Agent and a contact address.",
+    "limitations": "Default requests are limited to around 1/second, identified clients around 3/second. Not intended as a third-party bulk database or high-traffic backend.",
+    "verifiedOn": "2026-11-06",
+    "keyUrl": "https://openlibrary.org/developers/api"
+  },
+  {
+    "slug": "nasa-open-api",
+    "name": "NASA Open APIs",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Access NASA public astronomy, earth science and space imagery data APIs.",
+    "docsUrl": "https://api.nasa.gov/",
+    "pricingUrl": "https://api.nasa.gov/",
+    "keyInstructions": "Generate your own NASA API key or use DEMO_KEY for initial low-volume exploration.",
+    "limitations": "Default personal key rate limit is 1,000 requests/hour; DEMO_KEY is restricted to 30/hour and 50/day per IP. Individual APIs may vary.",
+    "verifiedOn": "2026-11-06",
+    "keyUrl": "https://api.nasa.gov/"
+  },
+  {
+    "slug": "exchangerate-api-open",
+    "name": "ExchangeRate-API Open Access",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Retrieve daily currency reference exchange rates for small conversion applications.",
+    "docsUrl": "https://www.exchangerate-api.com/docs/free",
+    "pricingUrl": "https://www.exchangerate-api.com/docs/free",
+    "keyInstructions": "The open endpoint does not require an API key. A separate keyed free plan is available on the provider's website.",
+    "limitations": "Open endpoint updates daily, is rate-limited, requires attribution and disallows redistribution; check commercial terms before integration.",
+    "verifiedOn": "2026-11-06",
+    "keyUrl": "https://www.exchangerate-api.com/docs/free"
   }
 ]

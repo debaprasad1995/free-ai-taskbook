@@ -323,3 +323,16 @@ test('Our Approach uses the provided founder portrait instead of DH placeholder'
  assert.doesNotMatch(about,/photograph not yet provided/);
  assert.doesNotMatch(about,/<strong>DH<\/strong>/);
 });
+
+test('November 2026 research adds deduplicated official-source tools, APIs and careers portals',()=>{
+ const tools=JSON.parse(fs.readFileSync(path.join(root,'data/tools.json'),'utf8'));
+ const apis=JSON.parse(fs.readFileSync(path.join(root,'data/apis.json'),'utf8'));
+ const sources=JSON.parse(fs.readFileSync(path.join(root,'data/job-sources.json'),'utf8'));
+ for(const slug of ['flowise','docling','langflow','browser-use','browser-harness'])assert.ok(tools.some(t=>t.slug===slug&&t.verifiedOn==='2026-11-06'));
+ for(const slug of ['open-meteo-api','open-library-api','nasa-open-api','exchangerate-api-open'])assert.ok(apis.some(t=>t.slug===slug&&t.verifiedOn==='2026-11-06'));
+ assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);
+ assert.equal(new Set(apis.map(t=>t.slug)).size,apis.length);
+ assert.equal(new Set(sources.map(t=>t.slug)).size,sources.length);
+ assert.ok(fs.existsSync(path.join(out,'tools','docling','index.html')));
+ assert.ok(fs.existsSync(path.join(out,'apis','open-meteo-api','index.html')));
+});

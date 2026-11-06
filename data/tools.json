@@ -1007,5 +1007,104 @@
       "flowchart",
       "UX research"
     ]
+  },
+  {
+    "slug": "flowise",
+    "name": "Flowise",
+    "category": "automation",
+    "summary": "Build self-hosted AI agents and LLM workflows visually.",
+    "description": "Use visual Chatflow and Agentflow builders to prototype chatbots, RAG, approvals and multi-step AI workflows.",
+    "access": "local-open-source",
+    "url": "https://github.com/FlowiseAI/Flowise",
+    "pricingUrl": "https://github.com/FlowiseAI/Flowise",
+    "freeNote": "Self-hosted Apache-2.0 source is available; hosting resources and any third-party model API calls may cost extra.",
+    "verifiedOn": "2026-11-06",
+    "featured": false,
+    "tasks": [
+      "AI agent",
+      "RAG",
+      "chatbot",
+      "visual workflow",
+      "automation"
+    ]
+  },
+  {
+    "slug": "docling",
+    "name": "Docling",
+    "category": "data",
+    "summary": "Convert complex PDFs and Office documents into structured AI-ready content.",
+    "description": "Parse tables, layouts and text from PDFs, documents and spreadsheets, exporting Markdown or JSON for research and retrieval.",
+    "access": "local-open-source",
+    "url": "https://github.com/docling-project/docling",
+    "pricingUrl": "https://github.com/docling-project/docling",
+    "freeNote": "MIT-licensed Python software runs locally; optional cloud compute or external model services are separate costs.",
+    "verifiedOn": "2026-11-06",
+    "featured": false,
+    "tasks": [
+      "PDF parsing",
+      "document extraction",
+      "RAG",
+      "OCR",
+      "data preparation"
+    ]
+  },
+  {
+    "slug": "langflow",
+    "name": "Langflow",
+    "category": "automation",
+    "summary": "Design, test and deploy LLM applications with a visual flow editor.",
+    "description": "Build reusable flows using model, tool and data components, then expose them as APIs for application development.",
+    "access": "local-open-source",
+    "url": "https://www.langflow.org/",
+    "pricingUrl": "https://docs.langflow.org/getting-started-quickstart/",
+    "freeNote": "Self-hosted source is available, but cloud infrastructure and model-provider API usage can incur charges.",
+    "verifiedOn": "2026-11-06",
+    "featured": false,
+    "tasks": [
+      "LLM workflows",
+      "visual agent builder",
+      "RAG",
+      "prototype",
+      "API"
+    ]
+  },
+  {
+    "slug": "browser-use",
+    "name": "Browser Use",
+    "category": "automation",
+    "summary": "Develop browser-operating AI agents with an open-source Python library.",
+    "description": "Create task-driven browser automation using a local open-source agent library and a compatible LLM provider.",
+    "access": "local-open-source",
+    "url": "https://github.com/browser-use/browser-use",
+    "pricingUrl": "https://github.com/browser-use/browser-use",
+    "freeNote": "The open-source library is free; hosted Browser Use Cloud, browsers, proxy services, and external AI models may be billed separately.",
+    "verifiedOn": "2026-11-06",
+    "featured": false,
+    "tasks": [
+      "browser agent",
+      "web automation",
+      "AI testing",
+      "browser workflows"
+    ]
+  },
+  {
+    "slug": "browser-harness",
+    "name": "Browser Harness",
+    "category": "coding",
+    "summary": "Connect coding agents to your existing Chrome browser.",
+    "description": "Use an open-source Chrome DevTools harness to let supported coding agents navigate, inspect and operate the real browser.",
+    "access": "local-open-source",
+    "url": "https://github.com/browser-use/browser-harness",
+    "pricingUrl": "https://github.com/browser-use/browser-harness",
+    "freeNote": "MIT-licensed harness is free; the coding agent or model powering it may require separate access or paid usage.",
+    "verifiedOn": "2026-11-06",
+    "featured": false,
+    "tasks": [
+      "coding agent",
+      "browser",
+      "debugging",
+      "testing",
+      "automation"
+    ]
   }
 ]

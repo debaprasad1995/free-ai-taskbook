@@ -169,5 +169,41 @@
     "url": "https://www.sarkariresult.com/",
     "description": "Third-party examination and vacancy discovery; cross-check official notices.",
     "status": "source-link-only"
+  },
+  {
+    "slug": "ibps-official-registration",
+    "name": "IBPS Official Recruitment Registration",
+    "type": "government",
+    "region": "India",
+    "url": "https://ibpsreg.ibps.in/",
+    "description": "Employer-authorized IBPS registration links with official application dates and notices.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "drivetrain-careers",
+    "name": "Drivetrain Careers",
+    "type": "private",
+    "region": "India / Remote",
+    "url": "https://jobs.lever.co/drivetrain",
+    "description": "Official employer vacancies for business analysis, product, development and internships.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "capco-careers",
+    "name": "Capco Careers",
+    "type": "private",
+    "region": "India",
+    "url": "https://job-boards.greenhouse.io/capco",
+    "description": "Official Capco vacancy board for financial services, consulting and technology roles.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "twilio-careers",
+    "name": "Twilio Careers",
+    "type": "private",
+    "region": "India / Remote",
+    "url": "https://job-boards.greenhouse.io/twilio",
+    "description": "Official employer hiring board for software, engineering and other vacancies.",
+    "status": "source-link-only"
   }
 ]
