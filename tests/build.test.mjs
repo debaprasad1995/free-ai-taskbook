@@ -199,3 +199,41 @@ test('tool finder is explicitly local and avoids third-party prompt transmission
  assert.match(src,/keyword/);
  assert.ok(!/api\.openai\.com|generativelanguage\.googleapis\.com|https:\/\/[a-z]+\.supabase\.co/.test(src));
 });
+
+
+test('account offers separate registration and returning-user login with a required name',()=>{
+ const html=fs.readFileSync(path.join(out,'account','index.html'),'utf8');
+ const script=fs.readFileSync(path.join(root,'src','auth.js'),'utf8');
+ assert.match(html,/id="auth-mode-login"/);
+ assert.match(html,/id="auth-mode-register"/);
+ assert.match(html,/id="auth-name"/);
+ assert.match(html,/id="auth-consent"/);
+ assert.match(html,/id="auth-save-name"/);
+ assert.match(script,/shouldCreateUser:creating/);
+ assert.match(script,/full_name:fullName/);
+ assert.match(script,/switchMode/);
+ assert.match(script,/signInWithOtp/);
+ assert.match(script,/db\.auth\.updateUser/);
+});
+test('About is an independent founder story and the original submission page is preserved',()=>{
+ const about=fs.readFileSync(path.join(out,'about','index.html'),'utf8');
+ const submit=fs.readFileSync(path.join(out,'submit','index.html'),'utf8');
+ assert.match(about,/Debaprasad/);
+ assert.match(about,/EduLocate/);
+ assert.match(about,/FreeAITaskbook/);
+ assert.match(about,/founder-portrait/);
+ assert.match(about,/independent project/i);
+ assert.match(submit,/id="suggest-form"/);
+ assert.match(submit,/issues\/new\/choose/);
+});
+test('homepage immersive art has CSS-only motion with reduced-motion fallback and functional search',()=>{
+ const home=fs.readFileSync(path.join(out,'index.html'),'utf8');
+ const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ const app=fs.readFileSync(path.join(out,'assets','app.js'),'utf8');
+ assert.match(home,/class="hero-art"/);
+ assert.match(home,/id="hero-query"/);
+ assert.match(css,/@keyframes taskbookOrbit/);
+ assert.match(css,/@keyframes taskbookBreath/);
+ assert.match(css,/prefers-reduced-motion:reduce/);
+ assert.match(app,/visibleLimit=6;applyFilters\(\);search\.scrollIntoView/);
+});
