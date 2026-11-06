@@ -153,6 +153,7 @@
   const deadline=card.dataset.jobDeadline;
   const expired=!!deadline&&date>deadline;
   card.classList.toggle('job-recruitment-expired',expired);
+  card.hidden=expired; // Past-deadline spotlights no longer appear in active listings.
   const notice=card.querySelector('.job-deadline-state');
   if(notice)notice.textContent=expired?'Registration deadline has passed — check the official website for any extension.':'Registration window is currently within the advertised dates.';
  }
