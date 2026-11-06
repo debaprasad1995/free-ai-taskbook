@@ -487,7 +487,7 @@ test('course completion is protected from playback and update/removal stays acco
  assert.match(course,/ignoreDuplicates:true/);
  assert.match(course,/\.eq\('status','saved'\)/);
  assert.match(course,/\.eq\('user_id',user\.id\)/);
- assert.match(dashboard,/status==='completed'/);
+ assert.match(dashboard,/for\(const status of \['saved','learning','completed'\]\)/);
  assert.match(dashboard,/\.eq\('user_id',user\.id\)/);
 });
 test('admin publishing retains verified role check, source validation and unique vacancy IDs',()=>{
