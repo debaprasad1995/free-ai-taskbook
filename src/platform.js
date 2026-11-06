@@ -89,15 +89,15 @@
    const user=await session();if(!user){tell(userMessage);return;}
    // Authorization must come from server-managed app_metadata, NEVER user_metadata or a UI flag.
    if(user.app_metadata?.role!=='admin'){tell('Administrator privileges are required.');return;}
-   display('admin-private',true);tell('Administrator access confirmed by Supabase Auth.');
+   display('admin-private',true);tell('Your administrator session is verified. Manage your workspace below.');
    const queue=document.getElementById('moderation-queue'),jobForm=document.getElementById('admin-job-form');
    async function load(){
     try{const entries=await query('community_submissions','id,kind,title,official_url,description,status,submitted_at');queue.replaceChildren();
-     const pending=entries.filter(s=>s.status==='pending'||s.status==='in_review');if(!pending.length)text(queue,'p','No pending submissions.');
+     const pending=entries.filter(s=>s.status==='pending'||s.status==='in_review');const pendingCount=document.getElementById('admin-pending-count');if(pendingCount)pendingCount.textContent=String(pending.length);if(!pending.length)text(queue,'p','No pending submissions. Your review queue is clear.');
      for(const s of pending){const card=document.createElement('div');card.className='guide-card';text(card,'h3',s.title+' · '+s.kind);text(card,'p',s.description);link(card,s.official_url,'Official source');const reject=text(card,'button','Reject');reject.type='button';reject.onclick=async()=>{const {error}=await client.from('community_submissions').update({status:'rejected',reviewed_at:new Date().toISOString()}).eq('id',s.id);tell(error?'Could not reject submission.':'Submission rejected.');if(!error)load();};
       // Approval is a review decision, not automatic catalog publication: details need verified classification.
       const approve=text(card,'button','Mark reviewed');approve.type='button';approve.onclick=async()=>{const {error}=await client.from('community_submissions').update({status:'in_review'}).eq('id',s.id);tell(error?'Could not update submission.':'Submission moved to review. Create a verified resource in the catalog before marking approved.');if(!error)load();};queue.append(card);}
-    }catch{tell('Unable to load administrator queue.');}
+    }catch{const pendingCount=document.getElementById('admin-pending-count');if(pendingCount)pendingCount.textContent='Unavailable';tell('Unable to load administrator queue.');}
    }
    document.getElementById('admin-resource-form')?.addEventListener('submit',async e=>{
     e.preventDefault();const f=e.currentTarget;const title=formValue(f,'title'),slug=formValue(f,'slug'),official_url=url(formValue(f,'official_url')),source_url=url(formValue(f,'source_url'));
@@ -116,8 +116,10 @@
     const holder=document.getElementById('sync-monitor');if(!holder)return;
     const {data,error}=await client.from('sync_runs').select('integration,status,started_at,completed_at,fetched,inserted,rejected').order('started_at',{ascending:false}).limit(15);
     holder.replaceChildren();
-    if(error){text(holder,'p','Sync monitoring data is unavailable.');return;}
-    if(!data?.length){text(holder,'p','No synchronization runs recorded yet. Automatic vacancy publication has not been verified.');return;}
+    const summary=document.getElementById('admin-sync-summary');
+    if(error){if(summary)summary.textContent='Unavailable';text(holder,'p','Sync monitoring data is unavailable.');return;}
+    if(!data?.length){if(summary)summary.textContent='No runs';text(holder,'p','No synchronization runs recorded yet. Automatic vacancy publication has not been verified.');return;}
+    if(summary){const latest=data[0];summary.textContent=latest.status==='success'?'Latest: successful':latest.status==='failure'?'Latest: failed':'Latest: '+latest.status;}
     for(const run of data){
      const card=document.createElement('article');card.className='guide-card';text(card,'h3',run.integration);text(card,'p','Status: '+run.status);
      text(card,'p','Fetched: '+run.fetched+' · Upserted: '+run.inserted+' · Rejected: '+run.rejected);
