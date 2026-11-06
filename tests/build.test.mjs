@@ -268,3 +268,19 @@ test('inner pages provide topic-aware icons and motion with accessibility fallba
  assert.match(app,/iconRules/);
  assert.match(app,/aria-hidden/);
 });
+
+
+test('login clearly explains email provider rate limiting without exposing internal errors',()=>{
+ const script=fs.readFileSync(path.join(root,'src','auth.js'),'utf8');
+ assert.match(script,/over_email_send_rate_limit/);
+ assert.match(script,/email_address_not_authorized/);
+ assert.match(script,/otp_disabled/);
+ assert.match(script,/Email delivery is temporarily rate-limited/);
+ assert.match(script,/No link was sent/);
+ assert.match(script,/production SMTP/);
+ assert.match(script,/cooldownUntil/);
+ assert.match(script,/cooldown\(60000\)/);
+ assert.match(script,/pending=true/);
+ assert.match(script,/errorDetails\(error\)/);
+ assert.doesNotMatch(script,/report\(error\.message\)/);
+});
