@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "sql-databases",
+    "title": "SQL Tutorial — Full Database Course",
+    "topic": "SQL & Databases",
+    "channel": "freeCodeCamp.org",
+    "id": "HXV3zeQKqGY",
+    "level": "Beginner",
+    "description": "Learn SQL queries, joins, and database fundamentals."
+  },
+  {
+    "slug": "python-beginners",
+    "title": "Python for Beginners — Full Course",
+    "topic": "Python",
+    "channel": "freeCodeCamp.org",
+    "id": "eWRfhZUzrAc",
+    "level": "Beginner",
+    "description": "Learn Python fundamentals with guided exercises."
+  },
+  {
+    "slug": "figma-ui",
+    "title": "Figma Tutorial for UI Design",
+    "topic": "UI/UX Design",
+    "channel": "freeCodeCamp.org",
+    "id": "jwCmIBJ8Jtc",
+    "level": "Beginner",
+    "description": "Build wireframes, UI components and responsive layouts."
+  },
+  {
+    "slug": "power-bi",
+    "title": "Power BI Tutorial — Full Course",
+    "topic": "Power BI",
+    "channel": "Amit Chandak",
+    "id": "cN8AO3_vmlY",
+    "level": "Beginner",
+    "description": "Practice dashboards, DAX, data modeling and Power Query."
+  },
+  {
+    "slug": "git-github",
+    "title": "Git and GitHub — Crash Course",
+    "topic": "Git & GitHub",
+    "channel": "freeCodeCamp.org",
+    "id": "RGOj5yH7evk",
+    "level": "Beginner",
+    "description": "Learn version control, branches, commits and collaboration."
+  },
+  {
+    "slug": "javascript",
+    "title": "JavaScript Programming — Full Course",
+    "topic": "Web Development",
+    "channel": "freeCodeCamp.org",
+    "id": "jS4aFq5-91M",
+    "level": "Beginner",
+    "description": "Learn JavaScript and browser-based programming."
+  },
+  {
+    "slug": "react",
+    "title": "React Course — Beginner Tutorial",
+    "topic": "React",
+    "channel": "freeCodeCamp.org",
+    "id": "bMknfKXIFA8",
+    "level": "Beginner",
+    "description": "Learn React components and practical application projects."
+  }
+]
