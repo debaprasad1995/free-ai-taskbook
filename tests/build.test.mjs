@@ -313,3 +313,13 @@ test('homepage contains a concise Our Approach section and founder link',()=>{
  assert.match(html,/Community-powered/);
  assert.match(html,/Meet the founder and read Our Approach/);
 });
+
+test('Our Approach uses the provided founder portrait instead of DH placeholder',()=>{
+ const about=fs.readFileSync(path.join(out,'about','index.html'),'utf8');
+ const image=path.join(out,'images','founder-portrait.webp');
+ assert.ok(fs.existsSync(image),'Founder image missing from production output');
+ assert.match(about,/<img[^>]+src="\/images\/founder-portrait\.webp"/);
+ assert.match(about,/alt="Debaprasad Haldar, founder of FreeAITaskbook"/);
+ assert.doesNotMatch(about,/photograph not yet provided/);
+ assert.doesNotMatch(about,/<strong>DH<\/strong>/);
+});
