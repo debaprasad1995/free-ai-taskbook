@@ -133,5 +133,59 @@
     "id": "Wf2eSG3owoA",
     "level": "Intermediate",
     "description": "Images, containers, orchestration, deployments and Kubernetes concepts."
+  },
+  {
+    "slug": "rrb-je-roadmap",
+    "title": "RRB JE 2026 — CBT 1 & 2 Preparation Roadmap",
+    "topic": "RRB JE",
+    "channel": "Adda247 Engineers - AE JE Exams",
+    "id": "6pY5p6J2SDc",
+    "level": "Beginner",
+    "description": "Railway Junior Engineer syllabus, CBT strategy and preparation planning."
+  },
+  {
+    "slug": "rrb-ntpc-reasoning-bengali",
+    "title": "RRB NTPC Graduate — Reasoning PYQ (Bengali)",
+    "topic": "RRB NTPC",
+    "channel": "Jobs Key Academy",
+    "id": "_gcSUz5KxfY",
+    "level": "Beginner",
+    "description": "Bengali reasoning class with previous-year RRB NTPC examination questions."
+  },
+  {
+    "slug": "rrb-ntpc-maths-bengali",
+    "title": "RRB NTPC Graduate — Mathematics PYQ (Bengali)",
+    "topic": "RRB NTPC",
+    "channel": "MathVerse by Sibnath",
+    "id": "gN6p00BhVDA",
+    "level": "Intermediate",
+    "description": "Bengali railway mathematics questions from previous shifts."
+  },
+  {
+    "slug": "wbpsc-clerkship-maths-bengali",
+    "title": "WBPSC Clerkship — Previous-Year Mathematics",
+    "topic": "WBPSC Clerkship",
+    "channel": "MathVerse by Sibnath",
+    "id": "9ZhDEmK__h4",
+    "level": "Beginner",
+    "description": "Bengali Clerkship arithmetic and previous-year maths."
+  },
+  {
+    "slug": "wbpsc-clerkship-gk-bengali",
+    "title": "WBPSC Clerkship — GK Marathon",
+    "topic": "WBPSC Clerkship",
+    "channel": "Jobs Key Academy",
+    "id": "LH8LfL9Cz40",
+    "level": "Intermediate",
+    "description": "Bengali-language general knowledge preparation for Clerkship."
+  },
+  {
+    "slug": "wbpsc-static-gk-bengali",
+    "title": "WBPSC / PSC — Static GK PYQ Practice",
+    "topic": "WBPSC / PSC",
+    "channel": "Jobs Key Academy",
+    "id": "ThemZ7Udz8M",
+    "level": "Intermediate",
+    "description": "Bengali PSC static general knowledge and previous-year questions."
   }
 ]
