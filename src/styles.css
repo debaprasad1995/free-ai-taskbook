@@ -324,3 +324,37 @@ footer.site-footer{background:linear-gradient(120deg,#0d2b20,#175139)}
 .founder-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0;z-index:0}
 .founder-photo .founder-photo-caption{position:absolute;bottom:0;left:0;right:0;z-index:1;text-align:center;padding:45px 12px 20px;background:linear-gradient(0deg,#071f22df,transparent);color:#e9ffdc;font-size:10px;letter-spacing:.13em;font-weight:800}
 @media(max-width:800px){.founder-portrait.founder-photo{aspect-ratio:4/5;max-width:400px}}
+
+
+/* Recruitment directory: clear, responsive browsing by employment source. */
+.job-source-directory .section-head{margin-bottom:20px}
+.job-source-types{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 22px}
+.job-source-type-card{display:flex;align-items:flex-start;flex-direction:column;gap:9px;text-align:left;min-height:168px;padding:19px;border:1px solid #b8dac0;border-radius:17px;background:linear-gradient(145deg,#faffef,#e4f6d8);color:#193c2d;box-shadow:0 8px 19px rgba(23,66,39,.09);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.job-source-type-card:hover{transform:translateY(-4px);box-shadow:0 17px 30px rgba(18,71,37,.16);border-color:#529c60}
+.job-source-type-card[aria-pressed="true"]{background:linear-gradient(145deg,#d2f68c,#e1f7cd);border:2px solid #357e50;box-shadow:0 10px 24px rgba(31,110,53,.16)}
+.job-source-type-card:focus-visible{outline:3px solid #2e895d;outline-offset:3px}
+.job-source-emoji{display:grid;place-items:center;width:42px;height:42px;border:1px solid #9dcc91;background:#e3f7c6;border-radius:13px;font-size:22px}
+.job-source-type-card strong{font-size:16px;letter-spacing:-.02em;line-height:1.2;color:#153f2a}
+.job-source-type-card>span:last-child{font-size:12px;line-height:1.45;color:#49644e}
+.job-source-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.job-source-controls .filter-search{flex:1;min-width:min(100%,300px);margin:0}
+.job-source-controls #source-reset{min-height:39px;padding:9px 14px;white-space:nowrap}
+#source-results{font-weight:700;color:#365e43}
+.official-recruitment-highlights{padding-top:30px}
+.official-recruitment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.official-recruitment-card{display:flex;align-items:flex-start;gap:14px;background:linear-gradient(150deg,#fffdf1,#e7f6d9);border:1px solid #c4deb9;box-shadow:var(--prism-shadow);border-radius:18px;padding:22px;transition:transform .22s,box-shadow .22s}
+.official-recruitment-card:hover{transform:translateY(-3px);box-shadow:var(--prism-lift)}
+.official-recruitment-icon{display:grid;place-items:center;flex-shrink:0;width:52px;height:52px;font-size:28px;border-radius:15px;border:1px solid #93c38a;background:#ddf5c1}
+.official-recruitment-copy{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.official-recruitment-copy h3{font-size:clamp(19px,2vw,25px);line-height:1.19;letter-spacing:-.035em;margin:0;color:#173e2c}
+.official-recruitment-copy p{font-size:13px;line-height:1.5;margin:0;color:#44604b}
+.official-recruitment-copy .official-job-deadline{font-weight:700;color:#245d36}
+.official-recruitment-copy .job-deadline-state{font-size:11px;color:#507044}
+.official-recruitment-copy>a{display:inline-flex;margin-top:4px;background:#194b35;color:#f9fff1;text-decoration:none;font-size:12px;font-weight:800;padding:11px 15px;border-radius:10px}
+.official-recruitment-copy>a:hover{background:#276b49}
+.job-recruitment-expired{opacity:.77;background:#f0f0ed}
+.job-recruitment-expired .job-deadline-state{color:#995334}
+.job-recruitment-expired .official-recruitment-copy>a{background:#5d6d64}
+@media(max-width:960px){.job-source-types{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.job-source-types,.official-recruitment-grid{grid-template-columns:1fr}.job-source-type-card{min-height:126px;padding:15px}.official-recruitment-card{padding:15px}.official-recruitment-icon{width:43px;height:43px;font-size:24px}}
+@media(prefers-reduced-motion:reduce){.job-source-type-card,.official-recruitment-card{transition:none}.job-source-type-card:hover,.official-recruitment-card:hover{transform:none}}
