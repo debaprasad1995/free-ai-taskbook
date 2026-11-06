@@ -11,6 +11,7 @@
  if(!config?.url||!config?.key||!window.supabase?.createClient)return;
  const db=window.supabase.createClient(config.url,config.key,{auth:{flowType:'pkce',detectSessionInUrl:false}});
  let signedIn=false,ready=false,dialog=null,clock=null,last=Date.now(),active=0,checking=false;
+ let previouslyFocused=null;
  try{active=Math.min(LIMIT_MS,Math.max(0,Number(sessionStorage.getItem(KEY))||0));}catch{}
  function save(){
   try{sessionStorage.setItem(KEY,String(Math.min(active,LIMIT_MS)));}catch{}
@@ -42,13 +43,27 @@
   const login=document.createElement('a');login.href='/account/';login.className='guest-limit-action-primary';login.textContent='Log in or create account ↗';
   const privacy=document.createElement('a');privacy.href='/privacy/';privacy.className='guest-limit-action-secondary';privacy.textContent='Privacy information';
   actions.append(login,privacy);box.append(emblem,kicker,title,description,note,actions);dialog.append(box);
-  document.body.append(dialog);document.body.classList.add('guest-limit-locked');
-  // Preserve the existing page for crawlers, and leave legal/registration pages accessible.
+  previouslyFocused=document.activeElement;
+  document.body.append(dialog);
+  document.body.classList.add('guest-limit-locked');
+  for(const element of document.querySelectorAll('header,main,footer'))element.inert=true;
+  // Preserve underlying document HTML for indexing; restrict keyboard focus during the prompt.
+  dialog.addEventListener('keydown',event=>{
+   if(event.key!=='Tab')return;
+   const links=[...dialog.querySelectorAll('a[href]')];
+   if(!links.length)return;
+   const first=links[0],last=links[links.length-1];
+   if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+   else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+  });
   dialog.querySelector('a')?.focus();
  }
  function unlock(){
   if(dialog){dialog.remove();dialog=null;}
   document.body.classList.remove('guest-limit-locked');
+  for(const element of document.querySelectorAll('header,main,footer'))element.inert=false;
+  if(previouslyFocused?.isConnected)previouslyFocused.focus?.();
+  previouslyFocused=null;
  }
  async function session(){
   if(checking)return;checking=true;
