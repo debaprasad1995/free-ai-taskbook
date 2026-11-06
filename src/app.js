@@ -63,7 +63,8 @@
    alreadySaved?saved.delete(slug):saved.add(slug);
    favoriteFeedback(favoriteUser?'Saved tools updated in your account.':'Saved on this device. Sign in to save across devices.');
    renderFavorites();applyFilters();
-  }finally{btn.disabled=false;}
+  }catch{favoriteFeedback('Saved tools could not be updated. Check your connection and retry.');}
+  finally{btn.disabled=false;}
  });
  renderFavorites();
  document.addEventListener('DOMContentLoaded',async()=>{
