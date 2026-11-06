@@ -10,6 +10,7 @@
  const slot=document.getElementById('video-frame-slot');
  const title=document.getElementById('video-player-title');
  if(!topic||!player||!slot||!level||!search)return;
+ document.querySelectorAll('[data-exam-topic]').forEach(b=>b.addEventListener('click',()=>{topic.value=b.dataset.examTopic;level.value='';search.value='';limit=6;render();}));
  const initialCourse=new URLSearchParams(location.search).get('course');
  if(initialCourse)search.value=initialCourse.slice(0,100);
  let limit=6;
