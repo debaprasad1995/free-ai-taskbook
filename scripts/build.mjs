@@ -19,7 +19,7 @@ if(AUTH_ENABLED && (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(AUTH_URL)||!/^s
 const affiliateConfig=JSON.parse(fs.readFileSync(path.join(root,'data/affiliates.json'),'utf8'));
 const affiliates=affiliateConfig.links||{};
 const SITE=(process.env.SITE_URL||'https://free-ai-taskbook.pages.dev').replace(/\/$/,'');
-const REPO=(process.env.GITHUB_REPO_URL||'').replace(/\/$/,'');
+const REPO=(process.env.GITHUB_REPO_URL||'https://github.com/debaprasad1995/free-ai-taskbook').replace(/\/$/,'');
 if(REPO && !/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(REPO)) throw Error('GITHUB_REPO_URL must be a GitHub repository URL');
 if(!/^https:\/\/[^\s/]+$/.test(SITE)) throw Error('SITE_URL must be HTTPS and contain no path');
 const TODAY=new Date().toISOString().slice(0,10);
