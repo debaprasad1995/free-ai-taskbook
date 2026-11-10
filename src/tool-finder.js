@@ -34,6 +34,6 @@
  }
  form.addEventListener('submit',async e=>{
   e.preventDefault();result.textContent='Finding matching tools…';
-  try{const r=await fetch('/search-index.json',{cache:'force-cache'});if(!r.ok)throw Error('search index');render(await r.json(),goal.value);}catch{result.textContent='Suggestions are unavailable. Please use the directory search below.';}
+  try{const r=await fetch('/search-index.json?v=__SEARCH_INDEX_VERSION__',{cache:'no-store'});if(!r.ok)throw Error('search index');render(await r.json(),goal.value);}catch{result.textContent='Suggestions are unavailable. Please use the directory search below.';}
  });
 });})();
