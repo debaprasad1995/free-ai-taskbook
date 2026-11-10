@@ -17,6 +17,57 @@
  const selection=new Map();
  let data=[];
  let visibleLimit=18;
+ let liveWarning='';
+ const catalogVersion='__SEARCH_INDEX_VERSION__';
+ const indexUrl='/search-index.json?v='+encodeURIComponent(catalogVersion);
+ const todayIndia=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const liveConfig=window.TASKBOOK_CONFIG||{};
+ function toLiveRow(item,kind){
+  if(kind==='catalog'){
+   const name=String(item.title||'').trim();
+   if(!name||!item.slug)return null;
+   const description=String(item.summary||'');
+   return {name,type:'AI tool',pricing:item.pricing_class==='free'?'free':item.pricing_class==='free_tier'?'free-tier':item.pricing_class==='free_credits'?'free-credits':item.pricing_class==='open_source'?'local-open-source':item.pricing_class==='paid'?'paid':'varies',description,
+    search:[name,description,item.category,item.kind,item.slug].join(' ').toLowerCase(),url:'/catalog/'+encodeURIComponent(item.slug)+'/',external:false};
+  }
+  if(item.application_deadline&&item.application_deadline<todayIndia())return null;
+  if(!item.id||!item.title)return null;
+  const name=String(item.title||'').trim();
+  const description=String(item.organization||'')+' · '+String(item.location||'')+(item.application_deadline?' · Apply by '+item.application_deadline:'');
+  return {name,type:'Verified job',pricing:'varies',description,search:[name,description,item.job_type,item.region,'recruitment vacancy job'].join(' ').toLowerCase(),url:'/vacancies/'+encodeURIComponent(item.id)+'/',external:false};
+ }
+ async function fetchLiveTable(table,columns,filters,kind){
+  const key=liveConfig.key,url=liveConfig.url;
+  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url||'')||!/^sb_publishable_[A-Za-z0-9_-]+$/.test(key||''))return [];
+  const entries=[];
+  // Public RLS is the authoritative access control. Read only published rows.
+  for(let offset=0;offset<5000;offset+=500){
+   const q=new URLSearchParams({select:columns,...filters,order:'created_at.desc',limit:'500',offset:String(offset)});
+   const response=await fetch(url+'/rest/v1/'+table+'?'+q,{headers:{apikey:key,Accept:'application/json'},cache:'no-store',signal:AbortSignal.timeout(12000)});
+   if(!response.ok)throw Error('Public '+table+' temporarily unavailable');
+   const rows=await response.json();if(!Array.isArray(rows))throw Error('Unexpected '+table+' response');
+   for(const item of rows){const row=toLiveRow(item,kind);if(row)entries.push(row);}
+   if(rows.length<500)break;
+  }
+  return entries;
+ }
+ async function loadLiveData(){
+  if(!liveConfig.url||!liveConfig.key)return;
+  const [catalog,jobs]=await Promise.allSettled([
+   fetchLiveTable('resource_catalog','slug,title,summary,category,kind,pricing_class,created_at',{review_status:'eq.published'},'catalog'),
+   fetchLiveTable('job_postings','id,title,organization,location,region,job_type,application_deadline,created_at',{review_status:'eq.verified',status:'eq.open'},'job')
+  ]);
+  const extra=[];
+  for(const outcome of [catalog,jobs]){
+   if(outcome.status==='fulfilled')extra.push(...outcome.value);
+   else liveWarning='Some live listings could not be loaded. Static directory results remain available.';
+  }
+  if(extra.length){
+   const seen=new Set(data.map(x=>x.type+'|'+x.url));
+   for(const row of extra){const key=row.type+'|'+row.url;if(!seen.has(key)){data.push(row);seen.add(key);}}
+  }
+  render();
+ }
  const safeUrl=s=>{try{const u=new URL(s,location.origin);return u.protocol==='https:'||u.origin===location.origin?u.href:null;}catch{return null;}};
  const el=(parent,tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=String(text);parent.append(n);return n;};
  const makeLink=(parent,href,label)=>{const u=safeUrl(href);if(!u)return;const a=el(parent,'a',label);a.href=u;a.target=u.startsWith(location.origin)?'_self':'_blank';if(a.target==='_blank')a.rel='noopener noreferrer';return a;};
@@ -70,7 +121,7 @@
   const matches=data.filter(x=>(!type.value||x.type===type.value)&&(!price.value||x.pricing===price.value)&&tokens.every(t=>String(x.search||'').includes(t)));
   const shown=matches.slice(0,visibleLimit);
   results.replaceChildren();
-  count.textContent='Showing '+shown.length+' of '+matches.length+' matching resources';
+  count.textContent='Showing '+shown.length+' of '+matches.length+' matching resources'+(liveWarning?' · '+liveWarning:'');
   for(const r of shown){
    const card=el(results,'article');card.className='guide-card search-result-card';
    el(card,'span',r.type+' · '+r.pricing).className='search-tag';
@@ -101,6 +152,9 @@
  clear.addEventListener('click',()=>{selection.clear();updateTray();render();});
  document.getElementById('search-more')?.addEventListener('click',()=>{visibleLimit+=18;render();});
  for(const item of [input,type,price])item.addEventListener(item===input?'input':'change',()=>{visibleLimit=18;render();});
- fetch('/search-index.json',{cache:'force-cache'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json();}).then(rows=>{data=rows;render();}).catch(()=>{count.textContent='Search index unavailable. Please retry.';});
+ fetch(indexUrl,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json();}).then(rows=>{
+  if(!Array.isArray(rows))throw Error('Unexpected search index');
+  data=rows;render();return loadLiveData();
+ }).catch(()=>{count.textContent='Search index unavailable. Please refresh and retry.';});
  updateTray();
 })();
