@@ -1538,5 +1538,131 @@
       "AI workflow",
       "self-hosted"
     ]
+  },
+  {
+    "slug": "smolagents",
+    "name": "Hugging Face smolagents",
+    "category": "automation",
+    "summary": "Build lightweight AI agents that use code and external tools.",
+    "description": "Build lightweight AI agents that use code and external tools. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/huggingface/smolagents",
+    "pricingUrl": "https://github.com/huggingface/smolagents",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "automation",
+      "AI integrations",
+      "open-source"
+    ]
+  },
+  {
+    "slug": "playwright-mcp",
+    "name": "Playwright MCP",
+    "category": "coding",
+    "summary": "Connect browser automation to AI agents using the Model Context Protocol.",
+    "description": "Connect browser automation to AI agents using the Model Context Protocol. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/microsoft/playwright-mcp",
+    "pricingUrl": "https://github.com/microsoft/playwright-mcp",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI integrations",
+      "open-source"
+    ]
+  },
+  {
+    "slug": "stagehand",
+    "name": "Stagehand",
+    "category": "automation",
+    "summary": "Build AI-assisted browser interactions with a developer SDK.",
+    "description": "Build AI-assisted browser interactions with a developer SDK. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/browserbase/stagehand",
+    "pricingUrl": "https://github.com/browserbase/stagehand",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "automation",
+      "AI integrations",
+      "open-source"
+    ]
+  },
+  {
+    "slug": "privategpt",
+    "name": "PrivateGPT",
+    "category": "local",
+    "summary": "Create private document-retrieval AI applications using local models.",
+    "description": "Create private document-retrieval AI applications using local models. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/zylon-ai/private-gpt",
+    "pricingUrl": "https://github.com/zylon-ai/private-gpt",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "local",
+      "AI integrations",
+      "open-source"
+    ]
+  },
+  {
+    "slug": "semantic-kernel",
+    "name": "Semantic Kernel",
+    "category": "coding",
+    "summary": "Build model-integrated AI applications using a development framework.",
+    "description": "Build model-integrated AI applications using a development framework. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/microsoft/semantic-kernel",
+    "pricingUrl": "https://github.com/microsoft/semantic-kernel",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI integrations",
+      "open-source"
+    ]
+  },
+  {
+    "slug": "griptape",
+    "name": "Griptape",
+    "category": "automation",
+    "summary": "Orchestrate AI agents, memory and tools in application workflows.",
+    "description": "Orchestrate AI agents, memory and tools in application workflows. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/griptape-ai/griptape",
+    "pricingUrl": "https://github.com/griptape-ai/griptape",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "automation",
+      "AI integrations",
+      "open-source"
+    ]
+  },
+  {
+    "slug": "pydantic-ai",
+    "name": "Pydantic AI",
+    "category": "coding",
+    "summary": "Build typed AI agents and structured model-integrated applications.",
+    "description": "Build typed AI agents and structured model-integrated applications. Review deployment requirements and configure your own supported models or services.",
+    "access": "local-open-source",
+    "url": "https://github.com/pydantic/pydantic-ai",
+    "pricingUrl": "https://github.com/pydantic/pydantic-ai",
+    "freeNote": "Source code is available under its project license; hosting, AI model providers, third-party APIs and hardware may have separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI integrations",
+      "open-source"
+    ]
   }
 ]
