@@ -4,3 +4,11 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Search metadata must be revalidated whenever the catalog changes.
+/search-index.json
+  Cache-Control: no-cache, must-revalidate
+/assets/search.js
+  Cache-Control: no-cache, must-revalidate
+/assets/tool-finder.js
+  Cache-Control: no-cache, must-revalidate
