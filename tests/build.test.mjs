@@ -577,3 +577,43 @@ test('Brevo is visible as a free-tier tool and transactional email integration',
  assert.equal(new Set(entries.map(x=>x.slug)).size,entries.length);
  assert.equal(new Set(apis.map(x=>x.slug)).size,apis.length);
 });
+
+
+test('Search everything indexes every static resource, including newly published Brevo entries',()=>{
+ const index=JSON.parse(fs.readFileSync(path.join(out,'search-index.json'),'utf8'));
+ const tools=JSON.parse(fs.readFileSync(path.join(root,'data','tools.json'),'utf8'));
+ const apis=JSON.parse(fs.readFileSync(path.join(root,'data','apis.json'),'utf8'));
+ const learning=JSON.parse(fs.readFileSync(path.join(root,'data','learning.json'),'utf8'));
+ const videos=JSON.parse(fs.readFileSync(path.join(root,'data','youtube-courses.json'),'utf8'));
+ const jobs=JSON.parse(fs.readFileSync(path.join(root,'data','job-sources.json'),'utf8'));
+ const professions=JSON.parse(fs.readFileSync(path.join(root,'data','professions.json'),'utf8'));
+ assert.equal(index.length,tools.length+apis.length+learning.length+videos.length+jobs.length+professions.length,'all static resources must appear in search index');
+ const brevoTool=index.find(x=>x.url==='/tools/brevo/');
+ const brevoApi=index.find(x=>x.url==='/apis/brevo-transactional-email-api/');
+ assert.equal(brevoTool?.type,'AI tool');assert.equal(brevoApi?.type,'API');
+ for(const word of ['brevo','smtp','transactional email'])assert.ok(brevoTool.search.includes(word)&&brevoApi.search.includes(word),'Brevo must be searchable by '+word);
+ for(const x of tools)assert.ok(index.some(item=>item.url==='/tools/'+x.slug+'/'),'missing tool '+x.slug);
+ for(const x of apis)assert.ok(index.some(item=>item.url==='/apis/'+x.slug+'/'),'missing API '+x.slug);
+ for(const x of jobs)assert.ok(index.some(item=>item.type==='Job portal'&&item.url===x.url),'missing job source '+x.slug);
+ for(const x of learning)assert.ok(index.some(item=>item.type==='Learning'&&item.url===x.url),'missing learning '+x.slug);
+});
+test('Search everything uses versioned, non-stale index and includes live published Supabase listings',()=>{
+ const html=fs.readFileSync(path.join(out,'search','index.html'),'utf8');
+ const script=fs.readFileSync(path.join(out,'assets','search.js'),'utf8');
+ const finder=fs.readFileSync(path.join(out,'assets','tool-finder.js'),'utf8');
+ const headers=fs.readFileSync(path.join(out,'_headers'),'utf8');
+ assert.match(html,/search\.js\?v=[0-9a-f]{16}/);
+ assert.match(html,/tool-finder\.js\?v=[0-9a-f]{16}/);
+ assert.match(html,/<option>Verified job<\/option>/);
+ for(const code of [script,finder]){
+  assert.match(code,/search-index\.json\?v=/);
+  assert.match(code,/cache:'no-store'/);
+  assert.doesNotMatch(code,/__SEARCH_INDEX_VERSION__/);
+ }
+ assert.match(script,/fetchLiveTable\('resource_catalog'/);
+ assert.match(script,/fetchLiveTable\('job_postings'/);
+ assert.match(script,/review_status:'eq.published'/);
+ assert.match(script,/review_status:'eq.verified'/);
+ assert.match(script,/todayIndia\(\)/);
+ assert.match(headers,/\/search-index\.json\s+Cache-Control: no-cache, must-revalidate/);
+});
