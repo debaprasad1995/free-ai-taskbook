@@ -560,3 +560,20 @@ test('expanded tools, API integrations, learning and recruitment sources remain 
  assert.ok(sources.some(x=>x.slug==='rrb-bhubaneswar-notices'&&x.status==='source-link-only'));
  assert.ok(sources.some(x=>x.slug==='isro-current-opportunities'&&x.status==='source-link-only'));
 });
+
+
+test('Brevo is visible as a free-tier tool and transactional email integration',()=>{
+ const entries=JSON.parse(fs.readFileSync(path.join(root,'data','tools.json'),'utf8'));
+ const apis=JSON.parse(fs.readFileSync(path.join(root,'data','apis.json'),'utf8'));
+ const brevo=entries.find(x=>x.slug==='brevo');
+ const api=apis.find(x=>x.slug==='brevo-transactional-email-api');
+ assert.equal(brevo?.access,'free-tier');
+ assert.match(brevo.freeNote,/300 emails per day/);
+ assert.equal(api?.category,'Email');
+ assert.equal(api?.access,'free-tier');
+ assert.match(api.keyInstructions,/separate SMTP key/);
+ assert.match(api.limitations,/server|frontend/i);
+ assert.equal(new URL(api.docsUrl).hostname,'developers.brevo.com');
+ assert.equal(new Set(entries.map(x=>x.slug)).size,entries.length);
+ assert.equal(new Set(apis.map(x=>x.slug)).size,apis.length);
+});

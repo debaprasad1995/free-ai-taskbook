@@ -1664,5 +1664,25 @@
       "AI integrations",
       "open-source"
     ]
+  },
+  {
+    "slug": "brevo",
+    "name": "Brevo",
+    "category": "automation",
+    "summary": "Send transactional emails and manage email marketing from one platform.",
+    "description": "Brevo offers transactional email through an SMTP relay and API, alongside email campaigns, contact management, templates and basic marketing automations.",
+    "access": "free-tier",
+    "url": "https://www.brevo.com/",
+    "pricingUrl": "https://help.brevo.com/hc/en-us/articles/208580669-FAQs-What-are-the-limits-of-the-Free-plan",
+    "freeNote": "The Brevo Free plan offers up to 300 emails per day, subject to account approval, sender configuration, branding and plan restrictions. SMTP passwords and API keys must remain server-side.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "transactional email",
+      "SMTP",
+      "email marketing",
+      "automation",
+      "Supabase Auth"
+    ]
   }
 ]

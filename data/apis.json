@@ -459,5 +459,23 @@
     "limitations": "This is a link-based integration rather than a hosted data API; Google Maps services and terms still apply.",
     "verifiedOn": "2026-11-10",
     "keyUrl": "https://developers.google.com/maps/documentation/urls/get-started"
+  },
+  {
+    "slug": "brevo-transactional-email-api",
+    "name": "Brevo Transactional Email API & SMTP",
+    "category": "Email",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Send transactional messages (verification links, welcome emails, receipts and password recovery) through Brevo's REST API or SMTP relay.",
+    "docsUrl": "https://developers.brevo.com/docs/send-a-transactional-email",
+    "pricingUrl": "https://help.brevo.com/hc/en-us/articles/208580669-FAQs-What-are-the-limits-of-the-Free-plan",
+    "keyInstructions": "Sign up with Brevo, verify a sending domain and sender, and create an API key for REST calls or a separate SMTP key for SMTP relay. Store credentials only in server-side secrets.",
+    "limitations": "Free plan includes up to 300 email sends per day; quota is shared across eligible marketing and transactional sends. API access, SMTP relay, sender verification, rate limits and delivery restrictions depend on account status. Do not expose API/SMTP keys in frontend code.",
+    "verifiedOn": "2026-11-10",
+    "keyUrl": "https://app.brevo.com/settings/keys/api"
   }
 ]
