@@ -60,7 +60,7 @@ test('private job application tracker is generated and database migration uses o
  const html=fs.readFileSync(path.join(out,'dashboard','index.html'),'utf8');
  assert.match(html,/id="application-form"/);assert.match(html,/id="application-list"/);
  const js=fs.readFileSync(path.join(root,'src','platform.js'),'utf8');assert.match(js,/job_applications/);
- const sql=fs.readFileSync(path.join(root,'supabase','migrations','20261105_002_job_applications.sql'),'utf8');
+ const sql=fs.readFileSync(path.join(root,'supabase','migrations','20261104222122_job_applications_private_tracker.sql'),'utf8');
  assert.match(sql,/enable row level security/);assert.match(sql,/auth.uid\(\)/);assert.match(sql,/job_apps_owner_update/);
 });
 
@@ -180,7 +180,9 @@ test('account-enabled learning scripts, private course dashboard and task finder
 test('course analytics are opt-in, never measure watch duration, and keep admin data aggregate-only',()=>{
  const course=fs.readFileSync(path.join(root,'src','learning-account.js'),'utf8');
  const dashboard=fs.readFileSync(path.join(root,'src','learning-dashboard.js'),'utf8');
- const sql=fs.readFileSync(path.join(root,'supabase','migrations','20261106_001_course_progress_and_analytics.sql'),'utf8');
+ const progressSql=fs.readFileSync(path.join(root,'supabase','migrations','20261106063756_course_progress_and_opt_in_activity.sql'),'utf8');
+ const analyticsSql=fs.readFileSync(path.join(root,'supabase','migrations','20261106063835_private_opt_in_aggregate_course_analytics.sql'),'utf8');
+ const sql=progressSql+'\n'+analyticsSql;
  assert.match(course,/share_learning_activity===true/);
  assert.match(course,/taskbook:course-started/);
  assert.match(dashboard,/course_progress/);
@@ -506,4 +508,13 @@ test('mobile breakpoints cover both account and admin controls',()=>{
  assert.match(css,/\.admin-panel>\.suggest-form/);
  assert.match(css,/\.main-nav \.account-dropdown/);
  assert.match(css,/\.mobile-menu/);
+});
+
+
+test('local Supabase migrations mirror the four applied production versions',()=>{
+ const dir=path.join(root,'supabase','migrations');
+ const migrationFiles=fs.readdirSync(dir).filter(x=>x.endsWith('.sql')).sort();
+ const versions=migrationFiles.map(f=>f.slice(0,14));
+ assert.deepEqual(versions,['20261104213145','20261104222122','20261106063756','20261106063835']);
+ for(const file of migrationFiles)assert.match(file,/^\d{14}_[a-z0-9_]+\.sql$/);
 });
