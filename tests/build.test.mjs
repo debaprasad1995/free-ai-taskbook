@@ -536,3 +536,27 @@ test('expanded AI catalog retains distinct official open-source listings and fre
  assert.match(discovery,/No automatic publication|no automatic publication/i);
  assert.doesNotMatch(discovery,/writeFile\(['"]data\/tools\.json/);
 });
+
+
+test('expanded tools, API integrations, learning and recruitment sources remain validated and deduplicated',()=>{
+ const datasets=[
+  {path:'data/tools.json',min:92},
+  {path:'data/apis.json',min:26},
+  {path:'data/learning.json',min:20},
+  {path:'data/job-sources.json',min:32}
+ ];
+ for(const item of datasets){
+  const rows=JSON.parse(fs.readFileSync(path.join(root,item.path),'utf8'));
+  assert.ok(rows.length>=item.min,item.path+' entries missing');
+  assert.equal(new Set(rows.map(row=>row.slug)).size,rows.length,item.path+' duplicate slugs');
+ }
+ const tools=JSON.parse(fs.readFileSync(path.join(root,'data/tools.json'),'utf8'));
+ assert.ok(tools.some(x=>x.slug==='playwright-mcp'&&x.access==='local-open-source'));
+ const apis=JSON.parse(fs.readFileSync(path.join(root,'data/apis.json'),'utf8'));
+ assert.ok(apis.some(x=>x.slug==='openalex-research-api'&&x.limitations));
+ const learning=JSON.parse(fs.readFileSync(path.join(root,'data/learning.json'),'utf8'));
+ assert.ok(learning.some(x=>x.slug==='postman-api-learning'&&x.access==='free-learning'));
+ const sources=JSON.parse(fs.readFileSync(path.join(root,'data/job-sources.json'),'utf8'));
+ assert.ok(sources.some(x=>x.slug==='rrb-bhubaneswar-notices'&&x.status==='source-link-only'));
+ assert.ok(sources.some(x=>x.slug==='isro-current-opportunities'&&x.status==='source-link-only'));
+});
