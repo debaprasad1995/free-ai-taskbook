@@ -94,5 +94,69 @@
     "url": "https://scrumguides.org/",
     "access": "free-learning",
     "note": "Official Scrum framework guide; certification is separate."
+  },
+  {
+    "slug": "microsoft-business-analyst-training",
+    "topic": "Business Analysis",
+    "provider": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/training/browse/?roles=business-analyst",
+    "access": "free-learning",
+    "note": "Free self-paced BA-relevant modules; paid certification exams, where offered, are separate."
+  },
+  {
+    "slug": "microsoft-sql-joins",
+    "topic": "SQL Joins",
+    "provider": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/training/browse/?products=sql-server&roles=data-analyst",
+    "access": "free-learning",
+    "note": "SQL Server lessons include joins, filtering and queries; no free formal certificate guaranteed."
+  },
+  {
+    "slug": "microsoft-power-bi-scenarios",
+    "topic": "Power BI",
+    "provider": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-learning-path-directory",
+    "access": "free-learning",
+    "note": "Structured Power BI learning scenarios; certification may cost extra."
+  },
+  {
+    "slug": "microsoft-fabric-analytics",
+    "topic": "Microsoft Fabric & Analytics",
+    "provider": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/training/browse/?products=fabric",
+    "access": "free-learning",
+    "note": "Free introductory and intermediate Fabric analytics modules."
+  },
+  {
+    "slug": "postman-api-learning",
+    "topic": "API Testing & Documentation",
+    "provider": "Postman Learning Hub",
+    "url": "https://www.postman.com/learn/",
+    "access": "free-learning",
+    "note": "Free learning resources for API testing, collections, documentation, and AI agent workflows."
+  },
+  {
+    "slug": "odin-web-development",
+    "topic": "Full-stack Web Development",
+    "provider": "The Odin Project",
+    "url": "https://www.theodinproject.com/",
+    "access": "free-learning",
+    "note": "Free open-source web curriculum; the provider does not issue a completion certificate."
+  },
+  {
+    "slug": "openalex-api-learning",
+    "topic": "Research API & Data Integration",
+    "provider": "OpenAlex",
+    "url": "https://help.openalex.org/api/",
+    "access": "free-learning",
+    "note": "Official API reference for research metadata, filtering and pagination; not a certification course."
+  },
+  {
+    "slug": "crossref-api-learning",
+    "topic": "REST API & Scholarly Metadata",
+    "provider": "Crossref",
+    "url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+    "access": "free-learning",
+    "note": "Official REST API reference and metadata-query examples; not a certification course."
   }
 ]
