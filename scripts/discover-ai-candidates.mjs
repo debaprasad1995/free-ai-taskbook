@@ -21,9 +21,9 @@ const queries=[
  'topic:ai-coding stars:>100 archived:false'
 ];
 const existing=JSON.parse(await fs.readFile('data/tools.json','utf8'));
-const known=new Set(existing.map(x=>new URL(x.url).pathname.replace(/\\/$/,'').toLowerCase()));
+const known=new Set(existing.map(x=>new URL(x.url).pathname.replace(/\/$/,'').toLowerCase()));
 const suggestions=new Map();
-const safe=s=>String(s||'').replace(/[\\r\\n\\t]/g,' ').slice(0,300);
+const safe=s=>String(s||'').replace(/[\r\n\t]/g,' ').slice(0,300);
 for(const q of queries){
  try{
   const u='https://api.github.com/search/repositories?'+new URLSearchParams({q,sort:'stars',order:'desc',per_page:'100'});
