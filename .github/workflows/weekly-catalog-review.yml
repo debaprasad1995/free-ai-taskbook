@@ -18,6 +18,17 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: node scripts/audit-providers.mjs
+      - name: Discover open-source AI projects for review only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/discover-ai-candidates.mjs
+      - name: Upload candidate review queue
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-catalog-review-candidates
+          path: tmp/ai-catalog-review.json
+          if-no-files-found: warn
+          retention-days: 30
       - name: Open review issue (no automatic publication)
         env:
           GH_TOKEN: ${{ github.token }}
