@@ -390,5 +390,74 @@
     "limitations": "Open endpoint updates daily, is rate-limited, requires attribution and disallows redistribution; check commercial terms before integration.",
     "verifiedOn": "2026-11-06",
     "keyUrl": "https://www.exchangerate-api.com/docs/free"
+  },
+  {
+    "slug": "openalex-research-api",
+    "name": "OpenAlex Research API",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress"
+    ],
+    "description": "Search scholarly works, authors, institutions, topics and sources.",
+    "docsUrl": "https://help.openalex.org/api/",
+    "pricingUrl": "https://help.openalex.org/api/authentication/",
+    "keyInstructions": "Basic queries can be made without a key; register for a free key to increase allowances.",
+    "limitations": "API budgets and rate limits apply; substantial or specialized workloads may incur costs.",
+    "verifiedOn": "2026-11-10",
+    "keyUrl": "https://openalex.org/"
+  },
+  {
+    "slug": "crossref-rest-api",
+    "name": "Crossref REST API",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress"
+    ],
+    "description": "Retrieve scholarly publication, DOI and citation metadata.",
+    "docsUrl": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+    "pricingUrl": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/access-and-authentication/",
+    "keyInstructions": "Public REST endpoints require no signup; use polite identification according to Crossref guidelines.",
+    "limitations": "Follow rate limits and metadata licensing; premium Metadata Plus features require a subscription.",
+    "verifiedOn": "2026-11-10",
+    "keyUrl": "https://api.crossref.org/"
+  },
+  {
+    "slug": "jsonplaceholder-test-api",
+    "name": "JSONPlaceholder Test API",
+    "category": "Developer",
+    "access": "free-tier",
+    "platforms": [
+      "custom",
+      "wordpress"
+    ],
+    "description": "Prototype REST requests and test clients against fake example resources.",
+    "docsUrl": "https://jsonplaceholder.typicode.com/guide/",
+    "pricingUrl": "https://github.com/typicode/jsonplaceholder",
+    "keyInstructions": "No API key is needed for the hosted sample service.",
+    "limitations": "Intended for demonstration and prototyping; writes are simulated and not stored permanently.",
+    "verifiedOn": "2026-11-10",
+    "keyUrl": "https://jsonplaceholder.typicode.com/"
+  },
+  {
+    "slug": "google-maps-urls",
+    "name": "Google Maps URLs Integration",
+    "category": "Maps",
+    "access": "platform-included",
+    "platforms": [
+      "custom",
+      "wordpress",
+      "shopify"
+    ],
+    "description": "Launch Google Maps searches, directions and locations through documented URLs.",
+    "docsUrl": "https://developers.google.com/maps/documentation/urls/get-started",
+    "pricingUrl": "https://developers.google.com/maps/documentation/urls/get-started",
+    "keyInstructions": "Construct the documented URLs using api=1 and URL-encoded parameters; no API key required.",
+    "limitations": "This is a link-based integration rather than a hosted data API; Google Maps services and terms still apply.",
+    "verifiedOn": "2026-11-10",
+    "keyUrl": "https://developers.google.com/maps/documentation/urls/get-started"
   }
 ]
