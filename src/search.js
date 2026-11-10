@@ -27,7 +27,9 @@
    const name=String(item.title||'').trim();
    if(!name||!item.slug)return null;
    const description=String(item.summary||'');
-   return {name,type:'AI tool',pricing:item.pricing_class==='free'?'free':item.pricing_class==='free_tier'?'free-tier':item.pricing_class==='free_credits'?'free-credits':item.pricing_class==='open_source'?'local-open-source':item.pricing_class==='paid'?'paid':'varies',description,
+   const resourceType=item.kind==='api'?'API':item.kind==='learning'?'Learning':item.kind==='job_portal'?'Job portal':'AI tool';
+   const access={free:'free',free_tier:'free-tier',free_credits:'free-credits',open_source:'local-open-source',paid:'paid',platform_included:'platform-included',unverified:'varies'};
+   return {name,type:resourceType,pricing:access[item.pricing_class]||'varies',description,
     search:[name,description,item.category,item.kind,item.slug].join(' ').toLowerCase(),url:'/catalog/'+encodeURIComponent(item.slug)+'/',external:false};
   }
   if(item.application_deadline&&item.application_deadline<todayIndia())return null;
