@@ -250,5 +250,41 @@
     "url": "https://psc.wb.gov.in/notification_announcement.jsp",
     "description": "Official West Bengal Public Service Commission recruitment notices and announcements.",
     "status": "source-link-only"
+  },
+  {
+    "slug": "isro-current-opportunities",
+    "name": "ISRO — Current Opportunities",
+    "type": "government",
+    "region": "India",
+    "url": "https://www.isro.gov.in/CurrentOpportunities.html",
+    "description": "Official ISRO centre-wise recruitment notifications and advertised closing dates; verify each notice.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "drdo-official-vacancies",
+    "name": "DRDO — Official Vacancies",
+    "type": "government",
+    "region": "India",
+    "url": "https://www.drdo.gov.in/drdo/offerings/vacancies/",
+    "description": "Official Defence Research and Development Organisation vacancy and internship notices.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "rrb-kolkata-notices",
+    "name": "RRB Kolkata — Official Notices",
+    "type": "government",
+    "region": "West Bengal",
+    "url": "https://www.rrbkolkata.gov.in/cen012026.php",
+    "description": "Official RRB Kolkata Centralised Employment Notices, including CEN 01/2026 information.",
+    "status": "source-link-only"
+  },
+  {
+    "slug": "rrb-bhubaneswar-notices",
+    "name": "RRB Bhubaneswar — Official Notices",
+    "type": "government",
+    "region": "Odisha",
+    "url": "https://rrbbbs.gov.in/notifications.php",
+    "description": "Official RRB Bhubaneswar CEN notifications, corrections and status updates.",
+    "status": "source-link-only"
   }
 ]
