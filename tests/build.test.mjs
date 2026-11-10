@@ -617,3 +617,16 @@ test('Search everything uses versioned, non-stale index and includes live publis
  assert.match(script,/todayIndia\(\)/);
  assert.match(headers,/\/search-index\.json\s+Cache-Control: no-cache, must-revalidate/);
 });
+
+
+test('official pricing documentation CTA has an accessible solid background on all tool detail pages',()=>{
+ const css=fs.readFileSync(path.join(out,'assets','styles.css'),'utf8');
+ assert.match(css,/\.detail-hero \.detail-actions \.btn-outline\s*\{[^}]*background:\s*#173d43;[^}]*color:\s*#ffffff;/);
+ assert.match(css,/\.detail-hero \.detail-actions \.btn-outline:hover\s*\{[^}]*background:\s*#225e55;/);
+ assert.match(css,/\.detail-hero \.detail-actions \.btn-outline:focus-visible\s*\{[^}]*outline:/);
+ assert.match(css,/min-height:\s*44px/);
+ for(const item of tools){
+  const html=fs.readFileSync(path.join(out,'tools',item.slug,'index.html'),'utf8');
+  assert.match(html,/<a href="https:\/\/[^"]+" class="btn-outline"[^>]*>Official pricing \/ documentation ↗<\/a>/,'missing actionable pricing link for '+item.slug);
+ }
+});

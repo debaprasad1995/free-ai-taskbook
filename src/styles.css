@@ -461,3 +461,36 @@ body.guest-limit-locked{overflow:hidden!important}
 
 /* Bookmark persistence status, announced without covering search controls. */
 .favorite-sync-status{font-size:11px;color:#355b3f;line-height:1.5;max-width:260px;display:inline-block;vertical-align:middle}
+
+
+/* Tool detail external pricing/docs CTA: the refreshed detail hero has a pale background.
+   Keep pricing links readable on desktop, mobile and keyboard focus. */
+.detail-hero .detail-actions .btn-outline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#173d43;
+  color:#ffffff;
+  border:2px solid #173d43;
+  border-radius:9px;
+  text-decoration:none;
+  box-shadow:0 3px 10px rgba(10,38,43,.15);
+  min-height:44px;
+  transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.detail-hero .detail-actions .btn-outline:hover{
+  background:#225e55;
+  color:#ffffff;
+  border-color:#225e55;
+  box-shadow:0 5px 14px rgba(10,38,43,.22);
+}
+.detail-hero .detail-actions .btn-outline:focus-visible{
+  outline:3px solid #346cba;
+  outline-offset:3px;
+}
+@media(max-width:480px){
+ .detail-hero .detail-actions .btn-outline{width:100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+ .detail-hero .detail-actions .btn-outline{transition:none}
+}
