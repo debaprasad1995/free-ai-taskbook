@@ -11,7 +11,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const token=process.env.GH_TOKEN||process.env.GITHUB_TOKEN||'';
-const headers={Accept:'application/vnd.github+json','User-Agent':'FreeAITaskbook-catalog-discovery',...(token?Authorization:'Bearer '+token:{})};
+const headers={Accept:'application/vnd.github+json','User-Agent':'FreeAITaskbook-catalog-discovery',...(token?{Authorization:'Bearer '+token}:{})};
 const queries=[
  'topic:llm stars:>100 archived:false',
  'topic:rag stars:>100 archived:false',
@@ -22,7 +22,6 @@ const queries=[
 ];
 const existing=JSON.parse(await fs.readFile('data/tools.json','utf8'));
 const known=new Set(existing.map(x=>new URL(x.url).pathname.replace(/\\/$/,'').toLowerCase()));
-const slugs=new Set(existing.map(x=>x.slug));
 const suggestions=new Map();
 const safe=s=>String(s||'').replace(/[\\r\\n\\t]/g,' ').slice(0,300);
 for(const q of queries){
