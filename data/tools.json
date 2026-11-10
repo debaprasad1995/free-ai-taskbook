@@ -1106,5 +1106,437 @@
       "testing",
       "automation"
     ]
+  },
+  {
+    "slug": "comfyui",
+    "name": "ComfyUI",
+    "category": "design",
+    "summary": "Node-based diffusion image-generation workflows.",
+    "description": "Node-based diffusion image-generation workflows. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/Comfy-Org/ComfyUI",
+    "pricingUrl": "https://github.com/Comfy-Org/ComfyUI",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "design",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "invokeai",
+    "name": "InvokeAI",
+    "category": "design",
+    "summary": "Creative image generation and editing workspace.",
+    "description": "Creative image generation and editing workspace. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/invoke-ai/InvokeAI",
+    "pricingUrl": "https://github.com/invoke-ai/InvokeAI",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "design",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "stable-diffusion-webui",
+    "name": "Stable Diffusion WebUI",
+    "category": "design",
+    "summary": "Local Stable Diffusion image creation interface.",
+    "description": "Local Stable Diffusion image creation interface. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+    "pricingUrl": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "design",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "crewai",
+    "name": "CrewAI",
+    "category": "automation",
+    "summary": "Agent teams and multistep task orchestration.",
+    "description": "Agent teams and multistep task orchestration. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/crewAIInc/crewAI",
+    "pricingUrl": "https://github.com/crewAIInc/crewAI",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "automation",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "haystack",
+    "name": "Haystack",
+    "category": "coding",
+    "summary": "Retrieval and LLM application pipelines.",
+    "description": "Retrieval and LLM application pipelines. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/deepset-ai/haystack",
+    "pricingUrl": "https://github.com/deepset-ai/haystack",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "llamaindex",
+    "name": "LlamaIndex",
+    "category": "coding",
+    "summary": "Document indexing and retrieval for AI applications.",
+    "description": "Document indexing and retrieval for AI applications. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/run-llama/llama_index",
+    "pricingUrl": "https://github.com/run-llama/llama_index",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "markitdown",
+    "name": "MarkItDown",
+    "category": "data",
+    "summary": "Convert files and documents to Markdown for AI.",
+    "description": "Convert files and documents to Markdown for AI. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/microsoft/markitdown",
+    "pricingUrl": "https://github.com/microsoft/markitdown",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "data",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "gpt-researcher",
+    "name": "GPT Researcher",
+    "category": "chat-research",
+    "summary": "Automated research across multiple sources.",
+    "description": "Automated research across multiple sources. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/assafelovic/gpt-researcher",
+    "pricingUrl": "https://github.com/assafelovic/gpt-researcher",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "chat-research",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "anythingllm",
+    "name": "AnythingLLM",
+    "category": "chat-research",
+    "summary": "Local-first document chat and AI agents.",
+    "description": "Local-first document chat and AI agents. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/Mintplex-Labs/anything-llm",
+    "pricingUrl": "https://github.com/Mintplex-Labs/anything-llm",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "chat-research",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "ragflow",
+    "name": "RAGFlow",
+    "category": "data",
+    "summary": "Retrieval augmented document search.",
+    "description": "Retrieval augmented document search. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/infiniflow/ragflow",
+    "pricingUrl": "https://github.com/infiniflow/ragflow",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "data",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "whisper-cpp",
+    "name": "whisper.cpp",
+    "category": "audio",
+    "summary": "Local speech recognition with C/C++ inference.",
+    "description": "Local speech recognition with C/C++ inference. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/ggml-org/whisper.cpp",
+    "pricingUrl": "https://github.com/ggml-org/whisper.cpp",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "audio",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "faster-whisper",
+    "name": "Faster Whisper",
+    "category": "audio",
+    "summary": "Efficient Whisper speech-to-text transcription.",
+    "description": "Efficient Whisper speech-to-text transcription. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/SYSTRAN/faster-whisper",
+    "pricingUrl": "https://github.com/SYSTRAN/faster-whisper",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "audio",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "continue",
+    "name": "Continue",
+    "category": "coding",
+    "summary": "Open-source coding agent for development workflows.",
+    "description": "Open-source coding agent for development workflows. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/continuedev/continue",
+    "pricingUrl": "https://github.com/continuedev/continue",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "cline",
+    "name": "Cline",
+    "category": "coding",
+    "summary": "Coding agent for repository and software tasks.",
+    "description": "Coding agent for repository and software tasks. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/cline/cline",
+    "pricingUrl": "https://github.com/cline/cline",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "gemini-cli",
+    "name": "Gemini CLI",
+    "category": "coding",
+    "summary": "Gemini coding assistant in the terminal.",
+    "description": "Gemini coding assistant in the terminal. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/google-gemini/gemini-cli",
+    "pricingUrl": "https://github.com/google-gemini/gemini-cli",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "codex-cli",
+    "name": "Codex CLI",
+    "category": "coding",
+    "summary": "Open-source terminal coding agent.",
+    "description": "Open-source terminal coding agent. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/openai/codex",
+    "pricingUrl": "https://github.com/openai/codex",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "langchain",
+    "name": "LangChain",
+    "category": "coding",
+    "summary": "Framework for LLM applications and tools.",
+    "description": "Framework for LLM applications and tools. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/langchain-ai/langchain",
+    "pricingUrl": "https://github.com/langchain-ai/langchain",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "langgraph",
+    "name": "LangGraph",
+    "category": "automation",
+    "summary": "Stateful, durable AI agent orchestration.",
+    "description": "Stateful, durable AI agent orchestration. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/langchain-ai/langgraph",
+    "pricingUrl": "https://github.com/langchain-ai/langgraph",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "automation",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "openai-agents-sdk",
+    "name": "OpenAI Agents SDK",
+    "category": "coding",
+    "summary": "Multi-agent orchestration SDK.",
+    "description": "Multi-agent orchestration SDK. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/openai/openai-agents-python",
+    "pricingUrl": "https://github.com/openai/openai-agents-python",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "coding",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "vllm",
+    "name": "vLLM",
+    "category": "local",
+    "summary": "Efficient self-hosted large model serving.",
+    "description": "Efficient self-hosted large model serving. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/vllm-project/vllm",
+    "pricingUrl": "https://github.com/vllm-project/vllm",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "local",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "llama-cpp",
+    "name": "llama.cpp",
+    "category": "local",
+    "summary": "C/C++ inference for compatible LLMs.",
+    "description": "C/C++ inference for compatible LLMs. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/ggml-org/llama.cpp",
+    "pricingUrl": "https://github.com/ggml-org/llama.cpp",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "local",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "gpt4all",
+    "name": "GPT4All",
+    "category": "local",
+    "summary": "Run language models on personal devices.",
+    "description": "Run language models on personal devices. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/nomic-ai/gpt4all",
+    "pricingUrl": "https://github.com/nomic-ai/gpt4all",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "local",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "khoj",
+    "name": "Khoj",
+    "category": "chat-research",
+    "summary": "Personal knowledge search and AI research agent.",
+    "description": "Personal knowledge search and AI research agent. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/khoj-ai/khoj",
+    "pricingUrl": "https://github.com/khoj-ai/khoj",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "chat-research",
+      "AI workflow",
+      "self-hosted"
+    ]
+  },
+  {
+    "slug": "kotaemon",
+    "name": "Kotaemon",
+    "category": "chat-research",
+    "summary": "RAG interface for chatting with documents.",
+    "description": "RAG interface for chatting with documents. Use the self-managed project to experiment with applicable AI workflows, models and integrations.",
+    "access": "local-open-source",
+    "url": "https://github.com/Cinnamon/kotaemon",
+    "pricingUrl": "https://github.com/Cinnamon/kotaemon",
+    "freeNote": "Open-source project code is free under its repository license; model licensing, external APIs, hosting and hardware may incur separate costs.",
+    "verifiedOn": "2026-11-10",
+    "featured": false,
+    "tasks": [
+      "chat-research",
+      "AI workflow",
+      "self-hosted"
+    ]
   }
 ]

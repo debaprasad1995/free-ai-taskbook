@@ -518,3 +518,21 @@ test('local Supabase migrations mirror the four applied production versions',()=
  assert.deepEqual(versions,['20261104213145','20261104222122','20261106063756','20261106063835']);
  for(const file of migrationFiles)assert.match(file,/^\d{14}_[a-z0-9_]+\.sql$/);
 });
+
+
+test('expanded AI catalog retains distinct official open-source listings and free-access caveats',()=>{
+ const catalog=JSON.parse(fs.readFileSync(path.join(root,'data','tools.json'),'utf8'));
+ assert.ok(catalog.length>=85,'expected at least 85 curated entries');
+ assert.equal(new Set(catalog.map(x=>x.slug)).size,catalog.length,'no duplicate slugs');
+ for(const slug of ['comfyui','invokeai','crewai','haystack','llamaindex','markitdown','gpt-researcher','gemini-cli','codex-cli','vllm','gpt4all']){
+  const item=catalog.find(x=>x.slug===slug);
+  assert.ok(item,'missing verified source '+slug);
+  assert.equal(new URL(item.url).hostname,'github.com');
+  assert.equal(item.access,'local-open-source');
+  assert.match(item.freeNote,/costs|cost/i);
+ }
+ const discovery=fs.readFileSync(path.join(root,'scripts','discover-ai-candidates.mjs'),'utf8');
+ assert.match(discovery,/review_status:'unverified'/);
+ assert.match(discovery,/No automatic publication|no automatic publication/i);
+ assert.doesNotMatch(discovery,/writeFile\(['"]data\/tools\.json/);
+});
