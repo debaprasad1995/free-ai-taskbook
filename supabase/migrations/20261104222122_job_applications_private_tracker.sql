@@ -1,4 +1,3 @@
--- Additive, account-owned application tracking. No existing table modified.
 create table if not exists public.job_applications (
  id uuid primary key default gen_random_uuid(),
  user_id uuid not null references auth.users(id) on delete cascade,
