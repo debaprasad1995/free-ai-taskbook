@@ -68,13 +68,20 @@
  async function session(){
   if(checking)return;checking=true;
   try{
-   const {data,error}=await db.auth.getUser();
-   if(!error){
-    signedIn=!!data?.user;ready=true;
-    if(signedIn){unlock();}else if(active>=LIMIT_MS){lock();}
+   // getUser() returns AuthSessionMissingError for a normal signed-out guest.
+   // A guest is not an identity-service failure: always start/enforce the timer.
+   const {data:cached,error:sessionError}=await db.auth.getSession();
+   if(sessionError)throw sessionError;
+   if(!cached?.session){
+    signedIn=false;ready=true;
+    if(active>=LIMIT_MS)lock();else unlock();
    }else{
-    // Do not dead-end visitors if the identity service is unreachable.
-    ready=false;unlock();
+    const {data,error}=await db.auth.getUser();
+    if(error)throw error;
+    signedIn=!!data?.user;ready=true;
+    if(signedIn)unlock();
+    else if(active>=LIMIT_MS)lock();
+    else unlock();
    }
   }catch{ready=false;unlock();}
   finally{last=Date.now();checking=false;}
