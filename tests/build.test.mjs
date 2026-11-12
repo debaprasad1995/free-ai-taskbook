@@ -412,8 +412,12 @@ test('public pages support two minutes of guest browsing and authentication exem
  assert.match(gate,/LIMIT_MS=120000/);
  assert.match(gate,/sessionStorage\.setItem\(KEY/);
  assert.match(gate,/document\.visibilityState/);
- assert.match(gate,/db\.auth\.getUser\(\)/);
- assert.match(gate,/if\(signedIn\)\{unlock\(\)/);
+  assert.match(gate,/db\.auth\.getSession\(\)/);
+  assert.match(gate,/if\(!cached\?\.session\)\{/);
+  assert.match(gate,/signedIn=false;ready=true/);
+  assert.match(gate,/if\(active>=LIMIT_MS\)lock\(\)/);
+  assert.match(gate,/db\.auth\.getUser\(\)/);
+  assert.match(gate,/if\(signedIn\)unlock\(\)/);
  assert.match(gate,/auth\.onAuthStateChange/);
  assert.match(gate,/aria-modal/);
  assert.match(gate,/privacy/);
